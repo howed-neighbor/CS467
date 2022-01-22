@@ -20,7 +20,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 # Injection 
 <details>
   <summary>
-    Details
+    ## Details
   </summary>
   
 ### Description
