@@ -11,7 +11,7 @@ This project will explore the web vulnerabilities outlined at https://www.vpnmen
 * [Cross-Site Scripting](#cross-site-scripting)
 * [Insecure Deserialization](#insecure-deserialization)
 * [Using Components with Known Vulnerabilities](#using-components-with-known-vulnerabilities)
-* [Insufficient Logging & Monitoring](#insufficient-logging-&-monitoring)
+* [Insufficient Logging & Monitoring](#insufficient-logging--monitoring)
 
 # Injection
 # Broken Authentication
