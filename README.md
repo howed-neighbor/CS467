@@ -19,6 +19,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 
 <details>
   <summary markdown="block">
+    
     # Injection
   </summary>
   
