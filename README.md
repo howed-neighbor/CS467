@@ -13,6 +13,10 @@ This project will explore the web vulnerabilities outlined at https://www.vpnmen
 * [Using Components with Known Vulnerabilities](#using-components-with-known-vulnerabilities)
 * [Insufficient Logging & Monitoring](#insufficient-logging--monitoring)
 
+These vulnerabilities will be explored through a demonstration app, datapotato.io:
+![datapotato_light](/public/datapotato_black.svg#gh-light-mode-only)
+![datapotato_dark](/public/datapotato_white.svg#gh-dark-mode-only)
+
 # Injection
 # Broken Authentication
 # Sensitive Data Exposure
