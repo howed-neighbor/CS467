@@ -17,10 +17,12 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 <img src="https://github.com/howed-neighbor/CS467/blob/main/public/datapotato_black.svg#gh-light-mode-only" width=50% height=50%>
 <img src="https://github.com/howed-neighbor/CS467/blob/main/public/datapotato_white.svg#gh-dark-mode-only" width=50% height=50%>
 
-# Injection
+<details>
+  <summary># Injection</summary>
 ### Description
 ### Demonstration
 ### Remediation
+</details>
 # Broken Authentication
 # Sensitive Data Exposure
 # XML External Entities
