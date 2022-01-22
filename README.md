@@ -1,6 +1,6 @@
 # CS467: Website Security Research Project
 
-![datapotato](datapotato_white.svg align="left")
+![datapotato](datapotato_white.svg)
 
 This project will explore the web vulnerabilities outlined at https://www.vpnmentor.com/blog/top-10-common-web-attacks/ (D. Avi, accessed Dec 2021-Jan 2022). These vulnerabilities are categorized as follows:
 
