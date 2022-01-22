@@ -14,8 +14,8 @@ This project will explore the web vulnerabilities outlined at https://www.vpnmen
 * [Insufficient Logging & Monitoring](#insufficient-logging--monitoring)
 
 These vulnerabilities will be explored through a demonstration app, datapotato.io:
-![datapotato_light](/public/datapotato_black.svg#gh-light-mode-only)
-![datapotato_dark](/public/datapotato_white.svg#gh-dark-mode-only)
+![datapotato_light]<img src="https://github.com/howed-neighbor/CS467/blob/main/public/datapotato_black.svg width=50% height=50%)
+![datapotato_dark](img src="https://github.com/howed-neighbor/CS467/blob/main/public/datapotato_white.svg#gh-dark-mode-only width=50% height=50%)
 
 # Injection
 # Broken Authentication
