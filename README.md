@@ -19,10 +19,12 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 
 <details>
   <summary># Injection</summary>
+  
 ### Description
 ### Demonstration
 ### Remediation
 </details>
+
 # Broken Authentication
 # Sensitive Data Exposure
 # XML External Entities
