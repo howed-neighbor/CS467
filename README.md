@@ -20,7 +20,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 # Injection 
 <details>
   <summary>
-    Expand
+    Details
   </summary>
   
 ### Description
@@ -29,11 +29,101 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 </details>
 
 # Broken Authentication
+<details>
+  <summary>
+    Details
+  </summary>
+  
+### Description
+### Demonstration
+### Remediation
+</details>
+
 # Sensitive Data Exposure
+<details>
+  <summary>
+    Details
+  </summary>
+  
+### Description
+### Demonstration
+### Remediation
+</details>
+
 # XML External Entities
+<details>
+  <summary>
+    Details
+  </summary>
+  
+### Description
+### Demonstration
+### Remediation
+</details>
+
 # Broken Access Control
+<details>
+  <summary>
+    Details
+  </summary>
+  
+### Description
+### Demonstration
+### Remediation
+</details>
+
 # Security Misconfiguration
+<details>
+  <summary>
+    Details
+  </summary>
+  
+### Description
+### Demonstration
+### Remediation
+</details>
+
 # Cross-Site Scripting
+<details>
+  <summary>
+    Details
+  </summary>
+  
+### Description
+### Demonstration
+### Remediation
+</details>
+
 # Insecure Deserialization
+<details>
+  <summary>
+    Details
+  </summary>
+  
+### Description
+### Demonstration
+### Remediation
+</details>
+
 # Using Components with Known Vulnerabilities
+<details>
+  <summary>
+    Details
+  </summary>
+  
+### Description
+### Demonstration
+### Remediation
+</details>
+
 # Insufficient Logging & Monitoring
+<details>
+  <summary>
+    Details
+  </summary>
+  
+### Description
+### Demonstration
+### Remediation
+</details>
+
