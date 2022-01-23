@@ -1,6 +1,6 @@
 # CS467: Website Security Research Project
 
-This project will explore the web vulnerabilities outlined at https://www.vpnmentor.com/blog/top-10-common-web-attacks/ [1](#citations). These vulnerabilities are categorized as follows:
+This project will explore the web vulnerabilities outlined in the article <a href="https://www.vpnmentor.com/blog/top-10-common-web-attacks/">Top 10 Common Web Attacks: The First Steps to Protect Your Website.</a>. These vulnerabilities are categorized as follows:
 
 * [Injection](#injection)
 * [Broken Authentication](#broken-authentication)
