@@ -1,6 +1,6 @@
 # CS467: Website Security Research Project
 
-This project will explore the web vulnerabilities outlined at https://www.vpnmentor.com/blog/top-10-common-web-attacks/ (D. Avi, accessed Dec 2021-Jan 2022). These vulnerabilities are categorized as follows:
+This project will explore the web vulnerabilities outlined at https://www.vpnmentor.com/blog/top-10-common-web-attacks/ [1](#citations). These vulnerabilities are categorized as follows:
 
 * [Injection](#injection)
 * [Broken Authentication](#broken-authentication)
@@ -125,5 +125,19 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 ### Description
 ### Demonstration
 ### Remediation
+</details>
+
+# Citations
+<details>
+  <summary>
+    Details
+  </summary>
+  
+### "Website Security Research Project." EECS Project site, accessed Dec 2021-Jan 2022,
+https://eecs.oregonstate.edu/capstone/submission/pages/viewSingleProject.php?id=OLLHp1v4lrRuobYa. 
+
+### D., Avi. "Top 10 Common Web Attacks: The First Steps to Protect Your Website." 
+vpnMentor, accessed Dec 2021-Jan 2022,
+https://www.vpnmentor.com/blog/top-10-common-web-attacks/ 
 </details>
 
