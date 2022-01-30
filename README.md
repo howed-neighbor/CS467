@@ -40,11 +40,11 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   ---
   
 ### Demonstration
-  To demonstrate, we'll focus on a specific flavor of injection vulnerability, SQLi (SQL injection).
+  We'll focus on a specific flavor of injection vulnerability, SQLi (SQL injection).
   
   In this example, users are able to retrieve data for any individual user they know the userName for.
   
-  <img src="https://github.com/howed-neighbor/CS467/blob/main/public/readmeImages/enterUserName1.PNG">
+  > <img src="https://github.com/howed-neighbor/CS467/blob/main/public/readmeImages/enterUserName1.PNG">
   
   This sends the following request to our SQL table:
   
