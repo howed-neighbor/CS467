@@ -36,7 +36,9 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   * Wikipedia: SQL injection, Cross-site scripting, Dynamic evaluation vulnerabilities, Object injection, Remote file injection, Format specifier injection, Shell injection
   * OWASP: SQL queries, LDAP queries, Operating system command interpreters, Any program invocation, XML documents, HTML documents, JSON structures, HTTP headers, File paths, URLs, A variety of expression languages
   * IBM: Blind SQL Injection, Blind XPath Injection, Buffer Overflow, Format String Attack, LDAP Injection, OS Commanding, SQL Injection, SSI Injection, XPath Injection
-   
+  
+---
+  
 ### Demonstration
   We'll focus on a specific flavor of injection vulnerability, SQLi (SQL injection).
   
