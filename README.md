@@ -37,7 +37,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   * OWASP: SQL queries, LDAP queries, Operating system command interpreters, Any program invocation, XML documents, HTML documents, JSON structures, HTTP headers, File paths, URLs, A variety of expression languages
   * IBM: Blind SQL Injection, Blind XPath Injection, Buffer Overflow, Format String Attack, LDAP Injection, OS Commanding, SQL Injection, SSI Injection, XPath Injection
   
----
+  ---
   
 ### Demonstration
   We'll focus on a specific flavor of injection vulnerability, SQLi (SQL injection).
@@ -45,8 +45,12 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   ```
   SELECT data FROM 'table' WHERE userName="user1'
   ```
-  
+ 
+  ---  
+
 ### Remediation
+ 
+  ---
   
 ### Citations: Injection
   #### "Code injection." Wikipedia.
@@ -64,8 +68,11 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   </summary>
   
 ### Description
+  ---
 ### Demonstration
+  ---
 ### Remediation
+  ---
 ### Citations: Broken Authentication
 </details>
 
@@ -88,8 +95,11 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   </summary>
   
 ### Description
+  ---
 ### Demonstration
+  ---
 ### Remediation
+  ---
 ### Citations: XML External Entities
 </details>
 
@@ -100,8 +110,11 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   </summary>
   
 ### Description
+  ---
 ### Demonstration
+  ---
 ### Remediation
+  ---
 ### Citations: Broken Access Control
 </details>
 
@@ -112,8 +125,11 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   </summary>
   
 ### Description
+  ---
 ### Demonstration
+  ---
 ### Remediation
+  ---
 ### Citations: Security Misconfiguration
 </details>
 
@@ -124,8 +140,11 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   </summary>
   
 ### Description
+  ---
 ### Demonstration
+  ---
 ### Remediation
+  ---
 ### Citations: Cross-Site Scripting
 </details>
 
@@ -136,8 +155,11 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   </summary>
   
 ### Description
+  ---
 ### Demonstration
+  ---
 ### Remediation
+  ---
 ### Citations: Insecure Deserialization
 </details>
 
@@ -148,8 +170,11 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   </summary>
   
 ### Description
+  ---
 ### Demonstration
+  ---
 ### Remediation
+  ---
 ### Citations: Using Components with Known Vulnerabilities
 </details>
 
@@ -160,8 +185,11 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   </summary>
   
 ### Description
+  ---
 ### Demonstration
+  ---
 ### Remediation
+  ---
 ### Citations: Insufficient Logging & Monitoring
 </details>
 
