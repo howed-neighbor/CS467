@@ -25,7 +25,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   
 ### Description
   Wikipedia maintains a very concise definition for code injection:
-  #### Code injection is the exploitation of a computer bug that is caused by processing invalid data.
+  > Code injection is the exploitation of a computer bug that is caused by processing invalid data.
   
 ### Demonstration
 ### Remediation
