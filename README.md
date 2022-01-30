@@ -49,27 +49,27 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   This sends the following request to our SQL table:
   
   ```
-  SELECT userData FROM 'table' WHERE userName='**user1**'
+  SELECT userData FROM 'table' WHERE userName='user1'
   ```
   
   Result:
   
   |userName|userData|
-  |---|
+  |---|---|
   |user1|**user1's data**|
   
-  Now, let's inject a logical statement that our developers probably didn't intend to be used. (For the purposes of this example, the SQL syntax is simplified to focus on the logic of the vulnerability:
+  Now, let's inject a logical statement that our developers probably didn't intend to be used. (For the purposes of this example, the SQL syntax is simplified to focus on the logic of the vulnerability):
   
   > Enter userName: user1 or TRUE 
   
   ```
-  SELECT userData FROM 'table' WHERE userName='user1' **or TRUE**
+  SELECT userData FROM 'table' WHERE userName='user1' or TRUE
   ```
   
   This returns all rows in our table, because TRUE always evaluates to TRUE:
   
   |userName|userData|
-  |---|
+  |---|---|
   |user1|user1's data|
   |user2|user2's data|
   |user3|user3's data|
@@ -86,7 +86,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   
   Remediation for injection vulnerabilities are specific to the context of the application. We will provide recommendations for the specific example above, as well as general best practices.
   
-  OWASP advises vulnerabilities like the SQLi example above are failures of the **injection context**, specifically the SQL query. OWASP recommends the first defense in this context is **escaping**, in which we ensure data is treated like data, rather than an extension of the functionality of the query.
+  OWASP advises vulnerabilities like the SQLi example above are failures of the **injection context**, specifically the SQL query. OWASP recommends the first defense in this context is **escaping**, in which we ensure data is treated like data, rather than an extension of the functionality or logic the query.
   
   
  
