@@ -18,11 +18,9 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 <img src="https://github.com/howed-neighbor/CS467/blob/main/public/datapotato_white.svg#gh-dark-mode-only" width=50% height=50%>
 
 We'll take a look at each of these through the following framework:
-> Description | Multiple definitions from trusted web security authorities
-
-> Demonstration | A straightforward expression of a prototypical example
-
-> Remediation | Best practices, checklists, and guidance from security champions
+* **Description**   | Multiple definitions from trusted web security authorities
+* **Demonstration** | A straightforward expression of a prototypical example
+* **Remediation**   | Best practices, checklists, and guidance from security champions
 
 # Injection 
 <details>
@@ -31,19 +29,17 @@ We'll take a look at each of these through the following framework:
   </summary>
   
 ### Description
-  > **Wikipedia** | Code injection is the exploitation of a computer bug that is caused by processing invalid data.
-  
-  > **OWASP** | Injection is an attacker’s attempt to send data to an application in a way that will change the meaning of commands being sent to an interpreter.
-  
-  > **IBM** | This type of attack allows an attacker to inject code into a program or query or inject malware onto a computer in order to execute remote commands that can read or modify a database, or change data on a web site. 
+  * **Wikipedia** | Code injection is the exploitation of a computer bug that is caused by processing invalid data.
+  * **OWASP**     | Injection is an attacker’s attempt to send data to an application in a way that will change the meaning of commands being sent to an interpreter.
+  * **IBM**       | This type of attack allows an attacker to inject code into a program or query or inject malware onto a computer in order to execute remote commands that can read or modify a database, or change data on a web site. 
   
   
   The common idea is that we've left a door open that someone with knowledge of our systems and interpreters can abuse.
   
   This topic is both broad and deep. Our sources above all list multiple subcategories of injection vulnerabilities or pathways:
-  > **Wikipedia** | SQL injection, Cross-site scripting, Dynamic evaluation vulnerabilities, Object injection, Remote file injection, Format specifier injection, Shell injection
-  > **OWASP** | SQL queries, LDAP queries, Operating system command interpreters, Any program invocation, XML documents, HTML documents, JSON structures, HTTP headers, File paths, URLs, A variety of expression languages
-  > **IBM** | Blind SQL Injection, Blind XPath Injection, Buffer Overflow, Format String Attack, LDAP Injection, OS Commanding, SQL Injection, SSI Injection, XPath Injection
+  * **Wikipedia** | SQL injection, Cross-site scripting, Dynamic evaluation vulnerabilities, Object injection, Remote file injection, Format specifier injection, Shell injection
+  * **OWASP**     | SQL queries, LDAP queries, Operating system command interpreters, Any program invocation, XML documents, HTML documents, JSON structures, HTTP headers, File paths, URLs, A variety of expression languages
+  * **IBM**       | Blind SQL Injection, Blind XPath Injection, Buffer Overflow, Format String Attack, LDAP Injection, OS Commanding, SQL Injection, SSI Injection, XPath Injection
   
   
   
