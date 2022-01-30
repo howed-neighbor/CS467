@@ -40,8 +40,8 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 ### Demonstration
   We'll focus on a specific flavor of injection vulnerability, SQLi (SQL injection).
   
-  ```sql
-  `SELECT data FROM 'table' WHERE userName="user1'
+  ```
+  SELECT data FROM 'table' WHERE userName="user1'
   ```
   
 ### Remediation
