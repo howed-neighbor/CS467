@@ -39,10 +39,10 @@ We'll take a look at each of these through the following framework:
   |OWASP|Injection is an attacker’s attempt to send data to an application in a way that will change the meaning of commands being sent to an interpreter|
   |IBM|This type of attack allows an attacker to inject code into a program or query or inject malware onto a computer in order to execute remote commands that can read or modify a database, or change data on a web site|
   
-  
-  The common idea is that we've left a door open that someone with knowledge of our systems and interpreters can abuse. This topic is both broad and deep. Our sources above all list multiple subcategories of injection vulnerabilities or pathways:
+  The common idea is that we've left a door open that someone with knowledge of our systems and interpreters can abuse. This topic is both broad and deep. Our sources above list multiple subcategories of injection vulnerabilities or pathways:
   
   |Source|Categories|
+  |---|---|
   |Wikipedia|SQL injection, Cross-site scripting, Dynamic evaluation vulnerabilities, Object injection, Remote file injection, Format specifier injection, Shell injection|
   |OWASP|SQL queries, LDAP queries, Operating system command interpreters, Any program invocation, XML documents, HTML documents, JSON structures, HTTP headers, File paths, URLs, A variety of expression languages|
   |IBM|Blind SQL Injection, Blind XPath Injection, Buffer Overflow, Format String Attack, LDAP Injection, OS Commanding, SQL Injection, SSI Injection, XPath Injection|
