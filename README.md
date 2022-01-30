@@ -24,8 +24,14 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   </summary>
   
 ### Description
+  Wikipedia maintains a very concise definition for code injection:
+  #### Code injection is the exploitation of a computer bug that is caused by processing invalid data.
+  
 ### Demonstration
 ### Remediation
+### Citations: Injection
+  #### "Code injection." Wikipedia.
+  https://en.wikipedia.org/wiki/Code_injection (accessed Jan 29, 2022).
 </details>
 
 # Broken Authentication
@@ -37,6 +43,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 ### Description
 ### Demonstration
 ### Remediation
+### Citations: Broken Authentication
 </details>
 
 # Sensitive Data Exposure
@@ -48,6 +55,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 ### Description
 ### Demonstration
 ### Remediation
+### Citations: Sensitive Data Exposure
 </details>
 
 # XML External Entities
@@ -59,6 +67,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 ### Description
 ### Demonstration
 ### Remediation
+### Citations: XML External Entities
 </details>
 
 # Broken Access Control
@@ -70,6 +79,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 ### Description
 ### Demonstration
 ### Remediation
+### Citations: Broken Access Control
 </details>
 
 # Security Misconfiguration
@@ -81,6 +91,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 ### Description
 ### Demonstration
 ### Remediation
+### Citations: Security Misconfiguration
 </details>
 
 # Cross-Site Scripting
@@ -92,6 +103,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 ### Description
 ### Demonstration
 ### Remediation
+### Citations: Cross-Site Scripting
 </details>
 
 # Insecure Deserialization
@@ -103,6 +115,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 ### Description
 ### Demonstration
 ### Remediation
+### Citations: Insecure Deserialization
 </details>
 
 # Using Components with Known Vulnerabilities
@@ -114,6 +127,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 ### Description
 ### Demonstration
 ### Remediation
+### Citations: Using Components with Known Vulnerabilities
 </details>
 
 # Insufficient Logging & Monitoring
@@ -125,13 +139,13 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 ### Description
 ### Demonstration
 ### Remediation
+### Citations: Insufficient Logging & Monitoring
 </details>
 
-# Citations
+# Citations: Primary Sources
 
-#### "Website Security Research Project." EECS Project site, accessed Dec 2021-Jan 2022,
-https://eecs.oregonstate.edu/capstone/submission/pages/viewSingleProject.php?id=OLLHp1v4lrRuobYa. 
+#### "Website Security Research Project." EECS Project site.
+https://eecs.oregonstate.edu/capstone/submission/pages/viewSingleProject.php?id=OLLHp1v4lrRuobYa (accessed Dec 2021-Jan 2022).
 
-#### D., Avi. "Top 10 Common Web Attacks: The First Steps to Protect Your Website." 
-vpnMentor, accessed Dec 2021-Jan 2022,
-https://www.vpnmentor.com/blog/top-10-common-web-attacks/ 
+#### Avi. D. "Top 10 Common Web Attacks: The First Steps to Protect Your Website." vpnMentor.
+https://www.vpnmentor.com/blog/top-10-common-web-attacks/ (accessed Dec 2021-Jan 2022).
