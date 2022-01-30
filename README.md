@@ -44,7 +44,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   
   In this example, users are able to retrieve data for any individual user they know the userName for.
   
-  > Enter userName: **user1**
+  <img src="https://github.com/howed-neighbor/CS467/blob/main/public/readmeImages/enterUserName1.PNG">
   
   This sends the following request to our SQL table:
   
@@ -60,7 +60,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   
   Now, let's inject a logical statement that our developers probably didn't intend to be used. (For the purposes of this example, the SQL syntax is simplified to focus on the logic of the vulnerability):
   
-  > Enter userName: user1 **or TRUE** 
+  <img src="https://github.com/howed-neighbor/CS467/blob/main/public/readmeImages/enterUserName2.PNG">
   
   ```
   SELECT userData FROM 'table' WHERE userName='user1' or TRUE
