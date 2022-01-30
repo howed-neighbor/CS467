@@ -56,11 +56,11 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   
   |userName|userData|
   |---|---|
-  |user1|**user1's data**|
+  |user1|user1's data|
   
   Now, let's inject a logical statement that our developers probably didn't intend to be used. (For the purposes of this example, the SQL syntax is simplified to focus on the logic of the vulnerability):
   
-  > Enter userName: user1 or TRUE 
+  > Enter userName: user1 **or TRUE** 
   
   ```
   SELECT userData FROM 'table' WHERE userName='user1' or TRUE
@@ -76,7 +76,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   |[...]|[...]|
   
   You can try a live demo of this here:
-  > LINK TO WEB APP EXAMPLE
+  [LINK TO WEB APP]
   
   In this example, we've allowed the user to execute arbitrary SQL queries on our database. Our data is no longer secure or reliable. 
  
