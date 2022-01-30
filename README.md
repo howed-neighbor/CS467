@@ -41,11 +41,9 @@ We'll take a look at each of these through the following framework:
   
   The common idea is that we've left a door open that someone with knowledge of our systems and interpreters can abuse. This topic is both broad and deep. Our sources above list multiple subcategories of injection vulnerabilities or pathways:
   
-  |Source|Subcategories|
-  |---|---|
-  |Wikipedia|SQL injection, Cross-site scripting, Dynamic evaluation vulnerabilities, Object injection, Remote file injection, Format specifier injection, Shell injection|
-  |OWASP|SQL queries, LDAP queries, Operating system command interpreters, Any program invocation, XML documents, HTML documents, JSON structures, HTTP headers, File paths, URLs, A variety of expression languages|
-  |IBM|Blind SQL Injection, Blind XPath Injection, Buffer Overflow, Format String Attack, LDAP Injection, OS Commanding, SQL Injection, SSI Injection, XPath Injection|
+  * Wikipedia: SQL injection, Cross-site scripting, Dynamic evaluation vulnerabilities, Object injection, Remote file injection, Format specifier injection, Shell injection
+  * OWASP: SQL queries, LDAP queries, Operating system command interpreters, Any program invocation, XML documents, HTML documents, JSON structures, HTTP headers, File paths, URLs, A variety of expression languages
+  * IBM: Blind SQL Injection, Blind XPath Injection, Buffer Overflow, Format String Attack, LDAP Injection, OS Commanding, SQL Injection, SSI Injection, XPath Injection
    
 ### Demonstration
   We'll focus on a specific flavor of injection vulnerability, SQLi (SQL injection).
