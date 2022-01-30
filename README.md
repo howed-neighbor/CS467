@@ -40,11 +40,30 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   ---
   
 ### Demonstration
-  We'll focus on a specific flavor of injection vulnerability, SQLi (SQL injection).
+  To demonstrate, we'll focus on a specific flavor of injection vulnerability, SQLi (SQL injection).
   
   ```
-  SELECT data FROM 'table' WHERE userName="user1'
+  SELECT userData FROM 'table' WHERE userName="user1'
   ```
+  
+  This returns just the result for "user1" from our table:
+  |userName|userData|
+  |---|
+  |user1|**user1's data**|
+  
+  Now, let's inject a logical statement that our developers probably didn't intend to be used:
+  
+  ```
+  SELECT userData FROM 'table' WHERE userName="user1' or TRUE
+  ```
+  
+  This returns all rows in our table, because TRUE always evaluates to TRUE:
+  |userName|userData|
+  |---|
+  |user1|user1's data|
+  |user2|user2's data|
+  |user3|user3's data|
+  |...|...|
  
   ---  
 
