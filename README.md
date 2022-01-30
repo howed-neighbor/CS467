@@ -18,8 +18,9 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 <img src="https://github.com/howed-neighbor/CS467/blob/main/public/datapotato_white.svg#gh-dark-mode-only" width=50% height=50%>
 
 We'll take a look at each of these through the following framework:
+
 | **Category** | **Description** |
-|---| |---|
+|---|---|
 | **Description**   | Multiple definitions from trusted web security authorities |
 | **Demonstration** | A straightforward expression of a prototypical example |
 | **Remediation**   | Best practices, checklists, and guidance from security champions |
