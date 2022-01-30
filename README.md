@@ -42,32 +42,53 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 ### Demonstration
   To demonstrate, we'll focus on a specific flavor of injection vulnerability, SQLi (SQL injection).
   
+  In this example, users are able to retrieve data for any individual user they know the userName for.
+  
+  > Enter userName: **user1**
+  
+  This sends the following request to our SQL table:
+  
   ```
-  SELECT userData FROM 'table' WHERE userName="user1'
+  SELECT userData FROM 'table' WHERE userName='**user1**'
   ```
   
-  This returns just the result for "user1" from our table:
+  Result:
+  
   |userName|userData|
   |---|
   |user1|**user1's data**|
   
-  Now, let's inject a logical statement that our developers probably didn't intend to be used:
+  Now, let's inject a logical statement that our developers probably didn't intend to be used. (For the purposes of this example, the SQL syntax is simplified to focus on the logic of the vulnerability:
+  
+  > Enter userName: user1 or TRUE 
   
   ```
-  SELECT userData FROM 'table' WHERE userName="user1' or TRUE
+  SELECT userData FROM 'table' WHERE userName='user1' **or TRUE**
   ```
   
   This returns all rows in our table, because TRUE always evaluates to TRUE:
+  
   |userName|userData|
   |---|
   |user1|user1's data|
   |user2|user2's data|
   |user3|user3's data|
-  |...|...|
+  |[...]|[...]|
+  
+  You can try a live demo of this here:
+  > LINK TO WEB APP EXAMPLE
+  
+  In this example, we've allowed the user to execute arbitrary SQL queries on our database. Our data is no longer secure or reliable. 
  
   ---  
 
 ### Remediation
+  
+  Remediation for injection vulnerabilities are specific to the context of the application. We will provide recommendations for the specific example above, as well as general best practices.
+  
+  OWASP advises vulnerabilities like the SQLi example above are failures of the **injection context**, specifically the SQL query. OWASP recommends the first defense in this context is **escaping**, in which we ensure data is treated like data, rather than an extension of the functionality of the query.
+  
+  
  
   ---
   
