@@ -19,7 +19,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 
 We'll take a look at each of these through the following framework:
 
-|Cat.|
+|Cat.||
 |---|---|
 |Description|Multiple definitions from trusted web security authorities| 
 |Demonstration|A straightforward expression of a prototypical example|
