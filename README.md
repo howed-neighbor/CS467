@@ -19,11 +19,11 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 
 We'll take a look at each of these through the following framework:
 
-|
+|Cat.|Desc.|
 |---|---|
-| **Description  | Multiple definitions from trusted web security authorities |
-| **Demonstration | A straightforward expression of a prototypical example |
-| **Remediation   | Best practices, checklists, and guidance from security champions |
+|Description|Multiple definitions from trusted web security authorities| 
+|Demonstration|A straightforward expression of a prototypical example|
+|Remediation|Best practices, checklists, and guidance from security champions|
 
 # Injection 
 <details>
