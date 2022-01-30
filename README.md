@@ -31,7 +31,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   |OWASP|**Injection** is an attacker’s attempt to send data to an application in a way that will change the meaning of commands being sent to an interpreter|
   |IBM|This type of attack allows an attacker to **inject code** into a program or query or inject malware onto a computer in order to execute remote commands that can read or modify a database, or change data on a web site|
   
-  The common idea is that we've left a door open that someone with knowledge of our systems and interpreters can abuse. This topic is both broad and deep. Our sources above list multiple subcategories of injection vulnerabilities or pathways:
+  These definitions are intentionally broad, as this concept appears in many environments. Our sources above list multiple subcategories of injection vulnerabilities:
   
   * Wikipedia: SQL injection, Cross-site scripting, Dynamic evaluation vulnerabilities, Object injection, Remote file injection, Format specifier injection, Shell injection
   * OWASP: SQL queries, LDAP queries, Operating system command interpreters, Any program invocation, XML documents, HTML documents, JSON structures, HTTP headers, File paths, URLs, A variety of expression languages
@@ -39,6 +39,10 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
    
 ### Demonstration
   We'll focus on a specific flavor of injection vulnerability, SQLi (SQL injection).
+  
+  ```sql
+  `SELECT data FROM 'table' WHERE userName="user1'
+  ```
   
 ### Remediation
   
