@@ -76,8 +76,8 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   |user3|user3's data|
   |[...]|[...]|
   
-  You can try a live demo of this here:
-  [LINK TO WEB APP]
+  You can try a live demo of this here (requires connection to OSU VPN):
+  <a href="http://flip3.engr.oregonstate.edu:37773/injection#demonstration">[LINK TO WEB APP]</a>
   
   In this example, we've allowed the user to execute arbitrary SQL queries on our database. Our data is no longer secure or reliable. 
  
