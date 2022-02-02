@@ -244,7 +244,8 @@ https://www.vpnmentor.com/blog/top-10-common-web-attacks/ (accessed Dec 2021-Jan
 
 # Code References (see also datapotato.js):
 
-REFERENCES  
+REFERENCES
+<sub> 
 ├── expressjs	  | "Hello world example", https://expressjs.com/en/starter/hello-world.html  
 ├── expressjs	  | "cs340_sample_nodejs_app", https://github.com/knightsamar/cs340_sample_nodejs_app  
 ├── body-parser | "body-parser", http://expressjs.com/en/resources/middleware/body-parser.html  
@@ -253,3 +254,4 @@ REFERENCES
 ├── handlebars  | "Hello Handlebars", https://eecs.oregonstate.edu/ecampus-video/CS290/core-content/hello-node/hello-handlebars.html  
 ├── MySQL		    | "Using Node on the Engineering Servers", https://eecs.oregonstate.edu/ecampus-video/CS290/core-content/tools-and-overview/Using-Node-on-the-Engineering-Servers.html  
 └── JavaScript  | "Element.classList", https://developer.mozilla.org/en-US/docs/Web/API/Element/classList  
+</sub>
