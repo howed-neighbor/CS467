@@ -94,11 +94,13 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   ---
   
 ### Citations: Injection
-  #### "Code injection." Wikipedia.
+  "Code injection." Wikipedia.
   https://en.wikipedia.org/wiki/Code_injection (accessed Jan 29, 2022).
-  #### J. Williams. "Injection Theory". OWASP.
+  
+  J. Williams. "Injection Theory". OWASP.
   https://owasp.org/www-community/Injection_Theory (accessed Jan 29, 2022).
-  #### "Injection Attacks." IBM.
+  
+  "Injection Attacks." IBM.
   https://www.ibm.com/docs/en/snips/4.6.0?topic=categories-injection-attacks (accessed Jan 29, 2022).
 </details>
 
@@ -236,10 +238,10 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 
 # Citations: Primary Sources
 
-#### "Website Security Research Project." EECS Project site.
+"Website Security Research Project." EECS Project site.
 https://eecs.oregonstate.edu/capstone/submission/pages/viewSingleProject.php?id=OLLHp1v4lrRuobYa (accessed Dec 2021-Jan 2022).
 
-#### Avi. D. "Top 10 Common Web Attacks: The First Steps to Protect Your Website." vpnMentor.
+Avi. D. "Top 10 Common Web Attacks: The First Steps to Protect Your Website." vpnMentor.
 https://www.vpnmentor.com/blog/top-10-common-web-attacks/ (accessed Dec 2021-Jan 2022).
 
 # Code References (see also datapotato.js):
