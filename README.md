@@ -241,3 +241,15 @@ https://eecs.oregonstate.edu/capstone/submission/pages/viewSingleProject.php?id=
 
 #### Avi. D. "Top 10 Common Web Attacks: The First Steps to Protect Your Website." vpnMentor.
 https://www.vpnmentor.com/blog/top-10-common-web-attacks/ (accessed Dec 2021-Jan 2022).
+
+# Code References (see also datapotato.js):
+
+REFERENCES
+├── expressjs	  | "Hello world example", https://expressjs.com/en/starter/hello-world.html
+├── expressjs	  | "cs340_sample_nodejs_app", https://github.com/knightsamar/cs340_sample_nodejs_app
+├── body-parser | "body-parser", http://expressjs.com/en/resources/middleware/body-parser.html
+├── handlebars  | "Introduction", https://handlebarsjs.com/guide/
+├── handlebars  | "Express Handlebars", https://www.npmjs.com/package/express-handlebars
+├── handlebars  | "Hello Handlebars", https://eecs.oregonstate.edu/ecampus-video/CS290/core-content/hello-node/hello-handlebars.html
+├── MySQL		    | "Using Node on the Engineering Servers", https://eecs.oregonstate.edu/ecampus-video/CS290/core-content/tools-and-overview/Using-Node-on-the-Engineering-Servers.html
+└── JavaScript  | "Element.classList", https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
