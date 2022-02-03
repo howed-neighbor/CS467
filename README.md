@@ -20,7 +20,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 # Injection 
 <details>
   <summary>
-    Details
+    Details (Article in progress)
   </summary>
   
 ### Description
@@ -107,7 +107,9 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 # Broken Authentication
 <details>
   <summary>
-    Details
+    '''diff
+    - Details (article not available yet)
+    '''
   </summary>
   
 ### Description
