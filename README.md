@@ -107,11 +107,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 # Broken Authentication
 <details>
   <summary>
-    
-    ```diff
-    - Details (article not available yet)
-    ```
-    
+    ⨯[Article not available yet]
   </summary>
   
 ### Description
@@ -126,7 +122,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 # Sensitive Data Exposure
 <details>
   <summary>
-    Details
+    ⨯[Article not available yet]
   </summary>
   
 ### Description
@@ -153,7 +149,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 # Broken Access Control
 <details>
   <summary>
-    Details
+    ⨯[Article not available yet]
   </summary>
   
 ### Description
@@ -183,7 +179,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 # Cross-Site Scripting
 <details>
   <summary>
-    Details
+    ⨯[Article not available yet]
   </summary>
   
 ### Description
@@ -213,7 +209,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 # Using Components with Known Vulnerabilities
 <details>
   <summary>
-    Details
+    ⨯[Article not available yet]
   </summary>
   
 ### Description
@@ -228,7 +224,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 # Insufficient Logging & Monitoring
 <details>
   <summary>
-    Details
+    ⨯[Article not available yet]
   </summary>
   
 ### Description
