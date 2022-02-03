@@ -107,7 +107,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 # Broken Authentication
 <details>
   <summary>
-    ⨯[Article not available yet]
+    ⨯ [Article not available yet]
   </summary>
   
 ### Description
@@ -122,7 +122,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 # Sensitive Data Exposure
 <details>
   <summary>
-    ⨯[Article not available yet]
+    ⨯ [Article not available yet]
   </summary>
   
 ### Description
@@ -134,7 +134,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 # XML External Entities
 <details>
   <summary>
-    Details
+    ⨯ [Article not available yet]
   </summary>
   
 ### Description
@@ -149,7 +149,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 # Broken Access Control
 <details>
   <summary>
-    ⨯[Article not available yet]
+    ⨯ [Article not available yet]
   </summary>
   
 ### Description
@@ -164,7 +164,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 # Security Misconfiguration
 <details>
   <summary>
-    Details
+    ⨯ [Article not available yet]
   </summary>
   
 ### Description
@@ -179,7 +179,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 # Cross-Site Scripting
 <details>
   <summary>
-    ⨯[Article not available yet]
+    ⨯ [Article not available yet]
   </summary>
   
 ### Description
@@ -194,7 +194,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 # Insecure Deserialization
 <details>
   <summary>
-    Details
+    ⨯ [Article not available yet]
   </summary>
   
 ### Description
@@ -209,7 +209,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 # Using Components with Known Vulnerabilities
 <details>
   <summary>
-    ⨯[Article not available yet]
+    ⨯ [Article not available yet]
   </summary>
   
 ### Description
@@ -224,7 +224,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 # Insufficient Logging & Monitoring
 <details>
   <summary>
-    ⨯[Article not available yet]
+    ⨯ [Article not available yet]
   </summary>
   
 ### Description
