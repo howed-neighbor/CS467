@@ -17,7 +17,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 <img src="https://github.com/howed-neighbor/CS467/blob/main/public/datapotato_black.svg#gh-light-mode-only" width=50% height=50%>
 <img src="https://github.com/howed-neighbor/CS467/blob/main/public/datapotato_white.svg#gh-dark-mode-only" width=50% height=50%>
 
-# Injection 
+# 1. Injection 
 <details>
   <summary>
     Details (Article in progress)
@@ -104,7 +104,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   https://www.ibm.com/docs/en/snips/4.6.0?topic=categories-injection-attacks (accessed Jan 29, 2022).
 </details>
 
-# Broken Authentication
+# 2. Broken Authentication
 <details>
   <summary>
     ⨯ [Article not available yet]
@@ -119,7 +119,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 ### Citations: Broken Authentication
 </details>
 
-# Sensitive Data Exposure
+# 3. Sensitive Data Exposure
 <details>
   <summary>
     ⨯ [Article not available yet]
@@ -131,7 +131,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 ### Citations: Sensitive Data Exposure
 </details>
 
-# XML External Entities
+# 4. XML External Entities
 <details>
   <summary>
     ⨯ [Article not available yet]
@@ -146,7 +146,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 ### Citations: XML External Entities
 </details>
 
-# Broken Access Control
+# 5. Broken Access Control
 <details>
   <summary>
     ⨯ [Article not available yet]
@@ -161,7 +161,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 ### Citations: Broken Access Control
 </details>
 
-# Security Misconfiguration
+# 6. Security Misconfiguration
 <details>
   <summary>
     ⨯ [Article not available yet]
@@ -176,7 +176,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 ### Citations: Security Misconfiguration
 </details>
 
-# Cross-Site Scripting
+# 7. Cross-Site Scripting
 <details>
   <summary>
     ⨯ [Article not available yet]
@@ -191,7 +191,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 ### Citations: Cross-Site Scripting
 </details>
 
-# Insecure Deserialization
+# 8. Insecure Deserialization
 <details>
   <summary>
     ⨯ [Article not available yet]
@@ -206,7 +206,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 ### Citations: Insecure Deserialization
 </details>
 
-# Using Components with Known Vulnerabilities
+# 9. Using Components with Known Vulnerabilities
 <details>
   <summary>
     ⨯ [Article not available yet]
@@ -221,7 +221,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 ### Citations: Using Components with Known Vulnerabilities
 </details>
 
-# Insufficient Logging & Monitoring
+# 10. Insufficient Logging & Monitoring
 <details>
   <summary>
     ⨯ [Article not available yet]
