@@ -2,16 +2,16 @@
 
 This project will explore the web vulnerabilities outlined in the article <a href="https://www.vpnmentor.com/blog/top-10-common-web-attacks/">Top 10 Common Web Attacks: The First Steps to Protect Your Website</a>. These vulnerabilities are categorized as follows:
 
-* [Injection](#injection)
-* [Broken Authentication](#broken-authentication)
-* [Sensitive Data Exposure](#sensitive-data-exposure)
-* [XML External Entities](#xml-external-entities)
-* [Broken Access Control](#broken-access-control)
-* [Security Misconfiguration](#security-misconfiguration)
-* [Cross-Site Scripting](#cross-site-scripting)
-* [Insecure Deserialization](#insecure-deserialization)
-* [Using Components with Known Vulnerabilities](#using-components-with-known-vulnerabilities)
-* [Insufficient Logging & Monitoring](#insufficient-logging--monitoring)
+* [Injection](#1-injection)
+* [Broken Authentication](#2-broken-authentication)
+* [Sensitive Data Exposure](#3-sensitive-data-exposure)
+* [XML External Entities](#4-xml-external-entities)
+* [Broken Access Control](#5-broken-access-control)
+* [Security Misconfiguration](#6-security-misconfiguration)
+* [Cross-Site Scripting](#7-cross-site-scripting)
+* [Insecure Deserialization](#8-insecure-deserialization)
+* [Using Components with Known Vulnerabilities](#9-using-components-with-known-vulnerabilities)
+* [Insufficient Logging & Monitoring](#10-insufficient-logging--monitoring)
 
 These vulnerabilities will be explored through a demonstration app, datapotato:
 <img src="https://github.com/howed-neighbor/CS467/blob/main/public/datapotato_black.svg#gh-light-mode-only" width=50% height=50%>
