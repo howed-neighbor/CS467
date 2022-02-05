@@ -49,7 +49,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   This sends the following request to our SQL table:
   
   ```
-  SELECT userData FROM 'table' WHERE userName='user1'
+  SELECT userName, userData FROM `Users` WHERE userName='user1'
   ```
   
   Result:
@@ -64,7 +64,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   > <img src="https://github.com/howed-neighbor/CS467/blob/main/public/readmeImages/enterUserName2.PNG">
   
   ```
-  SELECT userData FROM 'table' WHERE userName='user1' or TRUE
+  SELECT userName, userData FROM `Users` WHERE userName='user1' or TRUE
   ```
   
   This returns all rows in our table, because TRUE always evaluates to TRUE:
