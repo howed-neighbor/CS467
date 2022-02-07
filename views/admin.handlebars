@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+	<p>Welcome to the Admin page!</p>
+
+	<table class="markdown word_break">
+		<tr>
+		    <th>userId</th>
+		    <th>passwordSalt</th>
+		    <th>passwordHash</th>
+		    <th>userName</th>
+		    <th>userData</th>
+		</tr>
+	    
+	    {{#users}}
+		<tr class="text_small">
+			<td>{{userId}}</td>
+			<td>{{passwordSalt}}</td>
+			<td>{{passwordHash}}</td>
+			<td>{{userName}}</td>
+			<td>{{userData}}</td>
+		<tr>
+		{{/users}}
+
+	</table>
+
+</html>
