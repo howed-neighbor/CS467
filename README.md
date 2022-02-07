@@ -244,7 +244,7 @@ https://eecs.oregonstate.edu/capstone/submission/pages/viewSingleProject.php?id=
 Avi. D. "Top 10 Common Web Attacks: The First Steps to Protect Your Website." vpnMentor.
 https://www.vpnmentor.com/blog/top-10-common-web-attacks/ (accessed Dec 2021-Jan 2022).
 
-# Code References:
+# Code References
 
 REFERENCES  
 <sub> 
