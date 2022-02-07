@@ -59,7 +59,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   |user1|user1's data|
   
   Now, let's inject a logical statement that our developers probably didn't intend to be used.  
-  (For the purposes of this example, the SQL syntax is simplified):
+  (This statement closes an open string, adds a logical OR, and comments out the rest of the SQL request body):
   
   > <img src="https://github.com/howed-neighbor/CS467/blob/main/public/readmeImages/enterUserName2.PNG">
   
