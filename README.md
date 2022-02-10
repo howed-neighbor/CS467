@@ -118,7 +118,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 # 2. Broken Authentication
 <details>
   <summary>
-    ⨯ (Article in progress)
+    (Article in progress)
   </summary>
   
 ### Description
@@ -141,6 +141,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   
   To make it easy, we'll pick one of the [OWASP Top 10000 Worst Passwords](https://github.com/OWASP/passfault/blob/master/wordlists/wordlists/10k-worst-passwords.txt). Can you guess which one it is?
   
+  > <img src="https://github.com/howed-neighbor/CS467/blob/main/public/readmeImages/admin.PNG">
   
   ---
 ### Remediation
