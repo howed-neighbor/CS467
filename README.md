@@ -133,7 +133,9 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   * Weak password recovery
   
   Our app won't implement a password recovery system for this example, so we'll focus on the other two attacks.
+  
   ---
+  
 ### Demonstration
   The most basic attack in this category is brute force, either guessing or using an automated process to gain access to restricted systems or data.
   
