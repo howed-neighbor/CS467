@@ -118,16 +118,45 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 # 2. Broken Authentication
 <details>
   <summary>
-    ⨯ [Article not available yet]
+    ⨯ (Article in progress)
   </summary>
   
 ### Description
+  |Source|Definition|
+  |---|---|
+  |OWASP|(now referred to as Identification and Authentication Failures) Confirmation of the user's identity, authentication, and session management is critical to protect against **authentication-related attacks**|
+  |IBM| This type of attack targets and attempts to **exploit the authentication process** a web site uses to verify the identity of a user, service, or application|
+  
+  This is another broad category. There are many types of authentication in use. IBM divides these attacks into 3 categories:
+  * Brute force
+  * Insufficient authentication
+  * Weak password recovery
+  
+  Our app won't implement a password recovery system for this example, so we'll focus on the other two attacks.
   ---
 ### Demonstration
+  The most basic attack in this category is brute force, either guessing or using an automated process to gain access to restricted systems or data.
+  
+  We've set up an `/admin` route that allows direct read accesss for our web app's data. To access this route, you'll need to know the admin username an password.
+  
+  To make it easy, we'll pick one of the [OWASP Top 10000 Worst Passwords](https://github.com/OWASP/passfault/blob/master/wordlists/wordlists/10k-worst-passwords.txt). Can you guess which one it is?
+  
+  
   ---
 ### Remediation
   ---
 ### Citations: Broken Authentication
+  "A07:2021 – Identification and Authentication Failures". OWASP top 10:2021.
+  https://owasp.org/Top10/A07_2021-Identification_and_Authentication_Failures/ (accessed Feb 10, 2022).
+  
+  "Authentication attacks". IBM.
+  https://www.ibm.com/docs/en/snips/4.6.0?topic=categories-authentication-attacks (accessed Feb 10, 2022).
+  
+  D. Whitelegg. "Scan your app to find and fix OWASP Top 10 - 2017 vulnerabilities". IBM Developer.
+  https://developer.ibm.com/tutorials/se-owasp-top10/ (accessed Feb 10, 2022).
+  
+  "10k-worst-passwords.txt". OWASP / passfault.
+  https://github.com/OWASP/passfault/blob/master/wordlists/wordlists/10k-worst-passwords.txt (accessed Feb 10, 2022).
 </details>
 
 # 3. Sensitive Data Exposure
