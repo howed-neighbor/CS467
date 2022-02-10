@@ -137,7 +137,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   ---
   
 ### Demonstration
-  The most basic attack in this category is brute force, either guessing or using an automated process to gain access to restricted systems or data.
+  The most basic attack in this category is brute force, either guessing credentials or using an automated process to gain access to restricted systems or data.
   
   We've set up an `/admin` route that allows direct read accesss for our web app's data. To access this route, you'll need to know the admin username an password.
   
