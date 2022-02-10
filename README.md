@@ -20,7 +20,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 # 1. Injection 
 <details>
   <summary>
-    Details (Article in progress)
+    Details
   </summary>
   
 ### Description
@@ -85,11 +85,19 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 
 ### Remediation
   
-  Remediation for injection vulnerabilities are specific to the context of the application. We will provide recommendations for the specific example above, as well as general best practices.
+  Remediation for injection vulnerabilities are specific to the context of the application. We will provide recommendations for the specific example above.
   
-  OWASP advises vulnerabilities like the SQLi example above are failures of the **injection context**, specifically the SQL query. OWASP recommends the first defense in this context is **escaping**, in which we ensure data is treated like data, rather than an extension of the functionality or logic the query.
+  OWASP advises vulnerabilities like the SQLi example above are failures of the **injection context**, specifically the SQL query. OWASP recommends the first defense in this context is escaping, in which we ensure data is treated like data, rather than an extension of the functionality or logic the query.
   
+  MariaDB provides a method to bind data values to our query at the time it is executed, preventing the injection of additional commands.
   
+  We'll convert our SQL query to a paramaterized query:
+  
+  ```
+  SELECT userName, userData FROM `Users` WHERE userName=?
+  ```
+  
+  This time, if you didn't enter a valid userName, you won't retrieve any results, since "user1' or TRUE; #" is not a valid user. This query is hardened against arbitrary SQL commands entered by our users.
  
   ---
   
@@ -102,6 +110,9 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   
   "Injection Attacks." IBM.
   https://www.ibm.com/docs/en/snips/4.6.0?topic=categories-injection-attacks (accessed Jan 29, 2022).
+  
+  "PREPARE Statement". MariaDB.
+  https://mariadb.com/kb/en/prepare-statement/ (accessed Feb 10, 2022)
 </details>
 
 # 2. Broken Authentication
