@@ -145,7 +145,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   
   > <img src="https://github.com/howed-neighbor/CS467/blob/main/public/readmeImages/admin.PNG">
   
-  If you brute-forced this answer and visit the ADMIN page, you'll see all our user data.
+  If you brute-forced this answer and visit the [ADMIN page](http://flip3.engr.oregonstate.edu:37773/admin) (requires connection to OSU VPN), you'll see all our user data.
   
   ---
   
