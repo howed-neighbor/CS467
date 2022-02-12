@@ -132,7 +132,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   * Insufficient authentication
   * Weak password recovery
   
-  Our app won't implement a password recovery system for this example, so we'll focus on the other two attacks.
+  Our app won't implement a password recovery system, so we'll focus on the other two attacks.
   
   ---
   
