@@ -170,8 +170,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   
   Hashing: This increases the complexity of the plaintext password before saving it to our database, ensuring someone with access to the database can't read the plaintext version of the password.
   
-  These changes are impemented on the hardened site (requires connection to OSU VPN):
-  <a href="http://flip3.engr.oregonstate.edu:47774/">[LINK TO WEB APP]</a>
+  These changes are impemented on our user <code>superAdmin</code>, and will be implemented in the hardened web app.
   
   ---
   
