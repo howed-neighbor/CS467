@@ -145,11 +145,40 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   
   > <img src="https://github.com/howed-neighbor/CS467/blob/main/public/readmeImages/admin.PNG">
   
-  If you brute forced this answer and visit the ADMIN page, you'll see all our user data.
+  If you brute-forced this answer and visit the ADMIN page, you'll see all our user data.
   
   ---
+  
 ### Remediation
+  
+  There are multiple ways we can harden our app against this vulnerability.
+  
+  First, we'll change the password to something harder to guess. Because password strength recommendations vary widely, we'll combine recommendations from a few sources:
+  
+  |Source|Recommendation|
+  |---|---|
+  |[OWASP Authentication Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html)|Minimum length of the passwords should be enforced by the application. Passwords shorter than 8 characters are considered to be weak
+  
+  Maximum password length should not be set too low, as it will prevent users from creating passphrases. A common maximum length is 64 characters [...] It is important to set a maximum password length to prevent long password Denial of Service attacks.|
+  |[IBM Password Guidelines](https://www.ibm.com/docs/en/partnerengagemanager?topic=overview-password-guidelines)|A length of 15-50 characters
+  
+  A combination of at least two-character types from the following options:
+
+    uppercase[A-Z], lowercase[a-z], number[0-9], and special characters. The valid non-alphabetic characters include the following characters hyphen (-), underscore (_), period (.), and special characters such as !@#$%&|
+  |user3|user3's data|
+  
+  We'll also use a password strength meter application like [zxcvbn](https://github.com/dropbox/zxcvbn) to ensure the password we pick is safe against brute force attacks. (See also: [interactive web implementation of zxcvbn](https://lowe.github.io/tryzxcvbn/))
+  
+  Now that we've got our strong password, we'll salt it and hash it using the [Crypto nodejs module](https://nodejs.org/api/crypto.html) before saving it in our database. This fixes two more vulnerabilities:
+  
+  Salting: This is a randomized string concatenated with the password before hashing, to ensure that if the hashing mechanism is compromised, an attacker can't automatically solve for all the other passwords in the database.
+  
+  Hashing: This increases the complexity of the plaintext password before saving it to our database, ensuring someone with access to the database can't read the plaintext version of the password.
+  
+  
+  
   ---
+  
 ### Citations: Broken Authentication
   "A07:2021 – Identification and Authentication Failures". OWASP top 10:2021.
   https://owasp.org/Top10/A07_2021-Identification_and_Authentication_Failures/ (accessed Feb 10, 2022).
@@ -163,6 +192,22 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   "10k-worst-passwords.txt". OWASP / passfault.
   https://github.com/OWASP/passfault/blob/master/wordlists/wordlists/10k-worst-passwords.txt (accessed Feb 10, 2022).
 </details>
+
+  "Authentication Cheat Sheet". OWASP Cheat Sheet Series.
+  https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html (accessed Feb 12, 2022).
+  
+  "Password guidelines". Search in IBM Sterling Partner Engagement Manager.
+  https://www.ibm.com/docs/en/partnerengagemanager?topic=overview-password-guidelines (accessed Feb 12, 2022).
+  
+  "zxcvbn". dropbox / zxcvbn.
+  https://github.com/dropbox/zxcvbn (accessed Feb 12, 2022).
+  
+  "demo". zxcvbn tests.
+  https://lowe.github.io/tryzxcvbn/ (accessed Feb 12, 2022).
+  
+  "Crypto". Crypto | Node.js.
+  https://nodejs.org/api/crypto.html (accessed Feb 12, 2022).
+  
 
 # 3. Sensitive Data Exposure
 <details>
