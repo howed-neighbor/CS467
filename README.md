@@ -157,10 +157,10 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   
   |Source|Recommendation|
   |---|---|
-  |[OWASP Authentication Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html)|Minimum length of the passwords should be enforced by the application. Passwords shorter than 8 characters are considered to be weak<br>
-  Maximum password length should not be set too low, as it will prevent users from creating passphrases. A common maximum length is 64 characters [...] It is important to set a maximum password length to prevent long password Denial of Service attacks.|
-  |[IBM Password Guidelines](https://www.ibm.com/docs/en/partnerengagemanager?topic=overview-password-guidelines)|A length of 15-50 characters<br>
-  A combination of at least two-character types from the following options: uppercase[A-Z], lowercase[a-z], number[0-9], and special characters. The valid non-alphabetic characters include the following characters hyphen (-), underscore (_), period (.), and special characters such as !@#$%&|
+  |[OWASP Authentication Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html)|Minimum length of the passwords should be enforced by the application. Passwords shorter than 8 characters are considered to be weak
+  |[OWASP Authentication Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html)|Maximum password length should not be set too low, as it will prevent users from creating passphrases. A common maximum length is 64 characters [...] It is important to set a maximum password length to prevent long password Denial of Service attacks.|
+  |[IBM Password Guidelines](https://www.ibm.com/docs/en/partnerengagemanager?topic=overview-password-guidelines)|A length of 15-50 characters|
+  |[IBM Password Guidelines](https://www.ibm.com/docs/en/partnerengagemanager?topic=overview-password-guidelines)|A combination of at least two-character types from the following options: uppercase[A-Z], lowercase[a-z], number[0-9], and special characters. The valid non-alphabetic characters include the following characters hyphen (-), underscore (_), period (.), and special characters such as !@#$%&|
   
   We'll also use a password strength meter application like [zxcvbn](https://github.com/dropbox/zxcvbn) to ensure the password we pick is safe against brute force attacks. (See also: [interactive web implementation of zxcvbn](https://lowe.github.io/tryzxcvbn/))
   
@@ -169,6 +169,9 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   Salting: This is a randomized string concatenated with the password before hashing, to ensure that if the hashing mechanism is compromised, an attacker can't automatically solve for all the other passwords in the database.
   
   Hashing: This increases the complexity of the plaintext password before saving it to our database, ensuring someone with access to the database can't read the plaintext version of the password.
+  
+  These changes are impemented on the hardened site (requires connection to OSU VPN):
+  <a href="http://flip3.engr.oregonstate.edu:47774/">[LINK TO WEB APP]</a>
   
   ---
   
