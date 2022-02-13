@@ -118,7 +118,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 # 2. Broken Authentication
 <details>
   <summary>
-    (Article in progress)
+    Details
   </summary>
   
 ### Description
@@ -209,13 +209,24 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 # 3. Sensitive Data Exposure
 <details>
   <summary>
-    ⨯ [Article not available yet]
+    (Article in progress)
   </summary>
   
 ### Description
+  |Source|Definition|
+  |---|---|
+  |OWASP|(See "Cryptographic Failures")[...] the focus is on **failures related to cryptography** (or lack thereof) [...] (which) often lead to exposure of sensitive data"
+  |vpnMentor|Secret data usually needs to be **protected with encryption** and other cryptographic algorithms|
+  
 ### Demonstration
 ### Remediation
 ### Citations: Sensitive Data Exposure
+  
+  "A02:2021 – Cryptographic Failures". OWASP Top 10:2021.
+  https://owasp.org/Top10/A02_2021-Cryptographic_Failures/ (accessed Feb 13, 2022).
+  
+  Avi. D. "Top 10 Common Web Attacks: The First Steps to Protect Your Website." vpnMentor.
+  https://www.vpnmentor.com/blog/top-10-common-web-attacks/ (accessed Feb 13, 2022).
 </details>
 
 # 4. XML External Entities
