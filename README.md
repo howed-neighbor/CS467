@@ -201,9 +201,11 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   
   "Crypto". Crypto | Node.js.
   https://nodejs.org/api/crypto.html (accessed Feb 12, 2022).
-</details>
-  
 
+  "How to use the crypto module". Node.js.
+  https://nodejs.org/en/knowledge/cryptography/how-to-use-crypto-module/ (accessed Feb 13, 2022).
+ </details>
+  
 # 3. Sensitive Data Exposure
 <details>
   <summary>
