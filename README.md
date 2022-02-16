@@ -230,6 +230,8 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   
   Fortunately, the <code>crypto</code> nodejs module we're using to salt and hash our user passwords also includes <code>cipher</code> and <code>decipher</code> classes we can use to encrypt this part of our database.
   
+  (OSU VPN users only) Navigate to the [/admin route](http://flip3.engr.oregonstate.edu:37773/admin) to try it out!
+  
 ### Citations: Sensitive Data Exposure
   
   "A02:2021 – Cryptographic Failures". OWASP Top 10:2021.
