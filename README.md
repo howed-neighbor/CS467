@@ -220,13 +220,13 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   
 ### Demonstration
   
-  As mentioned above, any endpoint that can access our user data will be able to see userData in plaintext. (Users on the OSU VPN can use the exploit in the [Broken Authentication](#2-broken-authentication) section to access this data.) 
+  As mentioned above, any endpoint that can access our user data will be able to see the userData column in plaintext. (Users on the OSU VPN can use the exploit in the [Broken Authentication](#2-broken-authentication) section to access this data.) 
   
   > <img src="https://github.com/howed-neighbor/CS467/blob/main/public/readmeImages/userData.PNG">
   
 ### Remediation
   
-  The most direct route for us to harden our app in this area is to encrypt our user's data, which is currently stored in plaintext on our MySQL server, and can be retrieved without decryption.
+  The most direct route for us to fix this is to encrypt our users' data.
   
   Fortunately, the <code>crypto</code> nodejs module we're using to salt and hash our user passwords also includes <code>cipher</code> and <code>decipher</code> classes we can use to encrypt this part of our database.
   
@@ -237,6 +237,10 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   
   Avi. D. "Top 10 Common Web Attacks: The First Steps to Protect Your Website." vpnMentor.
   https://www.vpnmentor.com/blog/top-10-common-web-attacks/ (accessed Feb 13, 2022).
+  
+  "Crypto". Crypto | Node.js.
+  https://nodejs.org/api/crypto.html#class-cipher (accessed Feb 16, 2022).
+  
 </details>
 
 # 4. XML External Entities
