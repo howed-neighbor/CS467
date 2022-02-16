@@ -219,7 +219,17 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   |vpnMentor|Secret data usually needs to be **protected with encryption** and other cryptographic algorithms|
   
 ### Demonstration
+  
+  As mentioned above, any endpoint that can access our user data will be able to see userData in plaintext. (Users on the OSU VPN can use the exploit in the [Broken Authentication](#2-broken-authentication) section to access this data.) 
+  
+  > <img src="https://github.com/howed-neighbor/CS467/blob/main/public/readmeImages/userData.PNG">
+  
 ### Remediation
+  
+  The most direct route for us to harden our app in this area is to encrypt our user's data, which is currently stored in plaintext on our MySQL server, and can be retrieved without decryption.
+  
+  Fortunately, the <code>crypto</code> nodejs module we're using to salt and hash our user passwords also includes <code>cipher</code> and <code>decipher</code> classes we can use to encrypt this part of our database.
+  
 ### Citations: Sensitive Data Exposure
   
   "A02:2021 – Cryptographic Failures". OWASP Top 10:2021.
