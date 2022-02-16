@@ -346,14 +346,19 @@ https://www.vpnmentor.com/blog/top-10-common-web-attacks/ (accessed Dec 2021-Jan
 
 REFERENCES  
 <sub> 
-├── expressjs		| "Hello world example", https://expressjs.com/en/starter/hello-world.html  
-├── expressjs		| "cs340_sample_nodejs_app", https://github.com/knightsamar/cs340_sample_nodejs_app  
-├── body-parser		| "body-parser", http://expressjs.com/en/resources/middleware/body-parser.html  
-├── handlebars		| "Introduction", https://handlebarsjs.com/guide/  
-├── handlebars		| "Express Handlebars", https://www.npmjs.com/package/express-handlebars  
-├── handlebars		| "Hello Handlebars", https://eecs.oregonstate.edu/ecampus-video/CS290/core-content/hello-node/hello-handlebars.html  
-├── handlebars		| "app.locals", https://expressjs.com/en/api.html#app.locals  
-├── JavaScript		| "Element.classList", https://developer.mozilla.org/en-US/docs/Web/API/Element/classList  
-├── MySQL			| "Using Node on the Engineering Servers", https://eecs.oregonstate.edu/ecampus-video/CS290/core-content/tools-and-overview/Using-Node-on-the-Engineering-Servers.html  
-└── express-session	| "express-session", http://expressjs.com/en/resources/middleware/session.html
+├── body-parser		| "body-parser", http://expressjs.com/en/resources/middleware/body-parser.html
+├── crypto			| "Crypto", https://nodejs.org/api/crypto.html#cryptorandombytessize-callback
+├── expressjs		| "Hello world example", https://expressjs.com/en/starter/hello-world.html
+├── expressjs		| "cs340_sample_nodejs_app", https://github.com/knightsamar/cs340_sample_nodejs_app
+├── expressjs		| OSU CS340 INTRODUCTION TO DATABASES, "https://canvas.oregonstate.edu/courses/1825733"
+├── expressjs		| "Express error handling", "https://expressjs.com/en/guide/error-handling.html"
+├── express-session	| "express-session", http://expressjs.com/en/resources/middleware/session.html
+├── handlebars		| "Introduction", https://handlebarsjs.com/guide/
+├── handlebars		| "Express Handlebars", https://www.npmjs.com/package/express-handlebars
+├── handlebars		| "Hello Handlebars", https://eecs.oregonstate.edu/ecampus-video/CS290/core-content/hello-node/hello-handlebars.html
+├── handlebars		| "app.locals", https://expressjs.com/en/api.html#app.locals
+├── JavaScript		| "Element.classList", https://developer.mozilla.org/en-US/docs/Web/API/Element/classList
+├── JavaScript 		| "parseInt()", https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt
+├── MySQL			| "Using Node on the Engineering Servers", https://eecs.oregonstate.edu/ecampus-video/CS290/core-content/tools-and-overview/Using-Node-on-the-Engineering-Servers.html
+└── Window.prompt 	| "Window.prompt()", https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt
 </sub>
