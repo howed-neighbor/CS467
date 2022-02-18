@@ -7,13 +7,15 @@ module.exports = function() {
 		var context = {
 			header: "> Steal Password Hashes/Break Cryptography",
 			stealPasswordHashes: true,
-			darkTheme: req.session.darkTheme
+			darkTheme: req.session.darkTheme,
+			userName: req.session.userName,
+			password: req.session.password
 		}
 		res.render("stealPasswordHashes",context)
 		console.log("Steal Password Hashes/Break Cryptography loaded!")
 
 		// Saves current path for light/dark theme redirect
-		req.app.locals.previousPath = req.originalUrl
+		req.session.previousPath = req.originalUrl
 	})
 
 	return router

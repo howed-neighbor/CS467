@@ -60,8 +60,22 @@ app.use(function(req,res,next){
 app.use(function(req,res,next){
 	if (!req.session.darkTheme) {
 		req.session.darkTheme = false
-		req.session.previousPath = "/"
 	}
+	req.session.previousPath = req.session.previousPath || "/"
+	next()
+})
+
+// Sessions, session user and password
+app.use(function(req,res,next){
+	if (!req.session.userName) {
+		req.session.userName = null
+	}
+	req.session.userName = req.session.userName || null
+
+	if (!req.session.password) {
+		req.session.password = null
+	}
+	req.session.password = req.session.password || null
 	next()
 })
 
@@ -71,6 +85,12 @@ app.set("view engine","handlebars")
 // Handlebars templates for individual pages
 app.use("/", express.static("public"))
 app.use("/",require("./public/js/index.js"))
+app.use("/403",require("./public/js/403.js"))
+app.use("/404",require("./public/js/404.js"))
+app.use("/500",require("./public/js/500.js"))
+app.use("/signIn",require("./public/js/signIn.js"))
+app.use("/signOut",require("./public/js/signOut.js"))
+app.use("/encrypt",require("./public/js/encryptDecrypt.js"))
 app.use("/admin",require("./public/js/admin.js"))
 app.use("/toggleTheme",require("./public/js/toggleTheme.js"))
 app.use("/injection",require("./public/js/injection.js"))
@@ -85,6 +105,19 @@ app.use("/usingComponentsWithKnownVulnerabilities",require("./public/js/usingCom
 app.use("/insufficientLoggingAndMonitoring",require("./public/js/insufficientLoggingAndMonitoring.js"))
 app.use("/stealPasswordHashes",require("./public/js/stealPasswordHashes.js"))
 
+// Error handling
+app.use((req,res)=>{
+	res.status(404)
+	res.redirect("../404")
+})
+
+app.use((err,req,res,next)=>{
+	console.error(err.stack)
+	res.status(500)
+	res.redirect("../500")
+})
+
+// Console log on start
 app.listen(port,() => {
 	console.log("Express started " + app_name + " | port " + port);
 	console.log("Press CTRL+C to end");

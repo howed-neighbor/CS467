@@ -8,13 +8,46 @@
         <script src="./js/interactions.js"></script>
     </head>
 
-    <h2>Name of Vulnerability</h2>
-        <p>Sensitive Data Exposure</p>
-    <h2>Description</h2>
-        <p>--</p>
-    <h2>Demonstration</h2>
-        <p>--</p>
-    <h2>Remediation</h2>
-        <p>--</p>
+    <h1>Sensitive Data Exposure</h1>
+    <hr class="light">
+
+    <h3>Description</h3>
+    <table class="markdown">
+        <tr>
+            <th>Source</th>
+            <th>Definition</th>
+        </tr>
+        <tr>
+            <td>OWASP</td>
+            <td>(See "Cryptographic Failures")[...] the focus is on <span class="bold">failures related to cryptography</span> (or lack thereof) [...] (which) often lead to exposure of sensitive data"</td>
+        </tr>
+        <tr>
+            <td>vpnMentor</td>
+            <td>Secret data usually needs to be <span class="bold">protected with encryption</span> and other cryptographic algorithms
+        </tr>
+    </table>
+    
+    <h3>Demonstration</h3>
+        <p>As mentioned above, any endpoint that can access our user data will be able to see the userData column in plaintext. (Users on the OSU VPN can use the exploit in the <a href="./brokenAuthentication#demonstration">Broken Authentication</a> section to access this data.)</p>
+
+        <img src="../readmeImages/userData.png">
+
+    <h3>Remediation</h3>
+        <p>The most direct route for us to fix this is to encrypt our users' data.</p>
+  
+        <p>Fortunately, the <code>crypto</code> nodejs module we're using to salt and hash our user passwords also includes <code>cipher</code> and <code>decipher</code> classes we can use to encrypt this part of our database.</p>
+  
+        <p>Navigate to the <a href="./admin">/admin route</a> to try it out!</p>
+   
+    <h3>Citations: Sensitive Data Exposure</h3>
+  
+    <p>"A02:2021 – Cryptographic Failures". OWASP Top 10:2021.<br>
+        <a href="https://owasp.org/Top10/A02_2021-Cryptographic_Failures/">https://owasp.org/Top10/A02_2021-Cryptographic_Failures/</a> (accessed Feb 13, 2022).</p>
+  
+    <p>Avi. D. "Top 10 Common Web Attacks: The First Steps to Protect Your Website." vpnMentor.<br>
+        <a href="https://www.vpnmentor.com/blog/top-10-common-web-attacks/">https://www.vpnmentor.com/blog/top-10-common-web-attacks/</a> (accessed Feb 13, 2022).</p>
+  
+    <p>"Crypto". Crypto | Node.js.<br>
+        <a href="https://nodejs.org/api/crypto.html#class-cipher">https://nodejs.org/api/crypto.html#class-cipher</a> (accessed Feb 16, 2022).</p>
            
 </html>

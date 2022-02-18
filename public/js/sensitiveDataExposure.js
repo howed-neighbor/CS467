@@ -7,13 +7,15 @@ module.exports = function() {
 		var context = {
 			header: "> Sensitive Data Exposure",
 			sensitiveDataExposure: true,
-			darkTheme: req.session.darkTheme
+			darkTheme: req.session.darkTheme,
+			userName: req.session.userName,
+			password: req.session.password
 		}
 		res.render("sensitiveDataExposure",context)
 		console.log("Sensitive Data Exposure loaded!")
 
 		// Saves current path for light/dark theme redirect
-		req.app.locals.previousPath = req.originalUrl
+		req.session.previousPath = req.originalUrl
 	})
 
 	return router

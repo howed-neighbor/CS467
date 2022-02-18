@@ -7,13 +7,15 @@ module.exports = function() {
 		var context = {
 			header: "> XML External Entities",
 			xmlExternalEntities: true,
-			darkTheme: req.session.darkTheme
+			darkTheme: req.session.darkTheme,
+			userName: req.session.userName,
+			password: req.session.password
 		}
 		res.render("xmlExternalEntities",context)
 		console.log("XML External Entities loaded!")
 
 		// Saves current path for light/dark theme redirect
-		req.app.locals.previousPath = req.originalUrl
+		req.session.previousPath = req.originalUrl
 	})
 
 	return router

@@ -28,7 +28,9 @@ module.exports = function() {
 			header: "> Index",
 			index: true,
 			countVisit: req.session.countVisit["/"],
-			darkTheme: req.session.darkTheme
+			darkTheme: req.session.darkTheme,
+			userName: req.session.userName,
+			password: req.session.password
 		}
 
 		// Tracks MySQL query count
@@ -47,6 +49,9 @@ module.exports = function() {
 				console.log("Index loaded!")
 			}
 		}
+		
+		// Saves current path for light/dark theme redirect
+		req.session.previousPath = req.originalUrl
 	})
 
 	return router

@@ -8,48 +8,72 @@
 	<div class="container"> 
         <div class="flex_row_space_between">
             <div>
+            	<!--Reloads current page to toggle light/dark theme-->
+            	{{#if darkTheme}}<a class="toggleTheme" href="./toggleTheme">☽</a>
+            	{{else}}<a class="toggleTheme" href="./toggleTheme">☼</a>
+            	{{/if}}
                 <a href="./">datapotato</a>
-                <span id="header">
+                {{#if error}}<span class="text_red">
+                {{else}}<span id="header">{{/if}}
                 	{{header}}
                 </span>
             </div>
-                <a href="./">SIGN IN</a>
+            	<!--Displays sign in button, otherwise shows sign out button-->
+            	{{#if userName}}
+            		<form id="sign_out_form" action="/signOut" method="post">
+		            	<input type="submit" value="SIGN OUT"/>
+	            	</form>
+            	{{else}}
+            		<span class="hover" onclick="display_sign_in_form()">SIGN IN</span>
+            	{{/if}}
+            	
         </div>
 
         <hr class="light">
 
         <div class="flex_row_space_between">
             <div class="flex_column">
-            	<!--Reloads current page to toggle light/dark theme-->
-                <a class="image" href="./toggleTheme"><img id="logo" 
-                	{{#if darkTheme}}src="./images/datapotato_white.svg"
-                	{{else}}src="./images/datapotato_black.svg"
+                <a class="image" href="./"><img id="logo" 
+                	{{#if error}}src="./images/datapotato_red.svg"
+                		{{else if darkTheme}}src="./images/datapotato_white.svg"
+                		{{else}}src="./images/datapotato_black.svg"
                 	{{/if}} 
                 	width="400px" height="auto"></a>
             </div>
-            <div class="flex_column deselected text_align_right">
-                <span>User: Not signed in</span>
-                <span>Data: 
-                	{{#if countTable}}MySQL connected!
-                	{{else}}Not connected
-                	{{/if}}
-                </span>
+            <div class="flex_column text_align_right">
+            	<!--Either shows signed in user or sign in form-->
+            	{{#if userName}}
+            		<span class="text_grey">userName:{{userName}}<span>
+            	{{else}}
+	            	<form id="sign_in_form" action="/signIn" method="post">
+	            		<fieldset>
+	            			<legend>Sign In</legend>
+		                    <label>
+		                        <input type="text" name="userName" size="10" maxlength="10" placeholder="userName" required>
+		                    </label><br>
+		                    <label>
+		                        <input type="text" name="password" size="10" maxlength="20" placeholder="password" required>
+		                    </label><br>
+		                    <input class="submit" type="submit" value="Go"/>
+		               </fieldset>
+	            	</form>
+	            {{/if}}
     		</div>
     	</div>
 
         <div class="flex_row_space_between">
             <div class="flex_column">
-                <a {{#if injection}}class="selected"{{/if}} href="./injection">Injection</a><br>
-                <a {{#if brokenAuthentication}}class="selected"{{/if}} href="./brokenAuthentication">Broken Authentication</a><br>
-                <a {{#if sensitiveDataExposure}}class="selected"{{/if}} class="deselected" href="./sensitiveDataExposure">Sensitive Data Exposure</a><br>
-                <a {{#if xmlExternalEntities}}class="selected"{{/if}} class="deselected" href="./xmlExternalEntities">XML External Entities</a><br>
-                <a {{#if brokenAccessControl}}class="selected"{{/if}} class="deselected" href="./brokenAccessControl">Broken Access Control</a><br>
-                <a {{#if securityMisconfiguration}}class="selected"{{/if}} class="deselected" href="./securityMisconfiguration">Security Misconfiguration</a><br>
-                <a {{#if crossSiteScripting}}class="selected"{{/if}} class="deselected" href="./crossSiteScripting">Cross-Site Scripting</a><br>
-                <a {{#if insecureDeserialization}}class="selected"{{/if}} class="deselected" href="./insecureDeserialization">Insecure Deserialization</a><br>
-                <a {{#if usingComponentsWithKnownVulnerabilities}}class="selected"{{/if}} class="deselected" href="./usingComponentsWithKnownVulnerabilities">Using Components with Known Vulnerabilities</a><br>
-                <a {{#if insufficientLoggingAndMonitoring}}class="selected"{{/if}} class="deselected" href="./insufficientLoggingAndMonitoring">Insufficient Logging & Monitoring</a><br>
-                <a {{#if stealPasswordHashes}}class="selected"{{/if}} class="deselected" href="./stealPasswordHashes">Steal Password Hashes/Break Cryptography [Stretch Goal]</a><br>
+                <a {{#if injection}}class="selected"{{/if}} href="./injection">1. Injection</a><br>
+                <a {{#if brokenAuthentication}}class="selected"{{/if}} href="./brokenAuthentication">2. Broken Authentication</a><br>
+                <a {{#if sensitiveDataExposure}}class="selected"{{/if}} href="./sensitiveDataExposure">3. Sensitive Data Exposure</a><br>
+                <a {{#if xmlExternalEntities}}class="selected"{{/if}} class="text_lightred" href="./xmlExternalEntities">4. XML External Entities</a><br>
+                <a {{#if brokenAccessControl}}class="selected"{{/if}} class="text_lightred" href="./brokenAccessControl">5. Broken Access Control</a><br>
+                <a {{#if securityMisconfiguration}}class="selected"{{/if}} class="text_lightred" href="./securityMisconfiguration">6. Security Misconfiguration</a><br>
+                <a {{#if crossSiteScripting}}class="selected"{{/if}} class="text_lightred" href="./crossSiteScripting">7. Cross-Site Scripting</a><br>
+                <a {{#if insecureDeserialization}}class="selected"{{/if}} class="text_lightred" href="./insecureDeserialization">8. Insecure Deserialization</a><br>
+                <a {{#if usingComponentsWithKnownVulnerabilities}}class="selected"{{/if}} class="text_lightred" href="./usingComponentsWithKnownVulnerabilities">9. Using Components with Known Vulnerabilities</a><br>
+                <a {{#if insufficientLoggingAndMonitoring}}class="selected"{{/if}} class="text_lightred" href="./insufficientLoggingAndMonitoring">10. Insufficient Logging & Monitoring</a><br>
+                <a {{#if stealPasswordHashes}}class="selected"{{/if}} class="text_lightred" href="./stealPasswordHashes">* Steal Password Hashes/Break Cryptography [Stretch Goal]</a>
             </div>
             <div class="flex_column flex_end">
             	<a href="./admin"><span>ADMIN</span></a>
@@ -68,17 +92,21 @@
 			<sub class="compact">
 			<span id="clickToExpand" class="hover" onclick="display_references()">> Click to expand</span><br>
 				<span id="references" class="hidden">
+				├── body-parser		| "body-parser", http://expressjs.com/en/resources/middleware/body-parser.html<br>
+				├── crypto			| "Crypto", https://nodejs.org/api/crypto.html#cryptorandombytessize-callback<br>
 				├── expressjs		| "Hello world example", https://expressjs.com/en/starter/hello-world.html<br>
 				├── expressjs		| "cs340_sample_nodejs_app", https://github.com/knightsamar/cs340_sample_nodejs_app<br>
-				├── expressjs		| OSU CS340 INTRODUCTION TO DATABASES, "https://canvas.oregonstate.edu/courses/1825733"<br>
-				├── body-parser		| "body-parser", http://expressjs.com/en/resources/middleware/body-parser.html<br>
+				├── expressjs		| OSU CS340 INTRODUCTION TO DATABASES, https://canvas.oregonstate.edu/courses/1825733<br>
+				├── expressjs		| "Express error handling", https://expressjs.com/en/guide/error-handling.html<br>
+				├── express-session	| "express-session", http://expressjs.com/en/resources/middleware/session.html<br>
 				├── handlebars		| "Introduction", https://handlebarsjs.com/guide/<br>
 				├── handlebars		| "Express Handlebars", https://www.npmjs.com/package/express-handlebars<br>
 				├── handlebars		| "Hello Handlebars", https://eecs.oregonstate.edu/ecampus-video/CS290/core-content/hello-node/hello-handlebars.html<br>
 				├── handlebars		| "app.locals", https://expressjs.com/en/api.html#app.locals<br>
 				├── JavaScript		| "Element.classList", https://developer.mozilla.org/en-US/docs/Web/API/Element/classList<br>
+				├── JavaScript 		| "parseInt()", https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseInt<br>
 				├── MySQL			| "Using Node on the Engineering Servers", https://eecs.oregonstate.edu/ecampus-video/CS290/core-content/tools-and-overview/Using-Node-on-the-Engineering-Servers.html<br>
-				└── express-session	| "express-session", http://expressjs.com/en/resources/middleware/session.html
+				└── Window.prompt 	| "Window.prompt()", https://developer.mozilla.org/en-US/docs/Web/API/Window/prompt<br>
 				</span>
 			</sub>
 		</footer>
