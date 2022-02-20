@@ -254,16 +254,67 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 # 4. XML External Entities
 <details>
   <summary>
-    ⨯ [Article not available yet]
+    (Article in progress)
   </summary>
   
 ### Description
-  ---
+  
+  |Source|Definition|
+  |---|---|
+  |OWASP|An **XML External Entity attack** is a type of attack against an application that parses XML input. This attack occurs when XML input containing a reference to an external entity is processed by a weakly configured XML parser.|
+  |IBM| [Vulnerable software] could allow a remote attacker to obtain sensitive information, caused by an **XML External Entity Injection** (XXE) error when processing XML data. An attacker could declare an entity referencing the content of a local file to obtain sensitive information.|
+  
+  A basic XML entity with a defined entity looks like this:
+  ```
+  <?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE foo [<!ENTITY bar "This is a fine entity">]>
+  <foo>&bar</foo>
+  ```
+  
+  The issue here is that the [document type declaration](https://www.w3.org/TR/REC-xml/#sec-prolog-dtd) can be configured to access internal and external references.
+  
+  External entities, such as ones that point to server resources, or malicious URLs, are our primary concern. Here are is an example from the [OWASP website](https://owasp.org/www-community/vulnerabilities/XML_External_Entity_(XXE)_Processing):
+  
+  ```
+  <?xml version="1.0" encoding="ISO-8859-1"?>
+  <!DOCTYPE foo [
+    <!ELEMENT foo ANY >
+    <!ENTITY xxe SYSTEM "file:///c:/boot.ini" >]>
+  <foo>&xxe;</foo>
+  ```
+  
 ### Demonstration
   ---
+  
 ### Remediation
-  ---
+  Popular npm XML parsing utilities such as [express-xml-bodyparser](https://www.npmjs.com/package/express-xml-bodyparser) wlill automatically prevent entities from being defined, by throwing an error if an unescaped ampersand is encountered. Here's what happens when we send an XML POST to our endpoint with an ampersand using this package:
+  <?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE foo [<!ENTITY bar "This is a fine entity">]>
+  <foo>&bar</foo>
+  ```
+  Returns <code>Error: Invalid character entity</code>
+  
+  In our hardened web app, we'll return a <code>400 BAD REQUEST</code> error if we receive a request of this type. This will limit the types of XML requests we can process, but it will ensure protection against this vulnerability.
+  
 ### Citations: XML External Entities
+  "XML External Entity (XXE) Processing". OWASP.
+  https://owasp.org/www-community/vulnerabilities/XML_External_Entity_(XXE)_Processing (accessed Feb 20, 2022).
+  
+  "IT06733: A vulnerability in XML External Entity (XXE) processing could allow a remote attacker to obtain sensitive information.". IBM Support.
+  https://www.ibm.com/support/pages/apar/IT06733 (accessed Feb 20, 2022).
+  
+  "XML introduction". MDN Web Docs.
+  https://developer.mozilla.org/en-US/docs/Web/XML/XML_introduction (accessed Feb 20, 2022).
+  
+  "Load external DTDs (entity/entities) (local and remote) if a pref is set". Bugzilla.
+  https://bugzilla.mozilla.org/show_bug.cgi?id=22942 (accessed Feb 20, 2022).
+  
+  "express-xml-bodyparser". npmjs.com.
+  https://www.npmjs.com/package/express-xml-bodyparser (accessed Feb 20, 2022).
+  
+  "Prolog and Document Type Declaration". w3.org.
+  https://www.w3.org/TR/REC-xml/#sec-prolog-dtd (accessed Feb 20, 2022).
+  
 </details>
 
 # 5. Broken Access Control
