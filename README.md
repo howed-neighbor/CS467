@@ -218,11 +218,15 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   |OWASP|(See "Cryptographic Failures")[...] the focus is on **failures related to cryptography** (or lack thereof) [...] (which) often lead to exposure of sensitive data"
   |vpnMentor|Secret data usually needs to be **protected with encryption** and other cryptographic algorithms|
   
+  ---
+  
 ### Demonstration
   
   As mentioned above, any endpoint that can access our user data will be able to see the userData column in plaintext. (Users on the OSU VPN can use the exploit in the [Broken Authentication](#2-broken-authentication) section to access this data.) 
   
   > <img src="https://github.com/howed-neighbor/CS467/blob/main/public/readmeImages/userData.PNG">
+  
+  ---
   
 ### Remediation
   
@@ -237,6 +241,8 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   > <img src="https://github.com/howed-neighbor/CS467/blob/main/public/readmeImages/encrypt2of3.png">
   
   > <img src="https://github.com/howed-neighbor/CS467/blob/main/public/readmeImages/encrypt3of3.png">
+  
+  ---
   
 ### Citations: Sensitive Data Exposure
   
@@ -273,7 +279,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   
   The issue here is that the [document type declaration](https://www.w3.org/TR/REC-xml/#sec-prolog-dtd) can be configured to access internal and external references.
   
-  External entities, such as ones that point to server resources, or malicious URLs, are our primary concern. Here are is an example of a potentially harmful XML request (from the [OWASP website](https://owasp.org/www-community/vulnerabilities/XML_External_Entity_(XXE)_Processing)):
+  External entities, such as ones that point to server resources, or malicious URLs, are our primary concern. Here are is an example of a potentially harmful XML request (from the [OWASP website](https://owasp.org/www-community/vulnerabilities/XML_External_Entity_(XXE)_Processing)) This request could send an attacker information about critical system files:
   
   ```
   <?xml version="1.0" encoding="ISO-8859-1"?>
@@ -283,7 +289,10 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   <foo>&xxe;</foo>
   ```
   
+  ---
+  
 ### Demonstration
+  
   ---
   
 ### Remediation
@@ -296,6 +305,8 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   Returns <code>Error: Invalid character entity</code>
   
   In our hardened web app, we'll return a <code>400 BAD REQUEST</code> error if we receive a request of this type. This will limit the types of XML requests we can process, but it will ensure protection against this vulnerability.
+  
+  ---
   
 ### Citations: XML External Entities
   "XML External Entity (XXE) Processing". OWASP.
