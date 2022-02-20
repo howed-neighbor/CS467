@@ -273,7 +273,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   
   The issue here is that the [document type declaration](https://www.w3.org/TR/REC-xml/#sec-prolog-dtd) can be configured to access internal and external references.
   
-  External entities, such as ones that point to server resources, or malicious URLs, are our primary concern. Here are is an example from the [OWASP website](https://owasp.org/www-community/vulnerabilities/XML_External_Entity_(XXE)_Processing):
+  External entities, such as ones that point to server resources, or malicious URLs, are our primary concern. Here are is an example of a potentially harmful XML request (from the [OWASP website](https://owasp.org/www-community/vulnerabilities/XML_External_Entity_(XXE)_Processing)):
   
   ```
   <?xml version="1.0" encoding="ISO-8859-1"?>
