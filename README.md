@@ -288,6 +288,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   
 ### Remediation
   Popular npm XML parsing utilities such as [express-xml-bodyparser](https://www.npmjs.com/package/express-xml-bodyparser) wlill automatically prevent entities from being defined, by throwing an error if an unescaped ampersand is encountered. Here's what happens when we send an XML POST to our endpoint with an ampersand using this package:
+  ```
   <?xml version="1.0" encoding="UTF-8"?>
   <!DOCTYPE foo [<!ENTITY bar "This is a fine entity">]>
   <foo>&bar</foo>
