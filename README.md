@@ -233,7 +233,9 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   (OSU VPN users only) This utility is live on the [/admin route](http://flip3.engr.oregonstate.edu:37773/admin) and you can see a snapshot of the web app utility here.
   
   > <img src="https://github.com/howed-neighbor/CS467/blob/main/public/readmeImages/encrypt1of3.png">
+  
   > <img src="https://github.com/howed-neighbor/CS467/blob/main/public/readmeImages/encrypt2of3.png">
+  
   > <img src="https://github.com/howed-neighbor/CS467/blob/main/public/readmeImages/encrypt3of3.png">
   
 ### Citations: Sensitive Data Exposure
