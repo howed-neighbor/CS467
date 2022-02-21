@@ -330,9 +330,6 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   "Postman API Platform". Postman.
   https://www.postman.com/ (accessed Feb 20, 2022).
   
-  "axios - npm". npmjs.com.
-  https://www.npmjs.com/package/axios (accessed Feb 20, 2022).
-  
 </details>
 
 # 5. Broken Access Control
