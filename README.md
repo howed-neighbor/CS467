@@ -425,16 +425,89 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 # 7. Cross-Site Scripting
 <details>
   <summary>
-    ⨯ [Article not available yet]
+    Details
   </summary>
   
 ### Description
+  
+  |Source|Definition|
+  |---|---|
+  |Wikipedia|**XSS** is a type of security vulnerability that can be found in some web application. XSS attacks enable attackers to inject **client-side scripts** into web pages viewed by other users.|
+  |OWASP|**XSS** attacks are a type of injection, in which malicious scripts are injected into otherwise benign and trusted websites.|
+  |IBM<|**XSS** is a computer securit vulnerability that allows malicious attackers to inject client-side script into web pages viewed by other users.|
+
+  In summary, XSS is an attack on vulnerable web applications that allows a malicious actor to inject client-side script, e.g. javascript, into web pages.
+                
   ---
 ### Demonstration
+  In this first example, we will start off with benign input. Here's what users of the web app will see when they type **Hello World!** and select "Submit" in this example.
+    
+  > <img src="https://github.com/howed-neighbor/CS467/blob/main/public/readmeImages/xssHelloWorld.png">
+    
+  This posts the following to our web application, which is then rendered by our express handlebars templating engine.
+
+  ```
+  req.body.userInput
+  ```
+    
+  Result:
+  
+  > <img src="https://github.com/howed-neighbor/CS467/blob/main/public/readmeImages/xssDemonstrationResult.png">
+    
+  Now we'll inject a script into the web app, something the developers probably didn't intend to be used.
+    
+  Here's what users of the app will see when they type **&lt;script&gt;alert(42)&lt;/script&gt;** and select "Submit".
+                
+  > <img src="https://github.com/howed-neighbor/CS467/blob/main/public/readmeImages/xssScript.png">
+  
+  Result:
+  
+  > <img src="https://github.com/howed-neighbor/CS467/blob/main/public/readmeImages/xssScriptResult.png">
+  
+  In this example, we've allowed the user to inject a client-side script into our web application.
+  
   ---
 ### Remediation
+  There many methods to remediate XSS vulnerabilities. Most techniques revolve around sanitizing user input.
+        
+  Our web application is succeptible to XSS because the handlebars engine renders user provided input exactly as written.
+
+  Specifically, the vulnerable piece of code in our handlebars template is:
+
+  ```
+  {{vulnerable}}
+  ```
+
+  Use of the triple brackets will render all user input exactly as written.
+
+  We can prevent script injection by using double brackets as so:
+
+  ```
+  {{remediate}}
+  ```
+
+  Users can again attempt to inject the XSS script again into our web application:
+
+  **&lt;script&gt;alert(42)&lt;/script&gt;** and select "Submit".
+  
+  > <img src="https://github.com/howed-neighbor/CS467/blob/main/public/readmeImages/xssRemediation.png">
+  
+  Use of double brackets in handlebars escapes special characters such as '&lt;' and '&gt;', which are often used in XSS attacks.
+  
   ---
 ### Citations: Cross-Site Scripting
+  "Code injection." Wikipedia.
+  https://en.wikipedia.org/wiki/Cross-site_scripting (accessed Feb 14, 2022).  
+  
+  KirstenS. "Cross Site Scripting (XSS)". OWASP.
+  https://owasp.org/www-community/attacks/xss/ (accessed Jan 29, 2022).  
+  
+  "Cross Site Scripting (XSS) Filter." IBM.
+  https://www.ibm.com/docs/en/sc-and-ds/8.2.0?topic=manager-cross-site-scripting-xss-filters (accessed Feb 15, 2022).  
+  
+  "Expressions." Handlebars Online User Guide.
+  https://handlebarsjs.com/guide/expressions.html (accessed Feb 10, 2022).
+  
 </details>
 
 # 8. Insecure Deserialization
