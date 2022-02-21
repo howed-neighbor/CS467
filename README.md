@@ -270,7 +270,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   |OWASP|An **XML External Entity attack** is a type of attack against an application that parses XML input. This attack occurs when XML input containing a reference to an external entity is processed by a weakly configured XML parser.|
   |IBM| [Vulnerable software] could allow a remote attacker to obtain sensitive information, caused by an **XML External Entity Injection** (XXE) error when processing XML data. An attacker could declare an entity referencing the content of a local file to obtain sensitive information.|
   
-  A basic XML entity with a defined entity looks like this:
+  A basic XML file with a defined entity looks like this:
   ```
   <?xml version="1.0" encoding="UTF-8"?>
   <!DOCTYPE foo [<!ENTITY bar "This is a fine entity">]>
@@ -304,7 +304,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   ```
   Returns <code>Error: Invalid character entity</code>
   
-  In our hardened web app, we'll return a <code>400 BAD REQUEST</code> error if we receive a request of this type. This will limit the types of XML requests we can process, but it will ensure protection against this vulnerability.
+  In our hardened web app, we'll return a <code>400 BAD REQUEST</code> error if we receive a request of this type. This will limit the types of XML requests we can process, but it will ensure protection against this vulnerability. Try using an API like [Postman](https://www.postman.com/) to send your own XML request to the server.
   
   ---
   
@@ -326,6 +326,9 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   
   "Prolog and Document Type Declaration". w3.org.
   https://www.w3.org/TR/REC-xml/#sec-prolog-dtd (accessed Feb 20, 2022).
+  
+  "Postman API Platform". Postman.
+  https://www.postman.com/ (accessed Feb 20, 2022).
   
 </details>
 
