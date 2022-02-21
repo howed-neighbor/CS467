@@ -475,7 +475,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   Specifically, the vulnerable piece of code in our handlebars template is:
 
   ```
-  {{vulnerable}}
+  {{{input}}}
   ```
 
   Use of the triple brackets will render all user input exactly as written.
@@ -483,7 +483,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   We can prevent script injection by using double brackets as so:
 
   ```
-  {{remediate}}
+  {{input}}
   ```
 
   Users can again attempt to inject the XSS script again into our web application:
@@ -496,16 +496,16 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   
   ---
 ### Citations: Cross-Site Scripting
-  "Code injection." Wikipedia.
+  "Code injection." Wikipedia.  
   https://en.wikipedia.org/wiki/Cross-site_scripting (accessed Feb 14, 2022).  
   
-  KirstenS. "Cross Site Scripting (XSS)". OWASP.
+  KirstenS. "Cross Site Scripting (XSS)". OWASP.  
   https://owasp.org/www-community/attacks/xss/ (accessed Jan 29, 2022).  
   
-  "Cross Site Scripting (XSS) Filter." IBM.
+  "Cross Site Scripting (XSS) Filter." IBM.  
   https://www.ibm.com/docs/en/sc-and-ds/8.2.0?topic=manager-cross-site-scripting-xss-filters (accessed Feb 15, 2022).  
   
-  "Expressions." Handlebars Online User Guide.
+  "Expressions." Handlebars Online User Guide.  
   https://handlebarsjs.com/guide/expressions.html (accessed Feb 10, 2022).
   
 </details>
