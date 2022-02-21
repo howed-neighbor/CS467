@@ -349,15 +349,15 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   In our first 5 vulnerabilities, this category affects the most code. Every piece of data, endpoint, and access mechanism should be considered with respect to this topic.
   
   OWASP goes on to provide a [broad list of vulnerabilities](https://owasp.org/Top10/A01_2021-Broken_Access_Control/) in this category:
-
-    *Violation of the principle of least privilege or deny by default, where access should only be granted for particular capabilities, roles, or users, but is available to anyone.
-    *Bypassing access control checks by modifying the URL (parameter tampering or force browsing), internal application state, or the HTML page, or by using an attack tool modifying API requests.
-    *Permitting viewing or editing someone else's account, by providing its unique identifier (insecure direct object references)
-    *Accessing API with missing access controls for POST, PUT and DELETE.
-    *Elevation of privilege. Acting as a user without being logged in or acting as an admin when logged in as a user.
-    *Metadata manipulation, such as replaying or tampering with a JSON Web Token (JWT) access control token, or a cookie or hidden field manipulated to elevate privileges or abusing JWT invalidation.
-    *CORS misconfiguration allows API access from unauthorized/untrusted origins.
-    *Force browsing to authenticated pages as an unauthenticated user or to privileged pages as a standard user.
+  
+  *Violation of the principle of least privilege or deny by default, where access should only be granted for particular capabilities, roles, or users, but is available to anyone.
+  *Bypassing access control checks by modifying the URL (parameter tampering or force browsing), internal application state, or the HTML page, or by using an attack tool modifying API requests.
+  *Permitting viewing or editing someone else's account, by providing its unique identifier (insecure direct object references)
+  *Accessing API with missing access controls for POST, PUT and DELETE.
+  *Elevation of privilege. Acting as a user without being logged in or acting as an admin when logged in as a user.
+  *Metadata manipulation, such as replaying or tampering with a JSON Web Token (JWT) access control token, or a cookie or hidden field manipulated to elevate privileges or abusing JWT invalidation.
+  *CORS misconfiguration allows API access from unauthorized/untrusted origins.
+  *Force browsing to authenticated pages as an unauthenticated user or to privileged pages as a standard user.
 
   ---
   
