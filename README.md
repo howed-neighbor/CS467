@@ -222,7 +222,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   
 ### Demonstration
   
-  As mentioned above, any endpoint that can access our user data will be able to see the userData column in plaintext. (Users on the OSU VPN can use the exploit in the [Broken Authentication](#2-broken-authentication) section to access this data.) 
+  Any endpoint that can access our user data will be able to see the userData column in plaintext. (Users on the OSU VPN can use the exploit in the [Broken Authentication](#2-broken-authentication) section to access this data.) 
   
   > <img src="https://github.com/howed-neighbor/CS467/blob/main/public/readmeImages/userData.PNG">
   
@@ -279,7 +279,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   
   The issue here is that the [document type declaration](https://www.w3.org/TR/REC-xml/#sec-prolog-dtd) can be configured to access internal and external references.
   
-  External entities, such as ones that point to server resources, or malicious URLs, are our primary concern. Here are is an example of a potentially harmful XML request (from the [OWASP website](https://owasp.org/www-community/vulnerabilities/XML_External_Entity_(XXE)_Processing)) This request could send an attacker information about critical system files:
+  External entities, such as ones that point to server resources, or malicious URLs, are our primary concern. Here are is an example of a potentially harmful XML request (from the [OWASP website](https://owasp.org/www-community/vulnerabilities/XML_External_Entity_(XXE)_Processing).) This request could send an attacker information about critical system files:
   
   ```
   <?xml version="1.0" encoding="ISO-8859-1"?>
@@ -296,7 +296,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   ---
   
 ### Remediation
-  Popular npm XML parsing utilities such as [express-xml-bodyparser](https://www.npmjs.com/package/express-xml-bodyparser) wlill automatically prevent entities from being defined, by throwing an error if an unescaped ampersand is encountered. Here's what happens when we send an XML POST to our endpoint with an ampersand using this package:
+  Popular npm XML parsing utilities such as [express-xml-bodyparser](https://www.npmjs.com/package/express-xml-bodyparser) will automatically prevent entities from being defined, by throwing an error if an unescaped ampersand is encountered. Here's what happens when we send an XML POST to our endpoint with an ampersand using this package:
   ```
   <?xml version="1.0" encoding="UTF-8"?>
   <!DOCTYPE foo [<!ENTITY bar "This is a fine entity">]>
