@@ -335,16 +335,83 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 # 5. Broken Access Control
 <details>
   <summary>
-    ⨯ [Article not available yet]
+    (Article in progress)
   </summary>
   
 ### Description
+  
+  |Source|Definition|
+  |---|---|
+  |Wikipedia|In the fields of physical security and information security, **access control** (AC) is the selective restriction of access to a place or other resource|
+  |OWASP|**Access control** enforces policy such that users cannot act outside of their intended permissions. Failures typically lead to unauthorized information disclosure, modification, or destruction of all data or performing a business function outside the user's limits|
+  |IBM|**Access control** mechanisms determine which operations the user can or cannot do by comparing the user's identity to an access control list (ACL)|
+  
+  In our first 5 vulnerabilities, this category affects the most code. Every piece of data, endpoint, and access mechanism should be considered with respect to this topic.
+  
+  OWASP goes on to provide a [broad list of vulnerabilities](https://owasp.org/Top10/A01_2021-Broken_Access_Control/) in this category:
+
+    *Violation of the principle of least privilege or deny by default, where access should only be granted for particular capabilities, roles, or users, but is available to anyone.
+
+    *Bypassing access control checks by modifying the URL (parameter tampering or force browsing), internal application state, or the HTML page, or by using an attack tool modifying API requests.
+
+    *Permitting viewing or editing someone else's account, by providing its unique identifier (insecure direct object references)
+
+    *Accessing API with missing access controls for POST, PUT and DELETE.
+
+    *Elevation of privilege. Acting as a user without being logged in or acting as an admin when logged in as a user.
+
+    *Metadata manipulation, such as replaying or tampering with a JSON Web Token (JWT) access control token, or a cookie or hidden field manipulated to elevate privileges or abusing JWT invalidation.
+
+    *CORS misconfiguration allows API access from unauthorized/untrusted origins.
+
+    *Force browsing to authenticated pages as an unauthenticated user or to privileged pages as a standard user.
+
   ---
+  
 ### Demonstration
+  
+  Our app is currently vulnerable to two of the access control failures above: bypassing access control checks by modifying the URL and accessing the API with missing access controls.
+  
+  During development, we created a route (OSU VPN users only) [/adminTest](http://flip3.engr.oregonstate.edu:37773/adminTest) to test admin functionality. This page was created before we implemented Session authentication. However, we forgot to remove this route or remediate the access control on this page. Even though there is no link to this page on our site, if someone discovered this route they'd be able to access many of our admin utilities normally protected with userName/password authentication.
+  
+  The other access control failure can be demonstrated with any utility that can send an HTTP request. Here, we'll use [Postman](https://www.postman.com/). 
+  
+  Our web app will process any valid HTTP request sent to it without requiring authentication. Let's POST to [/admin](http://flip3.engr.oregonstate.edu:37773/admin) and use the admin utility to reset the database: 
+  
+  > <img src="https://github.com/howed-neighbor/CS467/blob/main/public/readmeImages/postToAdmin.png">
+  
+  We were able to do this because there's no access control on that route. All of our custom user data has been lost!  
+  
   ---
+  
 ### Remediation
+  
+  In our hardened app, we'll make to two changes to remediate these failures:
+  
+  1. The <code>/adminTest</code> route will be removed
+  2. All reqest types sent to the <code>/admin</code> route will require the same Session authentication confirming the user that is signed in has admin credentials.
+  
+  Additional remediations we could take include:
+  * Using more advanced authentication such as JWTs
+  * Enforcing "least privilege" principles where certain utilities are only available to specific user groups
+  * Increased logging
+  * Disabling directory browsing
+  
   ---
+  
 ### Citations: Broken Access Control
+  "A01:2021 – Broken Access Control". OWASP Top 10:2021.
+  https://owasp.org/Top10/A01_2021-Broken_Access_Control/ (accessed Feb 21, 2022).
+  
+  "Authentication versus access control". IBM Watson Content Analytics.
+  https://www.ibm.com/docs/en/wca/3.0.0?topic=security-authentication-versus-access-control (accessed Feb 21, 2022).
+  
+  "Access Control". Wikipedia.
+  https://en.wikipedia.org/wiki/Access_control (accessed Feb 21, 2022).
+  
+  "Postman API Platform". Postman.
+  https://www.postman.com/ (accessed Feb 21, 2022).
+  
 </details>
 
 # 6. Security Misconfiguration
