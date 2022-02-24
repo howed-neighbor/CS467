@@ -260,7 +260,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 # 4. XML External Entities
 <details>
   <summary>
-    (Article in progress)
+    Details
   </summary>
   
 ### Description
