@@ -277,10 +277,19 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   <foo>&bar</foo>
   ```
   
-  You can see how your browser renders this XML by saving this file and opening it in your browser:
-  <a href="https://raw.githubusercontent.com/howed-neighbor/CS467/main/public/xml/foo.xml" download>foo.xml</a>
+  Here's how Firefox and Chrome render this XML:
   
-  The issue here is that the [document type declaration](https://www.w3.org/TR/REC-xml/#sec-prolog-dtd) can be configured to access internal and external references.
+  Firefox:
+  > <img src="https://github.com/howed-neighbor/CS467/blob/main/public/readmeImages/fooFirefox.PNG">
+  
+  Chrome:
+  > <img src="https://github.com/howed-neighbor/CS467/blob/main/public/readmeImages/fooChrome.PNG">
+    
+  ---
+  
+### Demonstration
+  
+  The issue at hand is that the [document type declaration](https://www.w3.org/TR/REC-xml/#sec-prolog-dtd) can be configured to access internal or external references.
   
   External entities, such as ones that point to server resources, or malicious URLs, are our primary concern. Here are is an example of a potentially harmful XML request (from the [OWASP website](https://owasp.org/www-community/vulnerabilities/XML_External_Entity_(XXE)_Processing).) This request could send an attacker information about critical system files:
   
@@ -292,18 +301,23 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   <foo>&xxe;</foo>
   ```
   
-  ---
+  Because XMl is less commmonly used, and many modern node libraries do not support expansion of external entities, your researchers were not able to find a library which sufficiently demonstrated this vulnerability compatible with our node setup. In lieu of a live demonstration, please consider the following well-documented examples:
   
-### Demonstration
+  [XML Entity Expansion in NodeJS](https://knowledge-base.secureflag.com/vulnerabilities/xml_injection/xml_entity_expansion_nodejs.html)
+  [XML External Entity Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.html)
   
   ---
   
 ### Remediation
+  
+  Developers should consider all of their XML parsing dependencies carefully, and ensure any custom XML parsing implementations have external entity expansion off by default. 
+  
   Popular npm XML parsing utilities such as [express-xml-bodyparser](https://www.npmjs.com/package/express-xml-bodyparser) will automatically prevent entities from being defined, by throwing an error if an unescaped ampersand is encountered. Here's what happens when we send an XML POST to our endpoint with an ampersand using this package:
+  
   ```
   <?xml version="1.0" encoding="UTF-8"?>
   <!DOCTYPE foo [<!ENTITY bar "This is a fine entity">]>
-  <foo>&bar</foo>
+  <foo>&bar;</foo>
   ```
   Returns <code>Error: Invalid character entity</code>
   
@@ -335,6 +349,9 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   
   "XML Entity Expansion in NodeJS". SecureFlag.
   https://knowledge-base.secureflag.com/vulnerabilities/xml_injection/xml_entity_expansion_nodejs.html (accessed Feb 23, 2022).
+  
+  "XML External Entity Prevention Cheat Sheet". OWASP Cheat Sheet Series.
+  https://cheatsheetseries.owasp.org/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.html (accessed Feb 23, 2022).
   
 </details>
 
