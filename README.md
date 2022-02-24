@@ -330,6 +330,9 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   "Postman API Platform". Postman.
   https://www.postman.com/ (accessed Feb 20, 2022).
   
+  "XML Entity Expansion in NodeJS". SecureFlag.
+  https://knowledge-base.secureflag.com/vulnerabilities/xml_injection/xml_entity_expansion_nodejs.html (accessed Feb 23, 2022).
+  
 </details>
 
 # 5. Broken Access Control
