@@ -277,6 +277,9 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   <foo>&bar</foo>
   ```
   
+  You can see how your browser renders this XML by saving this file and opening it in your browser:
+  <a href="https://raw.githubusercontent.com/howed-neighbor/CS467/main/public/xml/foo.xml" download>foo.xml</a>
+  
   The issue here is that the [document type declaration](https://www.w3.org/TR/REC-xml/#sec-prolog-dtd) can be configured to access internal and external references.
   
   External entities, such as ones that point to server resources, or malicious URLs, are our primary concern. Here are is an example of a potentially harmful XML request (from the [OWASP website](https://owasp.org/www-community/vulnerabilities/XML_External_Entity_(XXE)_Processing).) This request could send an attacker information about critical system files:
