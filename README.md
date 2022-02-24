@@ -301,10 +301,10 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   <foo>&xxe;</foo>
   ```
   
-  Because XMl is less commmonly used, and many modern node libraries do not support expansion of external entities, your researchers were not able to find a library which sufficiently demonstrated this vulnerability compatible with our node setup. In lieu of a live demonstration, please consider the following well-documented examples:
+  Because many modern node libraries do not support expansion of external entities, your researchers were not able to find a library which sufficiently demonstrated this vulnerability compatible with our node setup. In lieu of a live demonstration, please consider the following well-documented examples:
   
-  [XML Entity Expansion in NodeJS](https://knowledge-base.secureflag.com/vulnerabilities/xml_injection/xml_entity_expansion_nodejs.html)
-  [XML External Entity Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.html)
+  [XML Entity Expansion in NodeJS](https://knowledge-base.secureflag.com/vulnerabilities/xml_injection/xml_entity_expansion_nodejs.html)  
+  [XML External Entity Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.html)  
   
   ---
   
