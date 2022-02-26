@@ -16,6 +16,8 @@
     "forever": "^4.0.2",
     "fs": "0.0.1-security",
     "mysql": "^2.18.1",
-    "node-serialize": "0.0.4"
+    "node-serialize": "0.0.4",
+    "serialize-javascript": "^6.0.0",
+    "v8": "^0.1.0"
   }
 }

@@ -48,10 +48,18 @@
             </form>
         </p>
 
+	<p>Result:</p>
 	{{#if serialized}}
-		<p>The Serialized oject is:</p>
-		<p class="codeBlock">{{serialized}}</p>
-	{{/if}}
+        <table class="markdown">
+            <tr>
+                <th>Serialized Object:</th>
+            </tr>
+            <tr class="text_small">
+		    <td>{{serialized}}</td>
+            <tr>
+        </table>
+        {{else}}<span class="deselected">[...]<br></span>
+        {{/if}}
 
 	<p>We'll now deserialize the serialized object, which should return the original input <span class="codeBlock">{{benign}}</span>
 
@@ -68,10 +76,19 @@
             </form>
         </p>
 
+	<p>Result:</p>
 	{{#if deserialized}}
-		<p>The original object is:</p>
-		<p class="codeBlock">{{deserialized}}</p>
-	{{/if}}
+        <table class="markdown">
+            <tr>
+                <th>The Original Object:</th>
+            </tr>
+            <tr class="text_small">
+		    <td>{{deserialized}}</td>
+            <tr>
+        </table>
+        {{else}}<span class="deselected">[...]<br></span>
+        {{/if}}
+
 
 	<p>We'll now utlize a more nefarious input which will allow us to create a BIND Shell on our server.  Type in the following:<p>
 	<p class="codeBlock">{{payload}}</p>
@@ -138,6 +155,7 @@
 		<p class="codeBlock">nc -vn 157.175.92.30 4444</p>
 		<p>If visiting the web application on the flip server</p>
 		<p class="codeBlock">nc -vn 127.0.0.1 4444</p>
+        {{else}}<span class="deselected">[...]<br></span>
 	{{/if}}
 
     <h3>Citations: Insecure Deserialization</h3>
