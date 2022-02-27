@@ -453,8 +453,10 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   
   To put in perspective how open the flip3 server is, I conducted an nmap scan:
   
-  |<img src="https://github.com/howed-neighbor/CS467/blob/main/public/images/flip3_nmap_scan1.png" alt="flip_scan1" height="50%" width="100%">|
-  |<img src="https://github.com/howed-neighbor/CS467/blob/main/public/images/flip3_nmap_scan2.png" height="50%" width="100%">|
+  <img src="https://github.com/howed-neighbor/CS467/blob/main/public/images/flip3_nmap_scan1.png" alt="flip_scan1" height="50%" width="100%">
+  <img src="https://github.com/howed-neighbor/CS467/blob/main/public/images/flip3_nmap_scan2.png" height="50%" width="100%">
+  
+  The simple nmap scan can provide an attacker a wealth of information, but more importantly, each open port/protocal provides an attacker a potential attack vector against the system or application.
   
   ---
 ### Remediation
@@ -479,13 +481,13 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   
   ---
 ### Citations: Security Misconfiguration
-  "Security Misconfiguration". OWASP.
+  "Security Misconfiguration". OWASP.  
   https://owasp.org/www-project-top-ten/2017/A6_2017-Security_Misconfiguration (accessed Feb 22, 2022).
   
-  "Security Misconfiguration Explained". The Hackerish.
+  "Security Misconfiguration Explained". The Hackerish.  
   https://thehackerish.com/owasp-security-misconfiguration-explained/ (accessed Feb 19, 2022).
   
-  "What is Security Configuration and How to Avoid It" Guardiacore.
+  "What is Security Configuration and How to Avoid It" Guardiacore.  
   https://www.guardicore.com/blog/understanding-and-avoiding-security-misconfiguration/ (accessed Feb 19, 2022).
 </details>
 
