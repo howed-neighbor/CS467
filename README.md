@@ -763,6 +763,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   ```
   var obj = Buffer.from(JSON.parse(req.body.userInput).data)
   var deserialized = obj.toString('utf8')
+  ```
   
   Here's what you'll see if you deserialize the corresponding serialized object:
   
