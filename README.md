@@ -711,16 +711,83 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 # 9. Using Components with Known Vulnerabilities
 <details>
   <summary>
-    ⨯ [Article not available yet]
+    Details
   </summary>
   
 ### Description
+  |Source|Definition|
+  |---|---|
+  |Team Treehouse|**Components** such as libraries, frameworks, and other software modules, run with same privileges as the application. If a vulnerable component is exploited, such an attack can facilitate serious data loss or server takeover.  Applications and APIs using components with known vulnerabilities may undermine application defenses and enable various attacks and impacts|
+  |GeeksforGeeks|**Components with known vulnerabilities** can be defined as third-party apps or software platforms that are outdated and contain bugs that are public to all, i.e. sites like <a href="https://www.exploit-db.com">exploit-db</a> contain the full details as to how to exploit the bugs to put the security of the whole website under severe threat.|
+  |WhiteSource|**Components with known vulnerabilities** contain vulnerabilities that were discovered in open source components and published in the NVD, security advisories or issue trackers.  From the moment of publication, a vulnerability can be exploited by hacker who find the documentation.|
+  
+  As developers, we often solely focus on functionality of the software we are writing, very rarely do we think about security.  We'll often incorporate libraries that help us get our job done, but we don't do our due diligence in researching possible vulnerabilities associated with those libraries.  The security often gets overlooked.
+  
   ---
 ### Demonstration
+  Our Web Application makes use of the node package **"node-serialize"** to serialize and deserialize objects. The **"node-serialize"** library has a CVE (Common Vulnerability and Exposure) associated with it.
+  
+  <a href="https://www.cvedetails.com/cve/CVE-2017-5941/">CVE-2017-5941</a> contains a description and links to proof of concept exploit code for the node-serialize library.
+  
+  For an in-depth demonstration on how to exploit a component with a known vulnerability, please refer to our Insecure Deserialization section, where you'll be taken through a step-by-step guide on how to exploit the **"node-serialize"** library.
+  
   ---
 ### Remediation
+  A mitigation technique to discover vulnerabilities against our web application is to manually check the libraries and version against exploit databases, CVEs, etc.  This is how we discovered the vulnerability with **node serialize v.0.0.4**, however, there are more efficient methods to do so.  As developers we can employ automated scanners, such as <a href="https://www.tenable.com">Tenable's Nessus</a> or <a href="https://www.openvas.org">Openvas</a>.
+  
+  Automated scanners enable developers to continuously monitor their web application for current and new vulnerabilities not only in our web applications, but in all software running on our Host system. Very rarely do hackers rely on one vulnerability to gain control of a system.  Systems are usually "rooted" by chaining multiple exploits together. Automated scanners are an effective way to discover vulnerabilities and address "low hanging fruit".
+  
+  Once a component with a known vulnerability is discovered, developers should seek to remove that component from their application, or mitigate the vulnerability.  In the Insecure Deserialization section, we mitigated the vulnerability with the use of the <code>JSON.stringify</code> function.  A more preferable solution, would be to use another library that provides the same functionality, but without the vulnerabilty.
+  
+  The nodejs engine <span class="bold">v8</span> provides us such a capability. It allows to serialize and deserialize objects.
+  
+  Our code to serialize user input is now:
+  
+  ```
+  var v8 = require('v8')
+  var obj = req.body.userInput
+  var serialized = v8.serialize(obj)
+  var json = JSON.stringify(serialized)
+  ```
+  
+  Here's what you'll see if you serialize an object in our web app:
+  
+  ```
+  {test:123}
+  ```
+  
+  > <img src="https://github.com/howed-neighbor/CS467/blob/main/public/readmeImages/usingComponentsWithKnownVulnerabilities1.PNG">
+  
+  Our code to deserialize an object is now:
+  
+  ```
+  var obj = Buffer.from(JSON.parse(req.body.userInput).data)
+  var deserialized = obj.toString('utf8')
+  
+  Here's what you'll see if you deserialize the corresponding serialized object:
+  
+  > <img src="https://github.com/howed-neighbor/CS467/blob/main/public/readmeImages/usingComponentsWithKnownVulnerabilities2.PNG">
+  
+  As in the Insecure Deserialization Section, attempt to start up a BIND shell on our webserver, by deserializing the following malicious input:
+  
+  ```
+  {"rce":"_$$ND_FUNC$$_function (){require('child_process').exec('ncat -nlvp 4444 -e /bin/sh', function(error, stdout, stderr) { console.log(stdout) });}()"}
+  ```
+  
+  We now receive a error message, instead of a BIND shell:
+    
+  > <img src="https://github.com/howed-neighbor/CS467/blob/main/public/readmeImages/usingComponentsWithKnownVulnerabilities3.PNG">  
+  
   ---
 ### Citations: Using Components with Known Vulnerabilities
+  "Insecure Components" Team Treehouse.  
+  https://teamtreehouse.com/library/insecure-components (accessed Feb 18, 2022).
+  
+  "What is using components with known vulnerabilities". GeeksForGeeks.  
+  https://www.geeksforgeeks.org/what-is-components-with-known-vulnerability/ (accessed Feb 19, 2022).
+  
+  "You can't ignore using components with known vulnerabilities". Whitesource.  
+  https://www.whitesourcesoftware.com/resources/blog/using-components-with-known-vulnerabilities/ (accessed Feb 19, 2022).
 </details>
 
 # 10. Insufficient Logging & Monitoring
