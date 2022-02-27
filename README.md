@@ -705,7 +705,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   https://en.wikipedia.org/wiki/Serialization (accessed Feb 15, 2022).
   
   "What is Insecure Deserialization." Acunetix.  
-  https://www.acunetix.com/blog/articles/what-is-insecure-deserialization/ (accessed Feb 10, 2022)
+  https://www.acunetix.com/blog/articles/what-is-insecure-deserialization/ (accessed Feb 10, 2022).
 </details>
 
 # 9. Using Components with Known Vulnerabilities
@@ -780,7 +780,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   
   ---
 ### Citations: Using Components with Known Vulnerabilities
-  "Insecure Components" Team Treehouse.  
+  "Insecure Components". Team Treehouse.  
   https://teamtreehouse.com/library/insecure-components (accessed Feb 18, 2022).
   
   "What is using components with known vulnerabilities". GeeksForGeeks.  
