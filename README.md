@@ -433,16 +433,60 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 # 6. Security Misconfiguration
 <details>
   <summary>
-    ⨯ [Article not available yet]
+    Details
   </summary>
   
 ### Description
+  |Source|Definition|
+  |---|---|
+  |OWASP|**Security Misconfiguration** can happen at any level of an application stack, including the network services, platform, web server, application server, database, frameworks, custom code, and pre-installed virtual machines, containers, or storage.|
+  |The Hackerish|**Security Misconfiguration** happens when the responsible party fails to follow best practices when configuring an asset.  This asset can be an operating system, a web server, software running on a machine, etc. Security Misonfigurations don't affect web assets only.  Any component which requires a configuration is subject to this vulnerability.  This means network devices, hardware, email services, etc. can suffer from this vulnerability.|
+  |Guardiacore|**Security Misonfiguration** is simply defined as failing to implement security controls for a server or web application, or implementing the security controls, but doing so with error.|
+  
   ---
 ### Demonstration
+  From the definitions, it is clear that **Security Misoncfiguration** affects more than just the web application, which in our case is the nodejs application, the libraries we are using, and our database.
+  
+  For the purposes of this demonstration, we'll focus on the Server itself, which in this case if the Oregon State flip3 server where our vulnerable web application is hosted.  More specificically we'll look at configuration of the ports and protocols.
+  
+  One of the tenets of good network security is to only open network ports that are necessary. However, because of the nature of the flip3 server, it is required to be fairly open, otherwise it would not be possible to host student web applications - including ours.
+  
+  To put in perspective how open the flip3 server is, I conducted an nmap scan:
+  
+  |<img src="https://github.com/howed-neighbor/CS467/blob/main/public/images/flip3_nmap_scan1.png" alt="flip_scan1" height="50%" width="100%">|
+  |<img src="https://github.com/howed-neighbor/CS467/blob/main/public/images/flip3_nmap_scan2.png" height="50%" width="100%">|
+  
   ---
 ### Remediation
+  For obvious reasons, we do not have the privileges necessary to harden the flip3 server, however, we do have those privileges on our AWS instance.
+  
+  In our AWS instance we can control which ports/protocols are exposed through the use of **Security Groups** and **Network ACLs**.  For our purposes, we'll only use the Security Group.
+  
+  Each EC2 instance in our AWS Virtual Private Cloud (VPC) must have a security group associated with it.  A security group acts a firewall.  We can define a range of source IPs from the Internet that communicate with our EC2 instance, and we can define the ports on our EC2 instance that can be reached.
+  
+  We created the following rule:
+  <img src="https://github.com/howed-neighbor/CS467/blob/main/public/images/aws_security_group.png" width="100%">
+  
+  This only exposes the TCP port 37773 to anyone on the Internet (0.0.0.0), significantly reducing the attack surface area of our system/application.
+  
+  Screenshot an nmap scan before the security group was modified in AWS:
+  <img src="https://github.com/howed-neighbor/CS467/blob/main/public/images/aws_scan_before.png" width="100%">
+  
+  Screenshot of an nmap scan after the security group was modified in AWS:
+  <img src="https://github.com/howed-neighbor/CS467/blob/main/public/images/aws_scan_after.png" width="100%">
+  
+  As we can see, the information a potential attacker is able to obtain is limited, but more importantly our attack surface area is greatly reduced.
+  
   ---
 ### Citations: Security Misconfiguration
+  "Security Misconfiguration". OWASP.
+  https://owasp.org/www-project-top-ten/2017/A6_2017-Security_Misconfiguration (accessed Feb 22, 2022).
+  
+  "Security Misconfiguration Explained". The Hackerish.
+  https://thehackerish.com/owasp-security-misconfiguration-explained/ (accessed Feb 19, 2022).
+  
+  "What is Security Configuration and How to Avoid It" Guardiacore.
+  https://www.guardicore.com/blog/understanding-and-avoiding-security-misconfiguration/ (accessed Feb 19, 2022).
 </details>
 
 # 7. Cross-Site Scripting
