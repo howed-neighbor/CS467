@@ -8,13 +8,108 @@
         <script src="./js/interactions.js"></script>
     </head>
 
-    <h2>Name of Vulnerability</h2>
-        <p>Insufficient Logging and Monitoring</p>
-    <h2>Description</h2>
-        <p>--</p>
-    <h2>Demonstration</h2>
-        <p>--</p>
-    <h2>Remediation</h2>
-        <p>--</p>
-           
+
+    <h1>Insufficient Logging and Monitoring</h1>
+    <hr class="light">
+    <h3>Description</h3>
+        <table class="markdown">
+            <tr>
+                <th>Source</th>
+                <th>Definition</th>
+            </tr>
+            <tr>
+                <td>Siemba</td>
+		<td><span class="bold">Insufficient logging and monitoring</span> is missing security critical information logs or lack of proper log format, context, storage, security and timely response to detect an incident or breach.</td>
+            </tr>
+            <tr>
+                <td>Crashttest Security</td>
+                <td>Attack based on <span class="bold">insufficient logging and monitoring</span> are usually ranked high prevalence, medium in opportunity, and low in detectability.  Ensuring that all events are logged, and events monitored, as a result, is often considered a first step in intrusion detection.</td>
+            <tr>
+                <td>MITRE</td>
+                <td>When a security-critical events are not logged properly, such as a failed login attempt, this can make malicious behavior more difficult to detect and may hinder forensic alanysis after an attack succeeds.</td>
+            </tr>
+        </table>
+    <h3>Description</h3>
+    <p><span class="bold">Insufficient Logging and Monitroing</span> is not necessarily a vulnerability that can be exploited, however, it makes an attack on system more likely to succeed.  The absence of logging and monitoring means that it is almost impossible to detect an attack on a system and thus prevents any response or mitigative actions from taking place</p>
+    <h3>Demonstration</h3>
+    <p>When you visited this section, you should have been redirected to our AWS EC2 instance, which would have then triggered our web application to start up snort<p>
+    <p>We'll take you through a few of the exercises in the previous sections to display how Snort works.<p>
+    <p>Our demonstration makes use of <span class="bold">Snort</span>.  Snort is an Intrustion Detection System (IDS) and is program that is installed on our host operating system in our AWS EC2 instance</p>
+
+    <p>Cross Site Scripting Example</p>
+        <p>
+            <form action="/insufficientLoggingAndMonitoring/xss#demonstration" method="post">
+                <fieldset>
+                    <legend>XSS</legend>
+                        <label>User Input:
+                            <input type="hidden" name="type" value="default">
+			    <input type="textarea" name="userInput" placeholder="{{xss}}" required>
+                        </label>
+                        <input type="submit" value="Submit"/>
+                </fieldset>
+            </form>
+        </p>
+
+        <p>Result:</p>
+        {{#if vuln}}
+        <table class="markdown">
+            <tr>
+                <th>User Input</th>
+            </tr>
+            <tr class="text_small">
+		<td>{{vuln}}</td>
+            <tr>
+        </table>
+        {{else}}<span class="deselected">[...]<br></span>
+        {{/if}}
+
+        <p>
+            <form action="/insufficientLoggingAndMonitoring/sqli#demonstration" method="post">
+                <fieldset>
+                    <legend>SQL Query</legend>
+                        <label>Enter userName:
+                            <input type="hidden" name="type" value="remediation">
+                            <input type="text" name="username" size="20" maxlength="20" placeholder="user1' or TRUE; #" required>
+                        </label>
+                        <input type="submit" value="Submit"/>
+                </fieldset>
+            </form>
+        </p>
+
+        <p>Result:</p>
+        {{#if vuln2}}
+        <table class="markdown">
+            <tr>
+                <th>User Input</th>
+            </tr>
+            <tr class="text_small">
+		<td>{{vuln2}}</td>
+            <tr>
+        </table>
+        {{else}}<span class="deselected">[...]<br></span>
+        {{/if}}
+
+        <p>
+            <form action="/insufficientLoggingAndMonitoring/readfile#demonstration" method="post">
+                <fieldset>
+                        <input type="submit" value="Read Log File"/>
+                </fieldset>
+            </form>
+        </p>
+	<p class="bold">You may need to click the button twice before the logs appear</p>
+	{{#if logs}}
+	<p class="codeBlock">{{logs}}</p>
+	<p>In the logs we can see your IP, the attacker attempting to exploit our web application</p>
+	<p>This demonstration showed how powerful logging and monitoring can be, it can help defenders identify possible intrusions into their system.  However, an IDS is only as good as the rules that written for it.  Additionally, defenders must also be skilled in reviewing logs.  In our example we only had two attacks, in anterprise system, their could potentially be hundreds, thousands, even hundreds of thousands of possible alerts.</p>
+        {{else}}<span class="deselected">[...]<br></span>
+	{{/if}}
+
+	
+    <h3>Citations: Injection</h3>
+        <p>"OWASP Top 10 - Insufficient Logging and Monitoring". Siemba.<br>
+            <a href="https://www.siemba.io/post/owasp-top-10-insufficient-logging-monitoring#:~:text=Insufficient%20logging%20and%20monitoring%20is,data%20breach%20is%20280%20days.">https://www.siemba.io/post/owasp-top-10-insufficient-logging-monitoring#:~:text=Insufficient%20logging%20and%20monitoring%20is,data%20breach%20is%20280%20days.</a> (accessed Feb 26, 2022).</p>
+        <p>"Comprehensive Guide To Insufficient Logging and Monitoring and How to Prevent It". Crashtest Security.</br>
+            <a href="https://crashtest-security.com/insufficient-logging-monitoring-guide/">https://crashtest-security.com/insufficient-logging-monitoring-guide/</a> (accessed Feb 27, 2022).</p>
+        <p>"Insufficient Logging". MITRE.</br>
+            <a href="https://cwe.mitre.org/data/definitions/778.html">https://cwe.mitre.org/data/definitions/778.html</a> (accessed Feb 26, 2022).</p>
 </html>

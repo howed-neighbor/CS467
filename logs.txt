@@ -1,6 +1,2 @@
-02/21-13:04:07.900669  [**] [1:1000001:1] ICMP Packet Found [**] [Classification: Generic ICMP event] [Priority: 3] {ICMP} 87.252.103.226 -> 172.31.34.32
-02/21-13:04:08.901702  [**] [1:1000001:1] ICMP Packet Found [**] [Classification: Generic ICMP event] [Priority: 3] {ICMP} 87.252.103.42 -> 172.31.34.32
-02/21-13:04:09.910963  [**] [1:1000001:1] ICMP Packet Found [**] [Classification: Generic ICMP event] [Priority: 3] {ICMP} 87.252.103.226 -> 172.31.34.32
-02/21-13:04:10.915029  [**] [1:1000001:1] ICMP Packet Found [**] [Classification: Generic ICMP event] [Priority: 3] {ICMP} 109.161.147.218 -> 172.31.34.32
-02/21-13:04:11.919844  [**] [1:1000001:1] ICMP Packet Found [**] [Classification: Generic ICMP event] [Priority: 3] {ICMP} 87.252.103.226 -> 172.31.34.32
-02/21-13:04:12.921710  [**] [1:1000001:1] ICMP Packet Found [**] [Classification: Generic ICMP event] [Priority: 3] {ICMP} 87.252.103.226 -> 172.31.34.32
+02/27-18:04:58.836544  [**] [1:10000002:0] SERVER-WEBAPP XSS [**] [Priority: 0] {TCP} 82.194.54.151:37409 -> 172.31.34.32:37773
+02/27-18:05:07.752662  [**] [1:10000003:0] SERVER-WEBAPP SQLI [**] [Priority: 0] {TCP} 82.194.54.151:37411 -> 172.31.34.32:37773

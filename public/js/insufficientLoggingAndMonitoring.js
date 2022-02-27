@@ -2,9 +2,11 @@ module.exports = function() {
 	var express = require("express")
 	var router = express.Router()
 	var handlebars = require("express-handlebars")
+	var os = require('os');
 	const fs = require('fs');
 	var child;
 	var pid;
+	var global_data;
 	const { exec } = require('child_process');
 
 	async function startSnort(){
@@ -48,45 +50,74 @@ module.exports = function() {
 	}
 
 	function readFile(){
-		fs.readFile('./logs.txt', 'utf8', function(err, data){
+		fs.readFileSync('./logs.txt', 'utf8', (err, data) =>{
 			if(err){
 				console.log(err);
 				return;
 			}
+			console.log('no error');
 			console.log(data);
 
 		});
 	}
 
-	router.get("/", (req,res) => {
+	router.get("/", async (req,res) => {
+		if(os.hostname != "ip-172-31-34-32"){
+			console.log("not aws instance");
+		}
 		var context = {
 			header: "> Insufficient Logging and Monitoring",
 			insufficientLoggingAndMonitoring: true,
 			darkTheme: req.session.darkTheme,
 			userName: req.session.userName,
-			password: req.session.password
+			password: req.session.password,
+			xss: `<script>alert(42)</script>`
 		}
 		res.render("insufficientLoggingAndMonitoring",context)
 		console.log("Insufficient Logging and Monitoring loaded!")
+		
+		// Start Snort upon visiting this section
+		await startSnort();
 
 		// Saves current path for light/dark theme redirect
 		req.session.previousPath = req.originalUrl
 	})
 
-	router.get("/start", async (req,res) => {
+	router.post("/xss", (req,res) => {
 		var context = {
 			header: "> Insufficient Logging and Monitoring",
 			insufficientLoggingAndMonitoring: true,
 			darkTheme: req.session.darkTheme,
 			userName: req.session.userName,
-			password: req.session.password
+			password: req.session.password,
+			vuln: req.body.userInput,
+			xss: `<script>alert(42)</script>`,
+			vulnerable: '{{{input}}}',
+			remediate: '{{input}}'
 		}
-		await startSnort();
-
-
+		console.log("user input: " + req.body.userInput);
+		context.sanitized = req.body.userInput;
 		res.render("insufficientLoggingAndMonitoring",context)
-		console.log("Insufficient Logging and Monitoring loaded!")
-		console.log(child.pid);
+
+		// Saves current path for light/dark theme redirect
+		req.session.previousPath = req.originalUrl
+	})
+
+	router.post("/sqli", (req,res) => {
+		var context = {
+			header: "> Insufficient Logging and Monitoring",
+			insufficientLoggingAndMonitoring: true,
+			darkTheme: req.session.darkTheme,
+			userName: req.session.userName,
+			password: req.session.password,
+			vuln2: req.body.username,
+			xss: `<script>alert(42)</script>`,
+			vulnerable: '{{{input}}}',
+			remediate: '{{input}}'
+		}
+		console.log("user input: " + req.body.username);
+		console.log(context.vulnerable);
+		res.render("insufficientLoggingAndMonitoring",context)
 
 		// Saves current path for light/dark theme redirect
 		req.session.previousPath = req.originalUrl
@@ -108,7 +139,7 @@ module.exports = function() {
 		req.session.previousPath = req.originalUrl
 	})
 
-	router.get("/readfile", async (req,res) => {
+	router.post("/readfile", async (req,res) => {
 		var context = {
 			header: "> Insufficient Logging and Monitoring",
 			insufficientLoggingAndMonitoring: true,
@@ -116,7 +147,11 @@ module.exports = function() {
 			userName: req.session.userName,
 			password: req.session.password
 		}
-		readFile();
+		await stopSnort();
+		await new Promise(r => setTimeout(r, 1000));
+		var data = await fs.readFileSync('./logs.txt', 'utf8');
+		await new Promise(r => setTimeout(r, 1000));
+		context.logs = data;
 		res.render("insufficientLoggingAndMonitoring",context)
 		console.log("Insufficient Logging and Monitoring loaded!")
 
