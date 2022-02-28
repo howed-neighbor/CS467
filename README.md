@@ -814,7 +814,9 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   
   Snort is an Intrustion Detection System (IDS) and is installed on our host operating system in our AWS EC2 instance.
   
-  In the logs we can see your IP, or the IP of the attacker attempting to exploit our web application.
+  In the logs we can see your IP, or the IP of the attacker attempting to exploit our web application. (IP obscured in screenshot below):
+  
+  > <img src="https://github.com/howed-neighbor/CS467/blob/main/public/readmeImages/logs.PNG">
   
   This demonstration shows how powerful logging and monitoring can be, it can help defenders identify possible intrusions into their system.  However, an IDS is only as good as the rules that written for it.  Additionally, defenders must also be skilled in reviewing logs.  In our example we only had two attacks, in an enterprise system, their could potentially be hundreds, thousands, even hundreds of thousands of alerts.
   
