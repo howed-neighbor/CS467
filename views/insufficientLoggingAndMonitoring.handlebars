@@ -29,12 +29,26 @@
                 <td>When a security-critical events are not logged properly, such as a failed login attempt, this can make malicious behavior more difficult to detect and may hinder forensic alanysis after an attack succeeds.</td>
             </tr>
         </table>
-    <h3>Description</h3>
     <p><span class="bold">Insufficient Logging and Monitroing</span> is not necessarily a vulnerability that can be exploited, however, it makes an attack on system more likely to succeed.  The absence of logging and monitoring means that it is almost impossible to detect an attack on a system and thus prevents any response or mitigative actions from taking place</p>
     <h3>Demonstration</h3>
     <p>When you visited this section, you should have been redirected to our AWS EC2 instance, which would have then triggered our web application to start up snort<p>
     <p>We'll take you through a few of the exercises in the previous sections to display how Snort works.<p>
     <p>Our demonstration makes use of <span class="bold">Snort</span>.  Snort is an Intrustion Detection System (IDS) and is program that is installed on our host operating system in our AWS EC2 instance</p>
+    
+    <p>The heart of what makes Snort work is the rules file.  Below, is a screenshot of the rules that we created</p>
+    <img src="./images/snort_rules.png" width="100%">
+    <p>The following screenshot explains the general syntax of a snort rule<p>
+    <img src="./images/snort_syntax.png" width="100%">
+
+    <p>This following rule tells Snort what to look for in an sqli attack<p>
+    <p class="codeBlock">{{sqli_rule}}</p>
+    <p>The only portion of the rule not explained in the syntax screenshot, is the <span class="bold">content</span> key-value pair.  The value, which in this case is "%27", is unicode for a single quote, which is what is required to conduct an sqli attack against our web application.  This rule tells snort to inspect packets being sent to our system, if detects a single quote in the packet, it will generate a log.</p>
+    
+    <p>This following rule tells Snort what to look for in an XSS attack<p>
+    <p class="codeBlock">{{sqli_rule}}</p>
+    <p>In this rule when snort detects the string "alert" in a packet, it will generate a log for possible XSS attack</p>
+
+    <p>Now that we've developed a basic understanding of how snort works, we'll move on to the demonstratin.  We'll attempt to conduct two different attacks against our system - XSS and SQLI.  If successful, we should generate to log entries from snort</p>
 
     <p>Cross Site Scripting Example</p>
         <p>
@@ -96,6 +110,7 @@
                 </fieldset>
             </form>
         </p>
+
 	<p class="bold">You may need to click the button twice before the logs appear</p>
 	{{#if logs}}
 	<p class="codeBlock">{{logs}}</p>
@@ -103,6 +118,7 @@
 	<p>This demonstration showed how powerful logging and monitoring can be, it can help defenders identify possible intrusions into their system.  However, an IDS is only as good as the rules that written for it.  Additionally, defenders must also be skilled in reviewing logs.  In our example we only had two attacks, in anterprise system, their could potentially be hundreds, thousands, even hundreds of thousands of possible alerts.</p>
         {{else}}<span class="deselected">[...]<br></span>
 	{{/if}}
+
 
 	
     <h3>Citations: Injection</h3>
