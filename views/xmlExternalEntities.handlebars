@@ -8,13 +8,108 @@
         <script src="./js/interactions.js"></script>
     </head>
 
-    <h2>Name of Vulnerability</h2>
-        <p>XML External Entities</p>
-    <h2>Description</h2>
-        <p>--</p>
-    <h2>Demonstration</h2>
-        <p>--</p>
-    <h2>Remediation</h2>
-        <p>--</p>
+    <h1>XML External Entities</h1>
+    <hr class="light">
+
+    <h3>Description</h3>
+        <table class="markdown">
+            <tr>
+                <td>Source</td>
+                <td>Definition</td>
+            </tr>
+            <tr>
+                <td>OWASP</td>
+                <td>An <span class="bold">XML External Entity attack</span> is a type of attack against an application that parses XML input. This attack occurs when XML input containing a reference to an external entity is processed by a weakly configured XML parser.
+            </tr>
+            <tr>
+                <td>IBM</td>
+                <td>[Vulnerable software] could allow a remote attacker to obtain sensitive information, caused by an <span class="bold">XML External Entity Injection</span> (XXE) error when processing XML data. An attacker could declare an entity referencing the content of a local file to obtain sensitive information.</td>
+            </tr>
+        </table>
+
+        <p>A basic XML file with a defined entity looks like this:</p>
+
+        <p class="codeBlock">
+            &lt;?xml version="1.0" encoding="UTF-8"?><br>
+            &lt;!DOCTYPE foo [&lt;!ENTITY bar "This is a fine entity"&gt;]&gt;<br>
+            &lt;foo&gt;&amp;bar;&lt;/foo&gt;
+        </p>
+
+        <p>Here's how Firefox and Chrome render this XML:<p>
+  
+        <p>Firefox:</p>
+        <img src="../readmeImages/fooFirefox.PNG">
+  
+        <p>Chrome:</p>
+        <img src="../readmeImages/fooChrome.PNG">
+
+        <p>You can also access this XML file here: <a href="./xml/foo.xml">foo.xml</a><p>
+  
+    <hr>
+    <h3>Demonstration</h3>
+        
+        <p>The issue here is that the [document type declaration](https://www.w3.org/TR/REC-xml/#sec-prolog-dtd) can be configured to access internal and external references.</p>
+  
+        <p>External entities, such as ones that point to server resources, or malicious URLs, are our primary concern. Here are is an example of a potentially harmful XML request (from the <a href="https://owasp.org/www-community/vulnerabilities/XML_External_Entity_(XXE)_Processing">OWASP website.</a>) This request could send an attacker information about critical system files:</p>
+  
+        <p class="codeBlock">
+          &lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;<br>
+          &lt;!DOCTYPE foo [<br>
+            &nbsp;&nbsp;&lt;!ELEMENT foo ANY &gt;<br>
+            &nbsp;&nbsp;&lt;!ENTITY xxe SYSTEM "file:///c:/boot.ini" &gt;]&gt;<br>
+          &lt;foo&gt;&xxe;&lt;/foo&gt;
+        </p>
+
+        <p>Because many modern node libraries do not support expansion of external entities, your researchers were not able to find a library which sufficiently demonstrated this vulnerability compatible with our node setup. In lieu of a live demonstration, please consider the following well-documented examples:</p>
+  
+        <a href="https://knowledge-base.secureflag.com/vulnerabilities/xml_injection/xml_entity_expansion_nodejs.html">XML Entity Expansion in NodeJS</a><br>
+        <a href="https://cheatsheetseries.owasp.org/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.html">XML External Entity Prevention Cheat Sheet</a><br>
+    
+    <hr>
+    <h3>Remediation</h3>
+
+        <p>Developers should consider all of their XML parsing dependencies carefully, and ensure any custom XML parsing implementations have external entity expansion off by default.</p>
+
+        <p>Popular npm XML parsing utilities such as <a href="https://www.npmjs.com/package/express-xml-bodyparser">express-xml-bodyparser</a> will automatically prevent entities from being defined, by throwing an error if an unescaped ampersand is encountered. Here's what happens when we send an XML POST to our endpoint with an ampersand using this package:</p>
+  
+        <p class="codeBlock">
+            &lt;?xml version="1.0" encoding="UTF-8"?><br>
+            &lt;!DOCTYPE foo [&lt;!ENTITY bar "This is a fine entity"&gt;]&gt;<br>
+            &lt;foo&gt;&amp;bar;&lt;/foo&gt;
+        </p>
+  
+        <p>Returns <code>Error: Invalid character entity</code></p>
+  
+        <p>In our hardened web app, we'll return a <code>400 BAD REQUEST</code> error if we receive a request of this type. This will limit the types of XML requests we can process, but it will ensure protection against this vulnerability. Try using an API like <a href="https://www.postman.com/">Postman</a> to send your own XML request to the server.</p>
+
+    <hr>
+    <h3>Citations</h3>
+
+    <p>"XML External Entity (XXE) Processing". OWASP.<br>
+        <a href="https://owasp.org/www-community/vulnerabilities/XML_External_Entity_(XXE)_Processing">https://owasp.org/www-community/vulnerabilities/XML_External_Entity_(XXE)_Processin</a> (accessed Feb 20, 2022).</p>
+      
+    <p>"IT06733: A vulnerability in XML External Entity (XXE) processing [...]". IBM Support.<br>
+        <a href="https://www.ibm.com/support/pages/apar/IT06733">https://www.ibm.com/support/pages/apar/IT06733</a> (accessed Feb 20, 2022).</p>
+      
+    <p>"XML introduction". MDN Web Docs.<br>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/XML/XML_introduction">https://developer.mozilla.org/en-US/docs/Web/XML/XML_introduction</a> (accessed Feb 20, 2022).</p>
+      
+    <p>"Load external DTDs (entity/entities) (local and remote) if a pref is set". Bugzilla.<br>
+        <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=22942">https://bugzilla.mozilla.org/show_bug.cgi?id=22942</a> (accessed Feb 20, 2022).</p>
+      
+    <p>"express-xml-bodyparser". npmjs.com.<br>
+        <a href="https://www.npmjs.com/package/express-xml-bodyparser">https://www.npmjs.com/package/express-xml-bodyparser</a> (accessed Feb 20, 2022).</p>
+      
+    <p>"Prolog and Document Type Declaration". w3.org.<br>
+        <a href="https://www.w3.org/TR/REC-xml/#sec-prolog-dtd">https://www.w3.org/TR/REC-xml/#sec-prolog-dtd</a> (accessed Feb 20, 2022).</p>
+      
+    <p>"Postman API Platform". Postman.<br>
+        <a href="https://www.postman.com/">https://www.postman.com/</a> (accessed Feb 20, 2022).</p>
+
+    <p>"XML Entity Expansion in NodeJS". SecureFlag.<br> 
+        <a href="https://knowledge-base.secureflag.com/vulnerabilities/xml_injection/xml_entity_expansion_nodejs.html">https://knowledge-base.secureflag.com/vulnerabilities/xml_injection/xml_entity_expansion_nodejs.html</a> (accessed Feb 23, 2022).</p>
+
+    <p>"XML External Entity Prevention Cheat Sheet". OWASP Cheat Sheet Series.<br>
+        <a href="https://cheatsheetseries.owasp.org/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.html</a> (accessed Feb 23, 2022).</p>
            
 </html>

@@ -5,21 +5,6 @@
 	<h1>User Data</h1>
 	<hr class="light">
 	<br>
-
-	<form id="encrypt_data" class="inline" action="/encryptDecrypt" method="post">
-		<input type="hidden" name="type" value="encrypt">
-    	<input class="background_green" type="submit" value="ENCRYPT DATA"/>
-	</form>
-	<form id="decrypt_data" class="inline" action="/encryptDecrypt" method="post">
-		<input type="hidden" name="type" value="decrypt">
-    	<input class="background_red" type="submit" value="DECRYPT DATA"/>
-	</form>
-	<br>
-	{{#if decryptError}}
-		<p class="text_red">Decryption error! Ensure data is not already decrypted, or try "Reset Database" below, then try encryption again.</p>
-	{{else}}
-		<p>Encryption/decryption successful.</p>
-	{{/if}}
 	
 	<table class="markdown word_break" id="userData">
 		<tr class="text_small no_wrap">
@@ -47,7 +32,7 @@
 	<hr class="light">
 
 	<h3>Reset Database</h3>
-		<form action="/admin" method="post">
+		<form action="/adminTest" method="post">
         	<input type="hidden" name="type" value="resetDatabase">
             <input type="submit" value="Reset Users table to sample data"/>
         </form>
@@ -55,7 +40,7 @@
 
 	<h3>Submit Query</h3>
 	<p>Submit any valid MariaDB query to database {{#if sqlError}}<span class="text_red">Error! Invalid query</span>{{/if}}
-		<form action="/admin" method="post">
+		<form action="/adminTest" method="post">
             <fieldset>
                 <legend>Submit Query</legend>
                 	<input type="hidden" name="type" value="submitQuery">
@@ -69,7 +54,7 @@
 
 	<h3>salt_and_hash</h3>
 	<p>Generate a salted and hashed password using the <code>crypto</code> module in nodejs:</br>
-        <form action="/admin" method="post">
+        <form action="/adminTest" method="post">
             <fieldset>
                 <legend>salt_and_hash</legend>
                 	<input type="hidden" name="type" value="saltAndHash">

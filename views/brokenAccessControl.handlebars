@@ -8,13 +8,88 @@
         <script src="./js/interactions.js"></script>
     </head>
 
-    <h2>Name of Vulnerability</h2>
-        <p>Broken Access Control</p>
-    <h2>Description</h2>
-        <p>--</p>
-    <h2>Demonstration</h2>
-        <p>--</p>
-    <h2>Remediation</h2>
-        <p>--</p>
+    <h1>Broken Access Control</h1>
+    <hr class="light">
+
+    <h3>Description</h3>
+        <table class="markdown">
+            <tr>
+                <td>Source</td>
+                <td>Definition</td>
+            </tr>
+            <tr>
+                <td>Wikipedia</td>
+                <td>In the fields of physical security and information security, <span class="bold">access control<span> (AC) is the selective restriction of access to a place or other resource</td>
+            </tr>
+            <tr>
+                <td>OWASP</td>
+                <td><span class="bold">Access control</span> enforces policy such that users cannot act outside of their intended permissions. Failures typically lead to unauthorized information disclosure, modification, or destruction of all data or performing a business function outside the user's limits</td>
+            </tr>
+            <tr>
+                <td>IBM</td>
+                <td><span class="bold">Access control</span> mechanisms determine which operations the user can or cannot do by comparing the user's identity to an access control list (ACL)</td>
+            </tr>
+        </table>
+  
+        <p>In our first 5 vulnerabilities, this category affects the most code. Every piece of data, endpoint, and access mechanism should be considered with respect to this topic.</p>
+  
+        <p>OWASP goes on to provide a <a href="https://owasp.org/Top10/A01_2021-Broken_Access_Control/">broad list of vulnerabilities</a> in this category:</p>
+  
+        <ul>
+            <li>Violation of the principle of least privilege or deny by default, where access should only be granted for particular capabilities, roles, or users, but is available to anyone.</li>
+            <li>Bypassing access control checks by modifying the URL (parameter tampering or force browsing), internal application state, or the HTML page, or by using an attack tool modifying API requests.</li>  
+            <li>Permitting viewing or editing someone else's account, by providing its unique identifier (insecure direct object references)</li>
+            <li>Accessing API with missing access controls for POST, PUT and DELETE.</li>
+            <li>Elevation of privilege. Acting as a user without being logged in or acting as an admin when logged in as a user.</li>
+            <li>Metadata manipulation, such as replaying or tampering with a JSON Web Token (JWT) access control token, or a cookie or hidden field manipulated to elevate privileges or abusing JWT invalidation.</li>
+            <li>CORS misconfiguration allows API access from unauthorized/untrusted origins.</li>
+            <li>Force browsing to authenticated pages as an unauthenticated user or to privileged pages as a standard user.</li>
+        </ul>
+
+    <hr>
+    <h3>Demonstration</h3>
+        <p>Our app is currently vulnerable to two of the access control failures above: bypassing access control checks by modifying the URL and accessing the API with missing access controls.</p>
+  
+        <p>During development, we created a route (OSU VPN users only) <a href="http://flip3.engr.oregonstate.edu:37773/adminTest">/adminTest</a> to test admin functionality. This page was created before we implemented Session authentication. However, we forgot to remove this route or remediate the access control on this page. Even though there is no link to this page on our site, if someone discovered this route they'd be able to access many of our admin utilities normally protected with userName/password authentication.</p>
+  
+        <p>The other access control failure can be demonstrated with any utility that can send an HTTP request. Here, we'll use <a href="https://www.postman.com/">Postman</a>.</p> 
+  
+        <p>Our web app will process any valid HTTP request sent to it without requiring authentication. Let's POST to <a href="./admin">/admin</a> and use the admin utility to reset the database:</p>
+  
+        <img src="./readmeImages/postToAdmin.png">
+  
+        <p>We were able to do this because there's no access control on that route. All of our custom user data has been lost!</p>
+    
+    <hr>
+    <h3>Remediation</h3>
+        <p>In our hardened app, we'll make to two changes to remediate these failures:</p>
+  
+        <ol>
+            <li>The <code>/adminTest</code> route will be removed</li>
+            <li>All reqest types sent to the <code>/admin</code> route will require the same Session authentication confirming the user that is signed in has admin credentials.</li>
+        </ol>
+  
+        <p>Additional remediations we could take include:</p>
+
+        <ul>
+          <li>Using more advanced authentication such as JWTs</li>
+          <li>Enforcing "least privilege" principles where certain utilities are only available to specific user groups</li>
+          <li>Increased logging</li>
+          <li>Disabling directory browsing</li>
+        </ul>
+
+    <hr>
+    <h3>Citations</h3>
+     <p>"A01:2021 – Broken Access Control". OWASP Top 10:2021.<br>
+        <a href="https://owasp.org/Top10/A01_2021-Broken_Access_Control/">https://owasp.org/Top10/A01_2021-Broken_Access_Control/</a> (accessed Feb 21, 2022).</p>
+
+    <p>"Authentication versus access control". IBM Watson Content Analytics.<br>
+        <a href="https://www.ibm.com/docs/en/wca/3.0.0?topic=security-authentication-versus-access-control">https://www.ibm.com/docs/en/wca/3.0.0?topic=security-authentication-versus-access-control</a> (accessed Feb 21, 2022).</p>
+  
+    <p>"Access Control". Wikipedia.<br>
+        <a href="https://en.wikipedia.org/wiki/Access_control">https://en.wikipedia.org/wiki/Access_control</a> (accessed Feb 21, 2022).</p>
+  
+    <p>"Postman API Platform". Postman.<br>
+        <a href="https://www.postman.com/">https://www.postman.com/</a> (accessed Feb 21, 2022).</p>
            
 </html>
