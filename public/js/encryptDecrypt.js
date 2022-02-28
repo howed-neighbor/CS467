@@ -1,4 +1,5 @@
 // Routing and response functions based on code from knightsamar/cs340_sample_nodejs_app, "https://github.com/knightsamar/cs340_sample_nodejs_app"
+// Crypto functions based on code from "Crypto", https://nodejs.org/api/crypto.html
 
 module.exports = function() {
 	var express = require("express")
@@ -6,45 +7,127 @@ module.exports = function() {
 	var router = express.Router()
 	var session = require("express-session")
 	var crypto = require("crypto")
+	var buffer = require("buffer")
+
+	const algorithm = 'aes-256-cbc'
+	const password = 'admin'
+	const salt = crypto.randomBytes(16)
+
+	function createCipher(algorithm,password,salt,userData) {
+		key = crypto.scryptSync(password,salt,32)
+		cipher = crypto.createCipher(algorithm,key)
+		result = cipher.update(userData,'utf8','hex')
+		result += cipher.final('hex')			
+		return result
+	}
 
 	// Encrypt userData column of MariaDB table
-	function encrypt(input,loaded) {
-		algorithm = "aes-192-cbc"
-		password = "admin"
-		crypto.scrypt(password,"salt",24,(err,key) => {
-			crypto.randomFill(new Uint8Array(16),(err,iv) => {
-				cipher = crypto.createCipheriv(algorithm,key,iv)
-				let result = cipher.update(input,"utf8","hex")
-				result += cipher.final("hex")
-				console.log(result)
-				loaded()
-			})
+	function encrypt(res,mysql,context,loaded,table) {
+
+		mysql.pool.query("SELECT COUNT(*) AS COUNT FROM " + table + ";",
+			function(err,results) {
+				if (err) {
+					res.redirect("./500")
+				}
+
+				var userCount = results[0].COUNT
+				var encrypted = null
+
+				for (let i=1; i<=userCount; i++) {
+					mysql.pool.query("SELECT userData FROM " + table + " WHERE userId = " + i + ";",
+						function(err,results) {
+							if(err) {
+								res.end();
+							}
+							userData = results[0].userData
+							encrypted = createCipher(algorithm,password,salt,userData)
+
+							// Updates MySQL table
+							mysql.pool.query("UPDATE " + table + " SET userData = '" + encrypted + "' WHERE userId = " + i + ";",
+								function(err,results) {
+									loaded();
+							})
+					})
+				}
 		})
 	}
 
-	// Decrypt userData column of MariaDB table
-	function decrypt(input,loaded) {
-		console.log("Decrypting!")
-		loaded()
+	function createDecipher(algorithm,password,salt,userData) {
+		key = crypto.scryptSync(password,salt,32)
+		decipher = crypto.createDecipher(algorithm,key)
+		try {
+			result = decipher.update(userData,'hex','utf8')
+			result += decipher.final('utf8')
+		} 
+		catch (error) {
+			throw (error)
+		}			
+		return result
 	}
 
+	// Decrypt userData column of MariaDB table
+	function decrypt(res,mysql,context,loaded,table) {
+
+		mysql.pool.query("SELECT COUNT(*) AS COUNT FROM " + table + ";",
+			function(err,results) {
+				if (err) {
+					res.redirect("./500")
+				}
+
+				var userCount = results[0].COUNT
+
+				for (let i=1; i<=userCount; i++) {
+					mysql.pool.query("SELECT userData FROM " + table + " WHERE userId = " + i + ";",
+						function(err,results) {
+							if(err) {
+								res.end();
+							}
+							userData = results[0].userData
+							try {
+								decrypted = createDecipher(algorithm,password,salt,userData)
+							}
+							catch (error) {
+								console.log("Decrypt error!")
+								context.decryptError = true
+							}
+
+							if (context.decryptError == false) {
+							// Updates MySQL table
+								mysql.pool.query("UPDATE " + table + " SET userData = '" + result + "' WHERE userId = " + i + ";",
+									function(err,results) {
+										loaded();
+								})
+							}
+							else {
+								loaded();
+							}
+						})
+				}
+			})
+	}
+	
+
 	router.post("/", (req,res) => {
-		var context = {}
+		var context = {
+			decryptError: false
+		}
+
 			// Tracks MySQL query count
 			var queries = 0;
 			var mysql = req.app.get('mysql');
 
 			if (req.body.type == "encrypt") {
-				encrypt("Zigmatic",loaded)
+				encrypt(res,mysql,context,loaded,"Users")
 			} 
 			else if (req.body.type == "decrypt") {
-				decrypt("170d5f87115359d6335044f276cd350d",loaded)
+				decrypt(res,mysql,context,loaded,"Users")
 			}
 			
 			// Checks if all SQL queries have completed before rendering page
 			function loaded(){
 				queries++;
-				if(queries >= 1) {
+				if(queries >= 5) {
+					req.session.decryptError = context.decryptError
 					res.redirect("./admin")
 				}
 			}	

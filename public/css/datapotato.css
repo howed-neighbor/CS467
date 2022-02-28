@@ -36,6 +36,15 @@ body.dark {
   background-color: rgba(13,17,23);
 }
 
+body.dark .codeBlock {
+  background-color: rgba(231,236,240);
+  color: black;
+  font-family: 'Consolas';
+  padding: 1em;
+  line-height: 1em;
+  border-radius: 5px;
+}
+
 body.dark hr {
   color: rgba(48,54,61);
   background-color: rgba(48,54,61);
@@ -120,6 +129,16 @@ table.markdown tr:nth-child(2n+3) {
   font-size: 2em;
 }
 
+.background_green {
+  background-color: rgba(204,240,180,1);
+  border: 1px solid green;
+}
+
+.background_red {
+  background-color: rgba(255,179,179,1);
+  border: 1px solid red;
+}
+
 .bold {
   font-weight: bold;
 }
@@ -127,9 +146,13 @@ table.markdown tr:nth-child(2n+3) {
 .codeBlock {
   background-color: rgba(231,236,240);
   font-family: 'Consolas';
-  padding-left: 1em;
-  line-height: 3em;
+  padding: 1em;
+  line-height: 1em;
   border-radius: 5px;
+}
+
+.col_max_width_20em {
+  max-width: 20em;
 }
 
 .compact {
@@ -189,12 +212,16 @@ table.markdown tr:nth-child(2n+3) {
   background-color: inherit;
 }
 
+.inline {
+  display: inline;
+}
+
 .no_wrap {
   word-break: keep-all;
 }
 
-.col_max_width_20em {
-  max-width: 20em;
+.padding_3px {
+  padding: 3px;
 }
 
 .selected {

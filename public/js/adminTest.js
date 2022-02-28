@@ -24,7 +24,7 @@ module.exports = function() {
 		mysql.pool.query(context.query,
 			function(err,results) {
 				if(err) {
-					return res.redirect("./admin")
+					return res.redirect("./adminTest")
 				}
 				loaded();
 			});
@@ -54,7 +54,7 @@ module.exports = function() {
 	// Routes
 	router.get("/", (req,res) => {
 		var context = {
-			header: "> ADMIN",
+			header: "> ADMIN TEST",
 			admin: true,
 			darkTheme: req.session.darkTheme,
 			userName: req.session.userName,
@@ -65,7 +65,6 @@ module.exports = function() {
 			decryptError: req.session.decryptError
 		}
 
-		if ((req.session.userName == "admin" || req.session.userName == "superAdmin") && (req.session.authorized == true)) {
 			// Tracks MySQL query count
 			var queries = 0;
 			var mysql = req.app.get('mysql');
@@ -75,14 +74,10 @@ module.exports = function() {
 			function loaded(){
 				queries++;
 				if(queries >= 1) {
-					res.render("admin",context)
-					console.log("ADMIN loaded!")
+					res.render("adminTest",context)
+					console.log("ADMIN TEST loaded!")
 				}
 			}
-		}
-		else {
-			res.redirect("./403")
-		}
 
 		// Saves current path for light/dark theme redirect
 		req.session.previousPath = req.originalUrl		
@@ -96,7 +91,7 @@ module.exports = function() {
 		function loaded(){
 			queries++;
 			if(queries >= 1) {
-				res.redirect("./admin")
+				res.redirect("./adminTest")
 			}
 		}
 
@@ -115,11 +110,7 @@ module.exports = function() {
 			salt_and_hash(res,req.body.salt_length,req.body.password,context)
 			req.session.salt = context.salt
 			req.session.salt_and_hash = context.salt_and_hash
-			res.redirect("./admin")
-		}
-
-		else {
-			res.redirect("./400")
+			res.redirect("./adminTest")
 		}
 	})
 

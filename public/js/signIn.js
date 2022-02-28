@@ -55,17 +55,19 @@ module.exports = function() {
 			function loaded(){
 				queries++;
 				if(queries >= 1) {
-					// Checks authorization, updates session
+					// Checks admin authorization, updates session
 					if (context.authorized == true) {
 						req.session.userName = req.body.userName
 						req.session.authorized = true
+						// Redirects to  admin page
+						path = "./admin"
 					}
 					else {
 						req.session.userName = null
 						req.session.authorized = null
+						// Redirects to page user was on when they signed in
+						path = req.session.previousPath
 					}
-					// Redirects to page user was on when they signed in
-					path = req.session.previousPath
 					res.redirect(path)
 				}
 			}	
