@@ -794,16 +794,40 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 # 10. Insufficient Logging & Monitoring
 <details>
   <summary>
-    ⨯ [Article not available yet]
+    Details
   </summary>
   
 ### Description
+  |Source|Definition|
+  |---|---|
+  |Siemba|**Insufficient logging and monitoring** is missing security critical information logs or lack of proper log format, context, storage, security and timely response to detect an incident or breach.|
+  |Crashtest Security|Attacks based on <span class="bold">insufficient logging and monitoring</span> are usually ranked high prevalence, medium in opportunity, and low in detectability.  Ensuring that all events are logged, and events monitored, as a result, is often considered a first step in intrusion detection.|
+  |MITRE|When a security-critical events are not logged properly, such as a failed login attempt, this can make malicious behavior more difficult to detect and may hinder forensic alanysis after an attack succeeds.|
+  
   ---
 ### Demonstration
+  **Insufficient Logging and Monitoring** is not necessarily a vulnerability that can be exploited, however, it makes an attack on system more likely to succeed.  The absence of logging and monitoring means that it is almost impossible to detect an attack on a system and thus prevents any response or mitigative actions from taking place.
+  
   ---
 ### Remediation
+  Our remediation makes use of **Snort**. To see this remediation, please head to our AWS EC2 instance and try the exercises there, which will trigger our web application to start up Snort.
+  
+  Snort is an Intrustion Detection System (IDS) and is installed on our host operating system in our AWS EC2 instance.
+  
+  In the logs we can see your IP, or the IP of the attacker attempting to exploit our web application.
+  
+  This demonstration shows how powerful logging and monitoring can be, it can help defenders identify possible intrusions into their system.  However, an IDS is only as good as the rules that written for it.  Additionally, defenders must also be skilled in reviewing logs.  In our example we only had two attacks, in an enterprise system, their could potentially be hundreds, thousands, even hundreds of thousands of alerts.
+  
   ---
 ### Citations: Insufficient Logging & Monitoring
+  "OWASP Top 10 - Insufficient Logging and Monitoring". Siemba.  
+  https://www.siemba.io/post/owasp-top-10-insufficient-logging-monitoring (accessed Feb 26, 2022).
+  
+  "Comprehensive Guide To Insufficient Logging and Monitoring and How to Prevent It". Crashtest Security.  
+  https://crashtest-security.com/insufficient-logging-monitoring-guide/ (accessed Feb 27, 2022).
+  
+  "Insufficient Logging". MITRE.  
+  https://cwe.mitre.org/data/definitions/778.html (accessed Feb 26, 2022).
 </details>
 
 # Citations: Primary Sources
