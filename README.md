@@ -814,6 +814,26 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   
   Snort is an Intrustion Detection System (IDS) and is installed on our host operating system in our AWS EC2 instance.
   
+  The heart of what makes Snort work is the rules file. Below, is a screenshot of the rules that we created:</p>
+  > <img src="https://github.com/howed-neighbor/CS467/blob/main/public/images/snort_rules.png" width="100%">
+  
+  The following screenshot explains the general syntax of a snort rule:
+  > <img src="https://github.com/howed-neighbor/CS467/blob/main/public/images/snort_syntax.png" width="100%">
+  
+  This following rule tells Snort what to look for in an sqli attack:
+  ```
+  alert tcp any any -> any any (msg: "SERVER-WEBAPP SQLI";content: "%27"; sid:10000003;)
+  ```
+
+  The only portion of the rule not explained in the syntax screenshot, is the **content** key-value pair.  The value, which in this case is "%27", is unicode for a single quote, which is what is required to conduct an sqli attack against our web application.  This rule tells snort to inspect packets being sent to our system, if detects a single quote in the packet, it will generate a log.
+  
+  This following rule tells Snort what to look for in an XSS attack:
+  ```
+  alert tcp any any -> any any (msg: "SERVER-WEBAPP SQLI";content: "%27"; sid:10000003;)
+  ```
+  
+  In this rule when snort detects the string "alert" in a packet, it will generate a log for possible XSS attack.
+  
   In the logs we can see your IP, or the IP of the attacker attempting to exploit our web application. (IP obscured in screenshot below):
   
   > <img src="https://github.com/howed-neighbor/CS467/blob/main/public/readmeImages/logs.PNG">
