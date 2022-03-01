@@ -810,7 +810,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   
   ---
 ### Remediation
-  Our remediation makes use of **Snort**. To see this remediation, please head to our AWS EC2 instance and try the exercises there, which will trigger our web application to start up Snort.
+  Our remediation makes use of **Snort**. To see this remediation, please head to our <a href="http://ec2-157-175-92-30.me-south-1.compute.amazonaws.com:37773/insufficientLoggingAndMonitoring">AWS EC2 instance</a> and try the exercises there, which will trigger our web application to start up Snort.
   
   Snort is an Intrustion Detection System (IDS) and is installed on our host operating system in our AWS EC2 instance.
   
