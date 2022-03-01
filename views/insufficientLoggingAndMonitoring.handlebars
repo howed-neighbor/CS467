@@ -40,11 +40,28 @@
 
         <hr>
         <h3>Remediation</h3>
-        <p><p>Our remediation makes use of <span class="bold">Snort</span>. To see this remediation, please head to our <a href="http://ec2-157-175-92-30.me-south-1.compute.amazonaws.com:37773/insufficientLoggingAndMonitoring">AWS EC2 instance</a> and try the exercises there, which will trigger our web application to start up Snort.<p>
+        <p>Our remediation makes use of <span class="bold">Snort</span>. To see this remediation, please head to our <a href="http://ec2-157-175-92-30.me-south-1.compute.amazonaws.com:37773/insufficientLoggingAndMonitoring">AWS EC2 instance</a> and try the exercises there, which will trigger our web application to start up Snort.</p>
 
-        Snort is an Intrustion Detection System (IDS) and is installed on our host operating system in our AWS EC2 instance.</p>
+        <p>Snort is an Intrustion Detection System (IDS) and is program that is installed on our host operating system in our AWS EC2 instance.</p>
 
-        <p>In the logs we can see your IP, or the IP of the attacker attempting to exploit our web application.</p>
+        <p>The heart of what makes Snort work is the rules file. Below, is a screenshot of the rules that we created:</p>
+        <img src="../images/snort_rules.png" width="100%">
+
+        <p>The following screenshot explains the general syntax of a snort rule:<p>
+        <img src="../images/snort_syntax.png" width="100%">
+
+        <p>This following rule tells Snort what to look for in an sqli attack:<p>
+        <p class="codeBlock">{{sqli_rule}}</p>
+
+        <p>The only portion of the rule not explained in the syntax screenshot, is the <span class="bold">content</span> key-value pair.  The value, which in this case is "%27", is unicode for a single quote, which is what is required to conduct an sqli attack against our web application.  This rule tells snort to inspect packets being sent to our system, if detects a single quote in the packet, it will generate a log.</p>
+        
+        <p>This following rule tells Snort what to look for in an XSS attack:</p>
+        <p class="codeBlock">{{sqli_rule}}</p>
+
+        <p>In this rule when snort detects the string "alert" in a packet, it will generate a log for possible XSS attack.</p>
+
+        <p>In the logs we can see your IP, or the IP of the attacker attempting to exploit our web application. (IP obscured in screenshot below):</p>
+        <img src="../readmeImages/logs.PNG">
 
         <p>This demonstration shows how powerful logging and monitoring can be, it can help defenders identify possible intrusions into their system.  However, an IDS is only as good as the rules that written for it.  Additionally, defenders must also be skilled in reviewing logs.  In our example we only had two attacks, in an enterprise system, their could potentially be hundreds, thousands, even hundreds of thousands of alerts.</p>
         
