@@ -64,6 +64,7 @@ module.exports = function() {
 	router.get("/", async (req,res) => {
 		if(os.hostname != "ip-172-31-34-32"){
 			console.log("not aws instance");
+			// res.redirect('http://ec2-157-175-92-30.me-south-1.compute.amazonaws.com:37773/insufficientLoggingAndMonitoring/');
 		}
 		var context = {
 			header: "> Insufficient Logging and Monitoring",
@@ -71,7 +72,9 @@ module.exports = function() {
 			darkTheme: req.session.darkTheme,
 			userName: req.session.userName,
 			password: req.session.password,
-			xss: `<script>alert(42)</script>`
+			xss: `<script>alert(42)</script>`,
+			xss_rule: `alert tcp any any -> any any (msg: "SERVER-WEBAPP XSS";content: "alert"; sid:10000002;)`,
+			sqli_rule: `alert tcp any any -> any any (msg: "SERVER-WEBAPP SQLI";content: "%27"; sid:10000003;)`
 		}
 		res.render("insufficientLoggingAndMonitoring",context)
 		console.log("Insufficient Logging and Monitoring loaded!")
