@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <title>datapotato</title>
+        <meta charset="utf-8">
+        <script src="./js/interactions.js"></script>
+    </head>
+
+    <h1>Insecure Deserialization</h1>
+    <hr class="light">
+
+    <h3>Description</h3>
+    <p>In order to understand what <span class="bold">Insecure Deserialization</span> is, we must first define <span class="bold">serialization.</span></p>
+
+    <p>Wikipedia defines <span class="bold">serialization</span> as the process of translating a data structure or object state into a format that can be stored (e.g. in a file or memory buffer) or transmitted (e.g. over a network) and reconstructed later (possibly in a different computer envrinoment). When the resulting series of bits is re-read according to the serialization format, it can be used to create a semantically identical clone of the original object.
+    </p>
+
+        <table class="markdown">
+            <tr>
+                <th>Source</th>
+                <th>Definition</th>
+            </tr>
+            <tr>
+                <td>Search Security</td>
+        <td><span class="bold">Inseucre Deserialization</span> is a vulnerability in which an untrusted or unknown data is used to either inflict a DoS, execute code, bypass authentication or further abuse logic behind the application. <span class="bold">Serialization</span> is the proces that converts an object to a format that can be later restored. <span class="bold">Deserialization</span> is the opposing process which takes data from a file, stream or network and rebuilds it into an object.</td>
+            </tr>
+            <tr>
+                <td>Portswigger</td>
+                <td><span class="bold">Insecure Deserialization</span> is when user-controllable data is deserialized by a website. This potentially enables an attacker to manipulate serialized object in order to pass harmful data into the application code.</td>
+        </table>
+        <br>
+
+    <hr>
+    <h3 id="demonstration">Demonstration</h3>
+    <p>Our web application makes use of the node package <span class="bold">"node-serialize"</span> to serialize and deserialize objects.</p>
+
+    <p>In this first example, we will start off with benign input. We will serialize a simple JSON object and then deserialize it. Type:</p>
+
+    <p class="codeBlock">{{benign}}</p>
+ and select "Submit".</p>
+        <p>
+            <form action="/insecureDeserialization/serialize#demonstration" method="post">
+                <fieldset>
+                    <legend>insecureDeserialization</legend>
+                        <label>User Input:
+                            <input type="hidden" name="type" value="default">
+                            <input type="textarea" name="userInput" placeholder="User Input" required>
+                        </label>
+                        <input type="submit" value="Serialize"/>
+                </fieldset>
+            </form>
+        </p>
+
+    <p>Result:</p>
+    {{#if serialized}}
+        <table class="markdown">
+            <tr>
+                <th>Serialized Object:</th>
+            </tr>
+            <tr class="text_small">
+            <td>{{serialized}}</td>
+            <tr>
+        </table>
+        {{else}}<span class="deselected">[...]<br></span>
+        {{/if}}
+
+    <p>We'll now deserialize the serialized object, which should return the original input <code>{{benign}}</code>.
+
+        <p>
+            <form action="/insecureDeserialization/deserialize#demonstration" method="post">
+                <fieldset>
+                    <legend>insecureDeserialization</legend>
+                        <label>User Input:
+                            <input type="hidden" name="type" value="default">
+                            <input type="textarea" name="userInput" placeholder="User Input" required>
+                        </label>
+                        <input type="submit" value="Deseerialize"/>
+                </fieldset>
+            </form>
+        </p>
+
+    <p>Result:</p>
+    {{#if deserialized}}
+        <table class="markdown">
+            <tr>
+                <th>The Original Object:</th>
+            </tr>
+            <tr class="text_small">
+            <td>{{deserialized}}</td>
+            <tr>
+        </table>
+        {{else}}<span class="deselected">[...]<br></span>
+        {{/if}}
+
+
+    <p>We'll now utlize a more nefarious input which will allow us to create a BIND Shell on our server. Type in the following:<p>
+    <p class="codeBlock">{{payload}}</p>
+        <p>
+            <form action="/insecureDeserialization/deserialize#demonstration" method="post">
+                <fieldset>
+                    <legend>insecureDeserialization</legend>
+                        <label>User Input:
+                            <input type="hidden" name="type" value="default">
+                            <input type="textarea" name="userInput" placeholder="User Input" required>
+                        </label>
+                        <input type="submit" value="Deseerialize"/>
+                </fieldset>
+            </form>
+        </p>
+
+    <p>In a command line terminal, preferably linux, connect to the bind shell.</p>
+    <p>If visiting the web application on our AWS instance:</p>
+    <p class="codeBlock">nc -vn 157.175.92.30 4444</p>
+    <p>If visiting the web application on the flip server:</p>
+    <p class="codeBlock">nc -vn 127.0.0.1 4444</p>
+
+    <p>The vulnerable piece of code in our web application is:<p>
+    <p class="codeBlock">var serialze = require('node-serialize')<br>
+    var obj = req.body.userInput<br>
+    var deserialized = serialize.unserialize(obj)</p>
+
+    <p>We are deserializing unsanitized user input.</p>
+
+    <p>The issue lies in the fact that the node-serialize package allows for the serialization and deserialization of JSON objects which have functions defined.</p>
+    <p>In nefarious payload, we created a JSON object with the key <span class="bold">"rce"</span> which had function definend as its value.</p>
+    <p>According to <a href="https://www.acunetix.com/blog/web-security-zone/deserialization-vulnerabilities-attacking-deserialization-in-js/">Aleski Turin</a>, a serialized object with a function defined has the following form:</p>
+    <p class="codeBlock">{{form}}</p>
+    <p>Anything after the special tag <code>$$ND_FUNC$$</code> is evaluated in the eval function.  This is what allows malicious users to execute arbitrary code on our web application.</p>
+
+    <hr>
+    <h2>Remediation</h2>
+    <p>We can mitigate/prevent this vulnerability from being exploited by sanitizing user input.<p>
+    <p>In our sanitized code, we make use of the <code>JSON.stringify</code> function:</p>
+    <p class="codeBlock">var serialze = require('node-serialize')<br>
+    var obj = req.body.userInput<br>
+    var sanitized = JSON.stringify(obj)<br>
+    var deserialized = serialize.unserialize(sanitized)</p>
+
+    <p>If we attempt to enter the malicious code again, and try to connect to the BIND shell, it will fail.</p> 
+    <p>Attempt to enter the following code again in our sanitized form:</p>
+    <p class="codeBlock">{{payload}}</p>
+
+            <form action="/insecureDeserialization/sanitized#demonstration" method="post">
+                <fieldset>
+                    <legend>sanitizedDeserialization</legend>
+                        <label>User Input:
+                            <input type="hidden" name="type" value="default">
+                            <input type="textarea" name="userInput" placeholder="User Input" required>
+                        </label>
+                        <input type="submit" value="Sanitized"/>
+                </fieldset>
+            </form>
+        </p>
+
+    <p>Our web application can now safely deserialize the user input:</p>
+    <p class="codeBlock">{test:123}</p> <!--This was originally {{deserialized}}, changed to plain text in case end user doesn't go through demonstration forms-->
+    <p>If you attempt to connect to the BIND shell, it no longer works. Try it:</p>
+    <p>If visiting the web application on our AWS instance:</p>
+    <p class="codeBlock">nc -vn 157.175.92.30 4444</p>
+    <p>If visiting the web application on the flip server:</p>
+    <p class="codeBlock">nc -vn 127.0.0.1 4444</p>
+
+    <hr>
+    <h3>Citations: Insecure Deserialization</h3>
+        <p>"Deserialization vulnerabilities: attacking deserialization in JS" Acunetix.<br>
+            <a href="https://www.acunetix.com/blog/web-security-zone/deserialization-vulnerabilities-attacking-deserialization-in-js/">https://www.acunetix.com/blog/web-security-zone/deserialization-vulnerabilities-attacking-deserialization-in-js/</a> (accessed Feb 20, 2022).</p>
+        <p>"Exploiting Node.js deserialization bug for Remote Code Execution". OPSECX.</br>
+            <a href="https://opsecx.com/index.php/2017/02/08/exploiting-node-js-deserialization-bug-for-remote-code-execution/">https://opsecx.com/index.php/2017/02/08/exploiting-node-js-deserialization-bug-for-remote-code-execution/</a> (accessed Jan 29, 2022).</p>
+        <p>"Serialization" Wikipedia.</br>
+            <a href="https://en.wikipedia.org/wiki/Serialization">https://en.wikipedia.org/wiki/Serialization</a> (accessed Feb 15, 2022).</p>
+        <p>"What is Insecure Deserialization." Acunetix.<br>
+            <a href="https://www.acunetix.com/blog/articles/what-is-insecure-deserialization/">https://www.acunetix.com/blog/articles/what-is-insecure-deserialization/</a> (accessed Feb 10, 2022)</p>
+
+           
+</html>

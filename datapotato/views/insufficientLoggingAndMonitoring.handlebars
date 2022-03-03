@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <title>datapotato</title>
+        <meta charset="utf-8">
+        <script src="./js/interactions.js"></script>
+    </head>
+
+
+    <h1>Insufficient Logging and Monitoring</h1>
+    <hr class="light">
+
+    <h3>Description</h3>
+        <table class="markdown">
+            <tr>
+                <th>Source</th>
+                <th>Definition</th>
+            </tr>
+            <tr>
+                <td>Siemba</td>
+        <td><span class="bold">Insufficient logging and monitoring</span> is missing security critical information logs or lack of proper log format, context, storage, security and timely response to detect an incident or breach.</td>
+            </tr>
+            <tr>
+                <td>Crashtest Security</td>
+                <td>Attacks based on <span class="bold">insufficient logging and monitoring</span> are usually ranked high prevalence, medium in opportunity, and low in detectability.  Ensuring that all events are logged, and events monitored, as a result, is often considered a first step in intrusion detection.</td>
+            <tr>
+                <td>MITRE</td>
+                <td>When a security-critical events are not logged properly, such as a failed login attempt, this can make malicious behavior more difficult to detect and may hinder forensic alanysis after an attack succeeds.</td>
+            </tr>
+        </table>
+
+        <br>
+
+        <hr>
+        <h3>Demonstratation</h3>
+
+        <p><span class="bold">Insufficient Logging and Monitoring</span> is not necessarily a vulnerability that can be exploited, however, it makes an attack on system more likely to succeed.  The absence of logging and monitoring means that it is almost impossible to detect an attack on a system and thus prevents any response or mitigative actions from taking place.</p>
+
+        <hr>
+        <h3>Remediation</h3>
+        <p>Our remediation makes use of <span class="bold">Snort</span>. To see this remediation, please head to our <a href="http://ec2-157-175-92-30.me-south-1.compute.amazonaws.com:37773/insufficientLoggingAndMonitoring">AWS EC2 instance</a> and try the exercises there, which will trigger our web application to start up Snort.</p>
+
+        <p>Snort is an Intrustion Detection System (IDS) and is program that is installed on our host operating system in our AWS EC2 instance.</p>
+
+        <p>The heart of what makes Snort work is the rules file. Below, is a screenshot of the rules that we created:</p>
+        <img src="../images/snort_rules.png" width="100%">
+
+        <p>The following screenshot explains the general syntax of a snort rule:<p>
+        <img src="../images/snort_syntax.png" width="100%">
+
+        <p>This following rule tells Snort what to look for in an sqli attack:<p>
+        <p class="codeBlock">{{sqli_rule}}</p>
+
+        <p>The only portion of the rule not explained in the syntax screenshot, is the <span class="bold">content</span> key-value pair.  The value, which in this case is "%27", is unicode for a single quote, which is what is required to conduct an sqli attack against our web application.  This rule tells snort to inspect packets being sent to our system, if detects a single quote in the packet, it will generate a log.</p>
+        
+        <p>This following rule tells Snort what to look for in an XSS attack:</p>
+        <p class="codeBlock">{{sqli_rule}}</p>
+
+        <p>In this rule when snort detects the string "alert" in a packet, it will generate a log for possible XSS attack.</p>
+
+        <p>In the logs we can see your IP, or the IP of the attacker attempting to exploit our web application. (IP obscured in screenshot below):</p>
+        <img src="../readmeImages/logs.PNG">
+
+        <p>This demonstration shows how powerful logging and monitoring can be, it can help defenders identify possible intrusions into their system.  However, an IDS is only as good as the rules that written for it.  Additionally, defenders must also be skilled in reviewing logs.  In our example we only had two attacks, in an enterprise system, their could potentially be hundreds, thousands, even hundreds of thousands of alerts.</p>
+        
+    <hr>
+    <h3>Citations: Injection</h3>
+        <p>"OWASP Top 10 - Insufficient Logging and Monitoring". Siemba.<br>
+            <a href="https://www.siemba.io/post/owasp-top-10-insufficient-logging-monitoring">https://www.siemba.io/post/owasp-top-10-insufficient-logging-monitoring</a> (accessed Feb 26, 2022).</p>
+        <p>"Comprehensive Guide To Insufficient Logging and Monitoring and How to Prevent It". Crashtest Security.</br>
+            <a href="https://crashtest-security.com/insufficient-logging-monitoring-guide/">https://crashtest-security.com/insufficient-logging-monitoring-guide/</a> (accessed Feb 27, 2022).</p>
+        <p>"Insufficient Logging". MITRE.</br>
+            <a href="https://cwe.mitre.org/data/definitions/778.html">https://cwe.mitre.org/data/definitions/778.html</a> (accessed Feb 26, 2022).</p>
+</html>

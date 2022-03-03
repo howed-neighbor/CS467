@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>datapotato</title>
+        <meta charset="utf-8">
+        <script src="./js/interactions.js"></script>
+    </head>
+
+    <h1>Security Misconfiguration</h1>
+    <hr class="light">
+
+    <h3>Description</h3>
+        <table class="markdown">
+            <tr>
+                <th>Source</th>
+                <th>Definition</th>
+            </tr>
+            <tr>
+                <td>OWASP</td>
+        <td><span class="bold">Security Misconfiguration</span> can happen at any level of an application stack, including the network services, platform, web server, application server, database, frameworks, custom code, and pre-installed virtual machines, containers, or storage.</td>
+            </tr>
+            <tr>
+                <td>The Hackerish</td>
+        <td><span class="bold">Security Misconfiguration</span> happens when the responsible party fails to follow best practices when configuring an asset.  This asset can be an operating system, a web server, software running on a machine, etc. Security Misonfigurations don't affect web assets only.  Any component which requires a configuration is subject to this vulnerability.  This means network devices, hardware, email services, etc. can suffer from this vulnerability</td>
+        </tr>
+        <tr>
+                <td>Guardiacore</td>
+        <td><span class="bold">Security Misonfiguration</span> is simply defined as failing to implement security controls for a server or web application, or implementing the security controls, but doing so with error.</td>
+        </tr>
+        </table>
+        <br>
+
+    <hr>
+    <h3>Demonstration</h3>
+    <p>From the definitions, it is clear that <span class="bold">Security Misoncfiguration</span> affects more than just the web application, which in our case is the nodejs application, the libraries we are using, and our database.</p>
+
+    <p>For the purposes of this demonstration, we'll focus on the Server itself, which in this case if the Oregon State flip3 server where our vulnerable web application is hosted.  More specificically we'll look at configuration of the ports and protocols.</p>
+
+    <p>One of the tenets of good network security is to only open network ports that are necessary. However, because of the nature of the flip3 server, it is required to be fairly open, otherwise it would not be possible to host student web applications - including ours.</p>
+
+    <p>To put in perspective how open the flip3 server is, I conducted an nmap scan:<p>
+
+    <div class="flex_row_space_between">
+        <img class="padding_3px" src="./images/flip3_nmap_scan1.png" alt="flip_scan1" height="50%" width="100%">
+        <img class="padding_3px" src="./images/flip3_nmap_scan2.png" alt="flip_scan2" height="50%" width="100%">
+    </div>
+
+    <p>The simple nmap scan can provide an attacker a wealth of information, but more importantly, each open port/protocal provides an attacker a potential attack vector against the system or application.</p>
+
+    <hr>    
+    <h3>Remediation</h3>
+    <p>For obvious reasons, we do not have the privileges necessary to harden the flip3 server, however, we do have those privileges on our AWS instance.</p>
+
+    <p>In our AWS instance we can control which ports/protocols are exposed through the use of <span class="bold">Security Groups</span> and <span class="bold">Network ACLs</span>. For our purposes, we'll only use the Security Group.</p>
+
+    <p>Each EC2 instance in our AWS Virtual Private Cloud (VPC) must have a security group associated with it.  A security group acts a firewall.  We can define a range of source IPs from the Internet that communicate with our EC2 instance, and we can define the ports on our EC2 instance that can be reached.</p>
+
+    <p>We created the following rule:</p>
+
+    <div class="container-fluid">
+        <img src="./images/aws_security_group.png" width="100%">
+    </div>
+
+    <p>This only exposes the TCP port 37773 to anyone on the Internet (0.0.0.0), significantly reducing the attack surface area of our system/application.</p>
+
+    <p>Screenshot of an nmap scan before the security group was modified in AWS:<p>
+
+    <div class="container-fluid">
+        <img src="./images/aws_scan_before.png" width="100%">
+    </div>
+
+    <p>Screenshot of an nmap scan after the security group was modified in AWS:<p>
+
+    <div class="container-fluid">
+        <img src="./images/aws_scan_after.png" width="100%">
+    </div>
+
+    <p>As we can see, the information a potential attacker is able to obtain is limited, but more importantly our attack surface area is greatly reduced.</p>
+
+    <hr>
+    <h3>Citations: Security Misonfiguration</h3>
+        <p>"Security Misconfiguration". OWASP.<br>
+            <a href="https://owasp.org/www-project-top-ten/2017/A6_2017-Security_Misconfiguration">https://owasp.org/www-project-top-ten/2017/A6_2017-Security_Misconfiguration</a> (accessed Feb 22, 2022).</p>
+        <p>"Security Misconfiguration Explained". The Hackerish.</br>
+            <a href="https://thehackerish.com/owasp-security-misconfiguration-explained/">https://thehackerish.com/owasp-security-misconfiguration-explained/</a> (accessed Feb 19, 2022).</p>
+        <p>"What is Security Configuration and How to Avoid It" Guardiacore.</br>
+            <a href="https://www.guardicore.com/blog/understanding-and-avoiding-security-misconfiguration/">https://www.guardicore.com/blog/understanding-and-avoiding-security-misconfiguration/</a> (accessed Feb 19, 2022).</p>
+           
+</html>
