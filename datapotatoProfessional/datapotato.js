@@ -18,7 +18,7 @@
 var express = require("express");
 var app = express();
 var app_name = "datapotato.js";
-var port = 47774;
+var port = 37773;
 
 var handlebars = require("express-handlebars").create({
 	defaultLayout:"layout",
