@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <title>datapotato</title>
+        <meta charset="utf-8">
+        <script src="./js/interactions.js"></script>
+    </head>
+
+    <h1>Cross Site Scripting (XSS)</h1>
+    <hr class="light">
+
+    <h3>Description</h3>
+        <table class="markdown">
+            <tr>
+                <th>Source</th>
+                <th>Definition</th>
+            </tr>
+            <tr>
+                <td>Wikipedia</td>
+                <td><span class="bold">XSS</span> is a type of security vulnerability that can be found in some web application. XSS attacks enable attackers to inject <span class="bold">client-side scripts</span> into web pages viewed by other users.</td>
+            </tr>
+            <tr>
+                <td>OWASP</td>
+                <td><span class="bold">XSS</span> attacks are a type of injection, in which malicious scripts are injected into otherwise benign and trusted websites.</td>
+            <tr>
+                <td>IBM</td>
+                <td><span class="bold">XSS</span> is a computer securit vulnerability that allows malicious attackers to inject client-side script into web pages viewed by other users.</td>
+            </tr>
+        </table>
+
+        <p>In summary, XSS is an attack on vulnerable web applications that allows a malicious actor to inject client-side script, e.g. javascript, into web pages.</p>
+
+    <hr>
+    <h3>Demonstration</h3>
+        <p>N/A</p>
+    
+    <hr>
+    <h3 id="remediation">Remediation</h3>
+        <p>There many methods to remediate XSS vulnerabilities.  Most techniques revolve around sanitizing user input.</p>
+        
+        <p>Our web application is succeptible to XSS because the handlebars engine renders user provided input exactly as written.</p>
+        
+        <p>Specifically, the vulnerable piece of code in our handlebars template is:</p>
+        
+        <p class="codeBlock">{{vulnerable}}</p>
+        
+        <p>Use of the triple brackets will render all user input exactly as written.</p>
+        
+        <p>We can prevent script injection by using double brackets as so:<p>
+        
+        <p class="codeBlock">{{remediate}}</p>
+
+        <p>Attempt to inject the XSS script again into our web application:</p>
+        
+        <p>Type <span class="bold">&lt;script&gt;alert(42)&lt;/script&gt;</span> and select "Submit".</p>
+
+        <p>
+            <form action="/crossSiteScripting/remediate#demonstration" method="post">
+                <fieldset>
+                    <legend>XSS</legend>
+                        <label>User Input:
+                            <input type="hidden" name="type" value="default">
+                            <input type="textarea" name="sanitized" placeholder="User Input" required>
+                        </label>
+                        <input type="submit" value="Submit"/>
+                </fieldset>
+            </form>
+        </p>
+
+        <p>Result:</p>
+        {{#if sanitized}}
+        <table class="markdown">
+            <tr>
+                <th>User Input</th>
+            </tr>
+            <tr class="text_small">
+        <td>{{sanitized}}</td>
+            <tr>
+        </table>
+        {{else}}<span class="deselected">[...]<br></span>
+        {{/if}}
+
+    <p>Use of double brackets in handlebars escapes special characters such as '&lt;' and '&gt;', which are often used in XSS attacks.</p>
+
+    <h3>Citations: Injection</h3>
+        <p>"Code injection." Wikipedia.<br>
+            <a href="https://en.wikipedia.org/wiki/Cross-site_scripting">https://en.wikipedia.org/wiki/Cross-site_scripting</a> (accessed Feb 14, 2022).</p>
+        <p>KirstenS. "Cross Site Scripting (XSS)". OWASP.</br>
+            <a href="https://owasp.org/www-community/attacks/xss/">https://owasp.org/www-community/attacks/xss/</a> (accessed Jan 29, 2022).</p>
+        <p>"Cross Site Scripting (XSS) Filter." IBM.</br>
+            <a href="https://www.ibm.com/docs/en/sc-and-ds/8.2.0?topic=manager-cross-site-scripting-xss-filters">https://www.ibm.com/docs/en/sc-and-ds/8.2.0?topic=manager-cross-site-scripting-xss-filters</a> (accessed Feb 15, 2022).</p>
+        <p>"Expressions." Handlebars Online User Guide.<br>
+            <a href="https://handlebarsjs.com/guide/expressions.html">https://handlebarsjs.com/guide/expressions.html</a> (accessed Feb 10, 2022)</p>
+</html>

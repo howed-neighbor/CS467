@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <h1>Injection</h1>
+    <hr class="light">
+    <h3>Description</h3>
+        <table class="markdown">
+            <tr>
+                <th>Source</th>
+                <th>Definition</th>
+            </tr>
+            <tr>
+                <td>Wikipedia</td>
+                <td><span class="bold">Code injection</span> is the exploitation of a computer bug that is caused by processing invalid data</td>
+            </tr>
+            <tr>
+                <td>OWASP</td>
+                <td><span class="bold">Injection</span> is an attacker’s attempt to send data to an application in a way that will change the meaning of commands being sentto an interpreter</td>
+            <tr>
+                <td>IBM</td>
+                <td>This type of attack allows an attacker to <span class="bold">inject code</span> into a program or query or inject malware onto a computer in order to execute remote commands that can read or modify a database, or change data on a web site</td>
+            </tr>
+        </table>
+
+        <p>These definitions are intentionally broad, as this concept appears in many environments. Our sources above list multiple subcategories of injection vulnerabilities:</p>
+  
+        <ul>
+            <li>Wikipedia: SQL injection, Cross-site scripting, Dynamic evaluation vulnerabilities, Object injection, Remote file injection, Format specifier injection, Shell injection</li>
+            <li>OWASP: SQL queries, LDAP queries, Operating system command interpreters, Any program invocation, XML documents, HTML documents, JSON structures, HTTP headers, File paths, URLs, A variety of expression languages</li>
+            <li>IBM: Blind SQL Injection, Blind XPath Injection, Buffer Overflow, Format String Attack, LDAP Injection, OS Commanding, SQL Injection, SSI Injection, XPath Injection</li>
+        </ul>
+    <hr>
+    <h3 id="demonstration">Demonstration</h3>
+        <p>N/A</p>
+
+    <hr>
+    <h3 id="remediation">Remediation</h3>
+        <p>Remediation for injection vulnerabilities are specific to the context of the application. We will provide recommendations for the specific example above.</p>
+        <p>OWASP advises vulnerabilities like the SQLi example above are failures of the <span class="bold">injection context</span>, specifically the SQL query. OWASP recommends the first defense in this context is escaping, in which we ensure data is treated like data, rather than an extension of the functionality or logic the query.</p>
+        <p>MariaDB provides a method to bind data values to our query at the time it is executed, preventing the injection of additional commands.</p>
+        <p>We'll convert our SQL query to a paramaterized query:</p>
+
+        <p class="codeBlock">SELECT userName, userData FROM `Users` WHERE userName=?</p>
+
+        <p>Try <span class="bold">user1' or TRUE; #</span> again, and select "Submit".</p>
+
+        <p>
+            <form action="/injection#demonstration" method="post">
+                <fieldset>
+                    <legend>SQL Query (Remediation)</legend>
+                        <label>Enter userName:
+                            <input type="hidden" name="type" value="remediation">
+                            <input type="text" name="queriedUserName" size="20" maxlength="20" placeholder="user1' or TRUE; #" required>
+                        </label>
+                        <input type="submit" value="Submit"/>
+                </fieldset>
+            </form>
+        </p>
+
+        <p>This time, if you didn't enter a valid userName, you won't retrieve any results, since "user1' or TRUE; #" is not a valid user. This query is hardened against arbitrary SQL commands entered by our users.</p>
+
+    <hr>
+    <h3>Citations: Injection</h3>
+        <p>"Code injection." Wikipedia.<br>
+            <a href="https://en.wikipedia.org/wiki/Code_injection">https://en.wikipedia.org/wiki/Code_injection</a> (accessed Jan 29, 2022).</p>
+        <p>J. Williams. "Injection Theory". OWASP.</br>
+            <a href="https://owasp.org/www-community/Injection_Theory">https://owasp.org/www-community/Injection_Theory</a> (accessed Jan 29, 2022).</p>
+        <p>"Injection Attacks." IBM.</br>
+            <a href="https://www.ibm.com/docs/en/snips/4.6.0?topic=categories-injection-attacks">https://www.ibm.com/docs/en/snips/4.6.0?topic=categories-injection-attacks</a> (accessed Jan 29, 2022).</p>
+        <p>"PREPARE Statement"<br>
+            <a href="https://mariadb.com/kb/en/prepare-statement/">https://mariadb.com/kb/en/prepare-statement/</a> (accessed Feb 10, 2022)</p>
+</html>

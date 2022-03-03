@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <title>datapotato</title>
+        <meta charset="utf-8">
+        <script src="./js/interactions.js"></script>
+    </head>
+
+    <h1>Broken Authentication</h1>
+    <hr class="light">
+    <h3>Description</h3>
+            <table class="markdown">
+            <tr>
+                <th>Source</th>
+                <th>Definition</th>
+            </tr>
+            <tr>
+                <td>OWASP</td>
+                <td>(now referred to as Identification and Authentication Failures) Confirmation of the user's identity, authentication, and session management is critical to protect against <span class="bold">authentication-related attacks</span></td>
+            <tr>
+                <td>IBM</td>
+                <td>This type of attack targets and attempts to <span class="bold">exploit the authentication process</span> a web site uses to verify the identity of a user, service, or application</td>
+            </tr>
+        </table>
+
+        <p>This is another broad category. There are many types of authentication in use. IBM divides these attacks into 3 categories:</p>
+            <ul>
+                <li>Brute force</li>
+                <li>Insufficient authentication</li>
+                <li>Weak password recovery</li>
+            </ul>
+        <p>Our app won't implement a password recovery system for this example, so we'll focus on the other two attacks.</p>
+
+    <hr>
+    <h3 id="demonstration">Demonstration</h3>
+        <p>N/A</p>
+    
+    <hr>
+    <h3 id="remediation">Remediation</h3>
+        <p>There are multiple ways we can harden our app against this vulnerability.</p>
+  
+        <p>First, we'll change the password to something harder to guess. Because password strength recommendations vary widely, we'll combine recommendations from a few sources:</p>
+  
+        <table class="markdown">
+            <tr>
+                <td>Source</td>
+                <td>Recommendation</td>
+            </hr>
+            <tr>
+                <td><a href="https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html">OWASP Authentication Cheat Sheet</a></td>
+                <td>Minimum length of the passwords should be enforced by the application. Passwords shorter than 8 characters are considered to be weak</td>
+            </tr>
+            <tr>
+                <td><a href="https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html">OWASP Authentication Cheat Sheet</a></td>
+                <td>Maximum password length should not be set too low, as it will prevent users from creating passphrases. A common maximum length is 64 characters [...] It is important to set a maximum password length to prevent long password Denial of Service attacks.</td>
+            </tr>
+            <tr>
+                <td><a href="https://www.ibm.com/docs/en/partnerengagemanager?topic=overview-password-guidelines">IBM Password Guidelines</a></td>
+                <Td>A length of 15-50 characters</td>
+            </tr>
+            <tr>
+                <td><a href="">IBM Password Guidelines</a></td>
+                <td>A combination of at least two-character types from the following options: uppercase[A-Z], lowercase[a-z], number[0-9], and special characters. The valid non-alphabetic characters include the following characters hyphen (-), underscore (_), period (.), and special characters such as !@#$%&|</td>
+            </tr>
+        </table>
+  
+        <p>We'll also use a password strength meter application like <a href="https://github.com/dropbox/zxcvbn">zxcvbn</a> to ensure the password we pick is safe against brute force attacks. (See also: <a href="https://lowe.github.io/tryzxcvbn/">interactive web implementation of zxcvbn</a></p>
+  
+        <p>Now that we've got our strong password, we'll salt it and hash it using the <a href="https://nodejs.org/api/crypto.html">Crypto nodejs module</a> before saving it in our database. This fixes two more vulnerabilities:</p>
+  
+        <p>Salting: This is a randomized string concatenated with the password before hashing, to ensure that if the hashing mechanism is compromised, an attacker can't automatically solve for all the other passwords in the database.</p>
+  
+        <p>Hashing: This increases the complexity of the plaintext password before saving it to our database, ensuring someone with access to the database can't read the plaintext version of the password.</p>
+  
+        <p>These changes are impemented for our users in the hardened web app.</p>
+  
+        <p>Another modern recommendation to improve the strength of authentication processes is multi-factor authentication, which our research team also recommends, but is not implemented in this app.</p>
+
+    <hr>
+    <h3>Citations: Broken Authentication</h3>
+    <p>"A07:2021 – Identification and Authentication Failures". OWASP top 10:2021.<br>
+        <a href="https://owasp.org/Top10/A07_2021-Identification_and_Authentication_Failures/">https://owasp.org/Top10/A07_2021-Identification_and_Authentication_Failures/</a> (accessed Feb 10, 2022).</p>
+  
+    <p>"Authentication attacks". IBM.<br>
+        <a href="https://www.ibm.com/docs/en/snips/4.6.0?topic=categories-authentication-attacks">https://www.ibm.com/docs/en/snips/4.6.0?topic=categories-authentication-attacks</a> (accessed Feb 10, 2022).</p>
+  
+    <p>D. Whitelegg. "Scan your app to find and fix OWASP Top 10 - 2017 vulnerabilities". IBM Developer.<br>
+        <a href="https://developer.ibm.com/tutorials/se-owasp-top10/">https://developer.ibm.com/tutorials/se-owasp-top10/</a> (accessed Feb 10, 2022).</p>
+  
+    <p>"10k-worst-passwords.txt". OWASP / passfault.<br>
+        <a href="https://github.com/OWASP/passfault/blob/master/wordlists/wordlists/10k-worst-passwords.txt">https://github.com/OWASP/passfault/blob/master/wordlists/wordlists/10k-worst-passwords.txt</a> (accessed Feb 10, 2022).</p>
+
+    <p>"Authentication Cheat Sheet". OWASP Cheat Sheet Series.<br>
+        <a href="https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html</a> (accessed Feb 12, 2022).</p>
+  
+    <p>"Password guidelines". Search in IBM Sterling Partner Engagement Manager.<br>
+        <a href="https://www.ibm.com/docs/en/partnerengagemanager?topic=overview-password-guidelines">https://www.ibm.com/docs/en/partnerengagemanager?topic=overview-password-guidelines</a> (accessed Feb 12, 2022).</p>
+  
+    <p>"zxcvbn". dropbox / zxcvbn.<br>
+        <a href="https://github.com/dropbox/zxcvbn">https://github.com/dropbox/zxcvbn</a> (accessed Feb 12, 2022).</p>
+  
+    <p>"demo". zxcvbn tests.<br>
+        <a href="https://lowe.github.io/tryzxcvbn/">https://lowe.github.io/tryzxcvbn/</a> (accessed Feb 12, 2022).</p>
+  
+    <p>"Crypto". Crypto | Node.js.<br>
+        <a href="https://nodejs.org/api/crypto.html">https://nodejs.org/api/crypto.html</a> (accessed Feb 12, 2022).</p>
+
+    <p>"How to use the crypto module" Node.js.<br>
+        <a href="https://nodejs.org/en/knowledge/cryptography/how-to-use-crypto-module/">https://nodejs.org/en/knowledge/cryptography/how-to-use-crypto-module/</a> (accessed Feb 13, 2022).</p>
+           
+</html> 

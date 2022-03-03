@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <title>datapotato</title>
+        <meta charset="utf-8">
+        <script src="./js/interactions.js"></script>
+    </head>
+
+    <h1>Sensitive Data Exposure</h1>
+    <hr class="light">
+
+    <h3>Description</h3>
+    <table class="markdown">
+        <tr>
+            <th>Source</th>
+            <th>Definition</th>
+        </tr>
+        <tr>
+            <td>OWASP</td>
+            <td>(See "Cryptographic Failures")[...] the focus is on <span class="bold">failures related to cryptography</span> (or lack thereof) [...] (which) often lead to exposure of sensitive data"</td>
+        </tr>
+        <tr>
+            <td>vpnMentor</td>
+            <td>Secret data usually needs to be <span class="bold">protected with encryption</span> and other cryptographic algorithms
+        </tr>
+    </table>
+    <br>
+
+    <hr>
+    <h3>Demonstration</h3>
+        <p>N/A</p>
+
+    <hr>
+    <h3 id="remediation">Remediation</h3>
+        <p>The most direct route for us to fix this is to encrypt our users' data.</p>
+  
+        <p>Fortunately, the <code>crypto</code> nodejs module we're using to salt and hash our user passwords also includes <code>cipher</code> and <code>decipher</code> classes we can use to encrypt this part of our database.</p>
+  
+        <p>This utility is implemented on the <a href="./admin">/admin route</a> and you can also try it out here.</p>
+
+        <form action="/sensitiveDataExposure#remediation" method="post">
+            <fieldset>
+                <legend>Encrypt/Decrypt Example</legend>
+                    <label>Enter text:
+                        <input type="hidden" name="type" value="encrypt">
+                        <input type="text" name="userData" size="20" maxlength="20" placeholder="sample text" required>
+                    </label>
+                    <input type="submit" value="Encrypt"/>
+            </fieldset>
+        </form>
+
+        <p>Encrypted data: <code class="background_green">{{encrypted}}</code></p>
+
+        {{#if encrypted}}
+        <form action="/sensitiveDataExposure#remediation" method="post">
+            <input type="hidden" name="type" value="decrypt">
+            <input type="hidden" name="userData" value="{{encrypted}}">
+            <input type="submit" value="Decrypt">
+        </form>
+        {{/if}}
+
+        <p>Decrypted data: <code class="background_red">{{decrypted}}</code></p>
+   
+    <hr>
+    <h3>Citations: Sensitive Data Exposure</h3>
+  
+    <p>"A02:2021 – Cryptographic Failures". OWASP Top 10:2021.<br>
+        <a href="https://owasp.org/Top10/A02_2021-Cryptographic_Failures/">https://owasp.org/Top10/A02_2021-Cryptographic_Failures/</a> (accessed Feb 13, 2022).</p>
+  
+    <p>Avi. D. "Top 10 Common Web Attacks: The First Steps to Protect Your Website." vpnMentor.<br>
+        <a href="https://www.vpnmentor.com/blog/top-10-common-web-attacks/">https://www.vpnmentor.com/blog/top-10-common-web-attacks/</a> (accessed Feb 13, 2022).</p>
+  
+    <p>"Crypto". Crypto | Node.js.<br>
+        <a href="https://nodejs.org/api/crypto.html#class-cipher">https://nodejs.org/api/crypto.html#class-cipher</a> (accessed Feb 16, 2022).</p>
+           
+</html>
