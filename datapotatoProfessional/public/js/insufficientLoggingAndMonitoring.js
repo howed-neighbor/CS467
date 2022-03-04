@@ -159,7 +159,9 @@ module.exports = function() {
 			vuln: req.body.userInput,
 			xss: `<script>alert(42)</script>`,
 			vulnerable: '{{{input}}}',
-			remediate: '{{input}}'
+			remediate: '{{input}}',
+			xss_rule: `alert tcp any any -> any any (msg: "SERVER-WEBAPP XSS";content: "alert"; sid:10000002;)`,
+			sqli_rule: `alert tcp any any -> any any (msg: "SERVER-WEBAPP SQLI";content: "%27"; sid:10000003;)`
 		}
 		console.log("user input: " + req.body.userInput);
 		context.sanitized = req.body.userInput;
@@ -179,7 +181,9 @@ module.exports = function() {
 			vuln2: req.body.username,
 			xss: `<script>alert(42)</script>`,
 			vulnerable: '{{{input}}}',
-			remediate: '{{input}}'
+			remediate: '{{input}}',
+			xss_rule: `alert tcp any any -> any any (msg: "SERVER-WEBAPP XSS";content: "alert"; sid:10000002;)`,
+			sqli_rule: `alert tcp any any -> any any (msg: "SERVER-WEBAPP SQLI";content: "%27"; sid:10000003;)`
 		}
 		console.log("user input: " + req.body.username);
 		console.log(context.vulnerable);
@@ -211,13 +215,21 @@ module.exports = function() {
 			insufficientLoggingAndMonitoring: true,
 			darkTheme: req.session.darkTheme,
 			userName: req.session.userName,
-			password: req.session.password
+			password: req.session.password,
+			vuln2: req.body.username,
+			xss: `<script>alert(42)</script>`,
+			vulnerable: '{{{input}}}',
+			remediate: '{{input}}',
+			xss_rule: `alert tcp any any -> any any (msg: "SERVER-WEBAPP XSS";content: "alert"; sid:10000002;)`,
+			sqli_rule: `alert tcp any any -> any any (msg: "SERVER-WEBAPP SQLI";content: "%27"; sid:10000003;)`
 		}
 		await stopSnort();
+		await stopSnort();
 		await new Promise(r => setTimeout(r, 1000));
-		var data = await fs.readFileSync('./logs.txt', 'utf8');
+		var data = await fs.readFileSync('logs.txt', 'utf8');
 		await new Promise(r => setTimeout(r, 1000));
 		context.logs = data;
+		await startSnort();
 		res.render("insufficientLoggingAndMonitoring",context)
 		console.log("Insufficient Logging and Monitoring loaded!")
 
