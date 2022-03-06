@@ -741,7 +741,7 @@ The code provided in this repo intentionally redacts the credentials in the <cod
   
   Once a component with a known vulnerability is discovered, developers should seek to remove that component from their application, or mitigate the vulnerability.  In the Insecure Deserialization section, we mitigated the vulnerability with the use of the <code>JSON.stringify</code> function.  A more preferable solution, would be to use another library that provides the same functionality, but without the vulnerabilty.
   
-  The nodejs engine <span class="bold">v8</span> provides us such a capability. It allows to serialize and deserialize objects.
+  The nodejs engine <span class="bold">v8</span> provides us such a capability. It allows us to serialize and deserialize objects.
   
   Our code to serialize user input is now:
   
