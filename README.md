@@ -17,7 +17,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
 <img src="https://github.com/howed-neighbor/CS467/blob/main/public/readmeImages/datapotato_black.svg#gh-light-mode-only" width=50% height=50%>
 <img src="https://github.com/howed-neighbor/CS467/blob/main/public/readmeImages/datapotato_white.svg#gh-dark-mode-only" width=50% height=50%>
 
-The code provided in this repo intentionally redacts the credentials in the <code>dbcon.js</code> required to connect to the SQL database.
+The code provided in this repo intentionally redacts the credentials in the <code>dbcon.js</code> file required to connect to the SQL database.
 
 # 1. Injection 
 <details>
