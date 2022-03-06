@@ -505,7 +505,7 @@ The code provided in this repo intentionally redacts the credentials in the <cod
   |---|---|
   |Wikipedia|**XSS** is a type of security vulnerability that can be found in some web application. XSS attacks enable attackers to inject **client-side scripts** into web pages viewed by other users.|
   |OWASP|**XSS** attacks are a type of injection, in which malicious scripts are injected into otherwise benign and trusted websites.|
-  |IBM<|**XSS** is a computer securit vulnerability that allows malicious attackers to inject client-side script into web pages viewed by other users.|
+  |IBM<|**XSS** is a computer security vulnerability that allows malicious attackers to inject client-side script into web pages viewed by other users.|
 
   In summary, XSS is an attack on vulnerable web applications that allows a malicious actor to inject client-side script, e.g. javascript, into web pages.
                 
