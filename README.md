@@ -170,7 +170,7 @@ These vulnerabilities will be explored through a demonstration app, datapotato:
   
   Hashing: This increases the complexity of the plaintext password before saving it to our database, ensuring someone with access to the database can't read the plaintext version of the password.
   
-  These changes are impemented on our user <code>superAdmin</code>, and will be implemented in the hardened web app.
+  These changes are impemented for our users in the hardened web app.
   
   ---
   
