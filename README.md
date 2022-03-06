@@ -293,7 +293,7 @@ The code provided in this repo intentionally redacts the credentials in the <cod
   
   The issue at hand is that the [document type declaration](https://www.w3.org/TR/REC-xml/#sec-prolog-dtd) can be configured to access internal or external references.
   
-  External entities, such as ones that point to server resources, or malicious URLs, are our primary concern. Here are is an example of a potentially harmful XML request (from the [OWASP website](https://owasp.org/www-community/vulnerabilities/XML_External_Entity_(XXE)_Processing).) This request could send an attacker information about critical system files:
+  External entities, such as ones that point to server resources, or malicious URLs, are our primary concern. Here is an example of a potentially harmful XML request (from the [OWASP website](https://owasp.org/www-community/vulnerabilities/XML_External_Entity_(XXE)_Processing).) This request could send an attacker information about critical system files:
   
   ```
   <?xml version="1.0" encoding="ISO-8859-1"?>
