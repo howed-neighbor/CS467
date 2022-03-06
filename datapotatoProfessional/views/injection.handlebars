@@ -57,6 +57,23 @@
                 </fieldset>
             </form>
         </p>
+        
+        <p>Result:</p>
+        {{#if users}}
+        <table class="markdown">
+            <tr>
+                <th>userName</th>
+                <th>userData</th>
+            </tr>
+            {{#users}}
+            <tr class="text_small">
+                <td>{{userName}}</td>
+                <td>{{userData}}</td>
+            <tr>
+            {{/users}}
+        </table>
+        {{else}}<span class="deselected">[...]<br></span>
+        {{/if}}
 
         <p>This time, if you didn't enter a valid userName, you won't retrieve any results, since "user1' or TRUE; #" is not a valid user. This query is hardened against arbitrary SQL commands entered by our users.</p>
 
