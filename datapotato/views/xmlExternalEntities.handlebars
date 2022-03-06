@@ -50,7 +50,7 @@
         
         <p>The issue here is that the <a href="https://www.w3.org/TR/REC-xml/#sec-prolog-dtd">document type declaration</a> can be configured to access internal and external references.</p>
   
-        <p>External entities, such as ones that point to server resources, or malicious URLs, are our primary concern. Here are is an example of a potentially harmful XML request (from the <a href="https://owasp.org/www-community/vulnerabilities/XML_External_Entity_(XXE)_Processing">OWASP website.</a>) This request could send an attacker information about critical system files:</p>
+        <p>External entities, such as ones that point to server resources, or malicious URLs, are our primary concern. Here is an example of a potentially harmful XML request (from the <a href="https://owasp.org/www-community/vulnerabilities/XML_External_Entity_(XXE)_Processing">OWASP website.</a>) This request could send an attacker information about critical system files:</p>
   
         <p class="codeBlock">
           &lt;?xml version="1.0" encoding="ISO-8859-1"?&gt;<br>
