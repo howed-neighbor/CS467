@@ -14,8 +14,8 @@ This project will explore the web vulnerabilities outlined in the article <a hre
 * [Insufficient Logging & Monitoring](#10-insufficient-logging--monitoring)
 
 These vulnerabilities will be explored through a demonstration app, datapotato:
-<img src="https://github.com/howed-neighbor/CS467/blob/main/public/readmeImages/datapotato_black.svg#gh-light-mode-only" width=50% height=50%>
-<img src="https://github.com/howed-neighbor/CS467/blob/main/public/readmeImages/datapotato_white.svg#gh-dark-mode-only" width=50% height=50%>
+<img src="https://github.com/howed-neighbor/CS467/blob/main/public/readmeImages/datapotato_black_outlines.svg#gh-light-mode-only" width=50% height=50%>
+<img src="https://github.com/howed-neighbor/CS467/blob/main/public/readmeImages/datapotato_white_outlines.svg#gh-dark-mode-only" width=50% height=50%>
 
 The code provided in this repo intentionally redacts the credentials in the <code>dbcon.js</code> file required to connect to the SQL database.
 
